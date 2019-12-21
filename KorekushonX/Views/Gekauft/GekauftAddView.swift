@@ -2,7 +2,7 @@ import UIKit
 
 class GekauftAddView: UITableViewController {
     let manager = GekauftManager.shared
-    let mangas = GekauftManager.shared.mangaStore.allObjects()
+    let mangas = GekauftManager.shared.mangaStore.allObjects().sorted { $0.title < $1.title }
     let datePickerView = UIDatePicker()
 
     @IBOutlet private var mangaField: UITextField!
