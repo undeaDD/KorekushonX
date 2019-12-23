@@ -61,6 +61,7 @@ class GekauftView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         manager.reloadIfNeccessary(tableView)
+        self.navigationItem.rightBarButtonItem?.isEnabled = GekauftManager.shared.mangaStore.objectsCount > 0
     }
 }
 

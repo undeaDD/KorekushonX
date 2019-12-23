@@ -36,6 +36,10 @@
 		125E2509237030E200EAFCF2 /* SingleFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E24FF237030E200EAFCF2 /* SingleFileStore.swift */; };
 		125E250D237031EA00EAFCF2 /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E250C237031EA00EAFCF2 /* Manga.swift */; };
 		125E25102370430400EAFCF2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 125E250F2370430400EAFCF2 /* IQKeyboardManagerSwift */; };
+		12633CAB23B100F100AEBF64 /* Impressum.html in Resources */ = {isa = PBXBuildFile; fileRef = 12633CAA23B100F100AEBF64 /* Impressum.html */; };
+		12633CAD23B1010200AEBF64 /* Datenschutz.html in Resources */ = {isa = PBXBuildFile; fileRef = 12633CAC23B1010200AEBF64 /* Datenschutz.html */; };
+		12633CAF23B1011200AEBF64 /* Lizenzen.html in Resources */ = {isa = PBXBuildFile; fileRef = 12633CAE23B1011200AEBF64 /* Lizenzen.html */; };
+		12633CB123B1011A00AEBF64 /* Änderungen.html in Resources */ = {isa = PBXBuildFile; fileRef = 12633CB023B1011A00AEBF64 /* Änderungen.html */; };
 		126A3BE623719D7B001CBA17 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126A3BE523719D7B001CBA17 /* NavigationController.swift */; };
 		126A3BE823719E24001CBA17 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126A3BE723719E24001CBA17 /* TabBarController.swift */; };
 		126A3BEA23719EB0001CBA17 /* SammlungDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126A3BE923719EB0001CBA17 /* SammlungDetailView.swift */; };
@@ -84,6 +88,10 @@
 		125E24FE237030E200EAFCF2 /* FilesStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesStore.swift; sourceTree = "<group>"; };
 		125E24FF237030E200EAFCF2 /* SingleFileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFileStore.swift; sourceTree = "<group>"; };
 		125E250C237031EA00EAFCF2 /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		12633CAA23B100F100AEBF64 /* Impressum.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Impressum.html; sourceTree = "<group>"; };
+		12633CAC23B1010200AEBF64 /* Datenschutz.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Datenschutz.html; sourceTree = "<group>"; };
+		12633CAE23B1011200AEBF64 /* Lizenzen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Lizenzen.html; sourceTree = "<group>"; };
+		12633CB023B1011A00AEBF64 /* Änderungen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Änderungen.html"; sourceTree = "<group>"; };
 		126A3BE523719D7B001CBA17 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		126A3BE723719E24001CBA17 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		126A3BE923719EB0001CBA17 /* SammlungDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammlungDetailView.swift; sourceTree = "<group>"; };
@@ -140,6 +148,7 @@
 		121E7DBD23702092007BEF31 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				12633CA923B100DC00AEBF64 /* Files */,
 				121E7DBE237020A0007BEF31 /* Settings.storyboard */,
 				12CF0A2A237091CD004A23E9 /* SettingsView.swift */,
 				121B67CA2382EAB100EEBB0F /* SettingsWebView.swift */,
@@ -219,6 +228,17 @@
 				124D0DBD2382D0C800DD41E0 /* Erinnerung.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		12633CA923B100DC00AEBF64 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				12633CAA23B100F100AEBF64 /* Impressum.html */,
+				12633CAE23B1011200AEBF64 /* Lizenzen.html */,
+				12633CB023B1011A00AEBF64 /* Änderungen.html */,
+				12633CAC23B1010200AEBF64 /* Datenschutz.html */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		126A3BE423719D6A001CBA17 /* Extensions */ = {
@@ -366,12 +386,16 @@
 				124D0DBB2382A48000DD41E0 /* .swiftlint.yml in Resources */,
 				127719A5236E2FA1001BF906 /* LaunchScreen.storyboard in Resources */,
 				127719B0236E31E3001BF906 /* SammlungView.storyboard in Resources */,
+				12633CAF23B1011200AEBF64 /* Lizenzen.html in Resources */,
 				121E7DBA23701C54007BEF31 /* GekauftView.storyboard in Resources */,
 				121E7DBF237020A0007BEF31 /* Settings.storyboard in Resources */,
 				125E24EB23702C1F00EAFCF2 /* WunschView.storyboard in Resources */,
+				12633CAB23B100F100AEBF64 /* Impressum.html in Resources */,
 				127719A2236E2FA1001BF906 /* Assets.xcassets in Resources */,
 				127719A0236E2FA0001BF906 /* Main.storyboard in Resources */,
 				125E24ED23702C7100EAFCF2 /* ErinnerungView.storyboard in Resources */,
+				12633CB123B1011A00AEBF64 /* Änderungen.html in Resources */,
+				12633CAD23B1010200AEBF64 /* Datenschutz.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +603,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KorekushonX/KorekushonX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = AXLC3PQNC8;
 				INFOPLIST_FILE = KorekushonX/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -587,7 +611,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.DeltaSiege.KorekushonX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -601,7 +625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KorekushonX/KorekushonX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = AXLC3PQNC8;
 				INFOPLIST_FILE = KorekushonX/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -609,7 +633,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.DeltaSiege.KorekushonX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
