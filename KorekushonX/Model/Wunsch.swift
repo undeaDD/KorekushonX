@@ -3,7 +3,7 @@ import UIKit
 struct Wunsch: Codable, Identifiable {
     static let idKey = \id
     var id: UUID
-    var number: Int
+    var title: String
     var cover: Cover
 }
 
@@ -12,7 +12,7 @@ class WunschCell: UICollectionViewCell {
     @IBOutlet private var numberField: UILabel!
 
     func setUp(_ wunsch: Wunsch) {
-        numberField.text = "Band: \(wunsch.number)"
+        numberField.text = wunsch.title
         imageField.image = wunsch.cover.img()
     }
 }

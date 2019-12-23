@@ -12,7 +12,7 @@ class WunschManager {
     }
 
     func shareManga(_ wunsch: Wunsch, _ viewController: UIViewController) {
-        let activityViewController = UIActivityViewController(activityItems: [wunsch.cover.img()], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [wunsch.cover.img(), wunsch.title], applicationActivities: nil)
         viewController.present(activityViewController, animated: true)
     }
 

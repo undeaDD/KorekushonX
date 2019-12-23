@@ -1,9 +1,8 @@
 import UIKit
 
 class WunschAddView: UITableViewController {
-    @IBOutlet private var numberField: UITextField!
+    @IBOutlet private var titleField: UITextField!
     @IBOutlet private var image: UIImageView!
-    var numberPickerView: UIPickerView?
 
     let manager = WunschManager.shared
     let imagePicker: UIImagePickerController = {
@@ -16,14 +15,6 @@ class WunschAddView: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        numberPickerView = UIPickerView()
-        numberPickerView?.selectRow(0, inComponent: 0, animated: false)
-        numberPickerView!.tag = 1
-        numberPickerView!.delegate = self
-        numberPickerView!.dataSource = self
-        numberField.inputView = numberPickerView
-        numberField.becomeFirstResponder()
 
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
@@ -38,7 +29,7 @@ class WunschAddView: UITableViewController {
         self.view.endEditing(true)
 
         let temp = Wunsch(id: UUID(),
-                      number: Int(numberField.text.trim()) ?? 1,
+                      title: titleField.text.trim(),
                        cover: image.image?.cover() ?? UIImage(named: "default")!.cover())
 
          try! manager.store.save(temp)
@@ -54,18 +45,6 @@ class WunschAddView: UITableViewController {
          } else {
              self.navigationController?.popToRootViewController(animated: true)
          }
-    }
-}
-
-extension WunschAddView: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { 100 }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { String(row + 1) }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        numberField.text = String(numberPickerView!.selectedRow(inComponent: 0) + 1)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,4 +79,5 @@ extension WunschAddView: UIPickerViewDataSource, UIPickerViewDelegate {
             self.present(sheet, animated: true)
         }
     }
+
 }
