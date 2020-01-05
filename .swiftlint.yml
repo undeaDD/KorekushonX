@@ -13,6 +13,7 @@ disabled_rules:
   - fallthrough
   - private_outlet
   - file_name
+  - function_body_length
 
 opt_in_rules:
   - anyobject_protocol

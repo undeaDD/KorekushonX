@@ -69,4 +69,14 @@ class SammlungManager {
             UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { tableView.reloadData() })
         }
     }
+
+    func repairAll() {
+        for var parent in store.allObjects() {
+            let children: Set<Int> = FilesStore<Book>(uniqueIdentifier: "books").allObjects().filter { $0.mangaId == parent.id }.reduce(into: Set<Int>()) { $0.insert($1.number) }
+
+            parent.completed = children.count == parent.countAll
+            try? store.save(parent)
+        }
+        UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
+    }
 }
