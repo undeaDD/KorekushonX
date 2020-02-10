@@ -47,15 +47,15 @@ class SammlungManager {
 
         switch UserDefaults.standard.integer(forKey: "SammlungFilter") {
         case 1:
-            filtered.sort { $0.author.lowercased() < $1.author.lowercased() }
-        case 2:
-            filtered.sort { $0.publisher.lowercased() < $1.publisher.lowercased() }
-        case 3:
-            filtered = filtered.filter { $0.completed }
-        case 4:
-            filtered = filtered.filter { !$0.completed }
-        case 5:
             filtered.sort { $0.title.lowercased() < $1.title.lowercased() }
+        case 2:
+            filtered.sort { $0.author.lowercased() < $1.author.lowercased() }
+        case 3:
+            filtered.sort { $0.publisher.lowercased() < $1.publisher.lowercased() }
+        case 4:
+            filtered = filtered.filter { $0.completed }
+        case 5:
+            filtered = filtered.filter { !$0.completed }
         default:
             break
         }
@@ -73,7 +73,6 @@ class SammlungManager {
     func repairAll() {
         for var parent in store.allObjects() {
             let children: Set<Int> = FilesStore<Book>(uniqueIdentifier: "books").allObjects().filter { $0.mangaId == parent.id }.reduce(into: Set<Int>()) { $0.insert($1.number) }
-
             parent.completed = children.count == parent.countAll
             try? store.save(parent)
         }

@@ -54,11 +54,15 @@ class SammlungView: UIViewController {
         let sheet = UIAlertController(title: "Sammlung filtern", message: nil, preferredStyle: .actionSheet)
 
         for elem in ["Nicht Filtern", "Nach Titel A-Z", "Nach Autor A-Z", "Nach Verlag A-Z", "Nur Vollständige", "Nur nicht Vollständige"].enumerated() {
-            sheet.addAction(UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
+            let temp = UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
                 UserDefaults.standard.set(elem.offset, forKey: "SammlungFilter")
                 self.manager.reloadIfNeccessary(self.tableView, true)
                 self.filterButton.image = self.manager.getFilterImage()
-            }))
+            })
+            if elem.offset != 0 {
+                temp.setValue(UserDefaults.standard.integer(forKey: "SammlungFilter") == elem.offset, forKey: "checked")
+            }
+            sheet.addAction(temp)
         }
 
         sheet.view.tintColor = .systemPurple

@@ -44,14 +44,18 @@ class GekauftView: UIViewController {
     }
 
     @IBAction private func filterSammlung() {
-        let sheet = UIAlertController(title: "Sammlung filtern", message: nil, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: "Bände filtern", message: nil, preferredStyle: .actionSheet)
 
         for elem in ["Nicht Filtern", "Generierte ausblenden", "Nach Reihe sortieren", "Preis absteigend", "Preis aufsteigend"].enumerated() {
-            sheet.addAction(UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
+            let temp = UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
                 UserDefaults.standard.set(elem.offset, forKey: "GekauftFilter")
                 self.manager.reloadIfNeccessary(self.tableView, true)
                 self.filterButton.image = self.manager.getFilterImage()
-            }))
+            })
+            if elem.offset != 0 {
+                temp.setValue(UserDefaults.standard.integer(forKey: "GekauftFilter") == elem.offset, forKey: "checked")
+            }
+            sheet.addAction(temp)
         }
 
         sheet.view.tintColor = .systemPurple
