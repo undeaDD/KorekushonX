@@ -34,15 +34,18 @@ class SammlungCell: UITableViewCell {
     @IBOutlet private var imageField: UIImageView!
     @IBOutlet private var titleField: UILabel!
     @IBOutlet private var subtitleField: UILabel!
-    @IBOutlet private var stateField: UIImageView!
-    @IBOutlet private var completeField: UIImageView!
+    @IBOutlet private var countField: UILabel!
 
-    func setUp(_ manga: Manga) {
+    func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
         titleField.text = manga.title
-        subtitleField.text = "Autor: \(manga.author)"
+        subtitleField.text = manga.author
+        countField.text = ".../\(manga.countAll)"
         imageField.image = manga.cover.img()
-        completeField.isHidden = !manga.completed
-        completeField.tintColor = .systemPurple
-        stateField.tintColor = manga.available ? .systemGreen : .systemRed
+
+        bookStore.getMangaCount(manga.id) { count in
+            DispatchQueue.main.async {
+                self.countField.text = "\(count)/\(manga.countAll)"
+            }
+        }
     }
 }

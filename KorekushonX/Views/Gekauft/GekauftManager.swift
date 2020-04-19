@@ -47,6 +47,15 @@ class GekauftManager {
         }
     }
 
+    func getMangaCount(_ id: UUID, _ completion: @escaping (Int) -> Void) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            completion(
+                FilesStore<Book>(uniqueIdentifier: "books").allObjects().filter { $0.mangaId == id }
+                .reduce(into: Set<Int>()) { $0.insert($1.number) }.count
+            )
+        }
+    }
+
     func reloadIfNeccessary(_ tableView: UITableView, _ force: Bool = false) {
         filtered = store.allObjects()
 

@@ -19,6 +19,8 @@ class WunschView: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "settings", let nav = segue.destination as? NavigationController {
             nav.presentationController?.delegate = self
+        } else if segue.identifier == "edit", let dest = segue.destination as? WunschAddView, let wunsch = sender as? Wunsch {
+            dest.editWunsch = wunsch
         }
     }
 
@@ -58,6 +60,9 @@ extension WunschView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         sheet.addAction(UIAlertAction(title: "Teilen", style: .default, handler: { _ in
             self.manager.shareManga(wunsch, self)
         }))
+        sheet.addAction(UIAlertAction(title: "Bearbeiten", style: .default, handler: { _ in
+            self.performSegue(withIdentifier: "edit", sender: wunsch)
+        }))
         sheet.addAction(UIAlertAction(title: "Löschen", style: .destructive, handler: { _ in
             self.manager.removeManga(wunsch)
             self.manager.reloadIfNeccessary(self.collectionView, true)
@@ -78,12 +83,16 @@ extension WunschView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
                 self.manager.shareManga(wunsch, self)
             }
 
+            let edit = UIAction(title: "Bearbeiten", image: UIImage(named: "editieren")) { _ in
+                self.performSegue(withIdentifier: "edit", sender: wunsch)
+            }
+
             let remove = UIAction(title: "Löschen", image: UIImage(named: "müll"), attributes: .destructive) { _ in
                 self.manager.removeManga(wunsch)
                 self.manager.reloadIfNeccessary(self.collectionView, true)
             }
 
-            return UIMenu(title: "", children: [share, remove])
+            return UIMenu(title: "", children: [share, edit, remove])
         })
     }
 }

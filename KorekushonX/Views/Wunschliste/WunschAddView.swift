@@ -3,6 +3,7 @@ import UIKit
 class WunschAddView: UITableViewController {
     @IBOutlet private var titleField: UITextField!
     @IBOutlet private var image: UIImageView!
+    var editWunsch: Wunsch?
 
     let manager = WunschManager.shared
     let imagePicker: UIImagePickerController = {
@@ -16,6 +17,13 @@ class WunschAddView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let wunsch = editWunsch {
+            navigationItem.title = "Bearbeiten"
+            titleField.text = wunsch.title
+            image.image = UIImage(data: wunsch.cover.data)
+        }
+
+        imagePicker.delegate = self
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
         }
@@ -28,7 +36,7 @@ class WunschAddView: UITableViewController {
     @IBAction private func save(_ keepOpen: Bool = false) {
         self.view.endEditing(true)
 
-        let temp = Wunsch(id: UUID(),
+        let temp = Wunsch(id: editWunsch != nil ? editWunsch!.id : UUID(),
                       title: titleField.text.trim(),
                        cover: image.image?.cover() ?? UIImage(named: "default")!.cover())
 
@@ -78,5 +86,17 @@ class WunschAddView: UITableViewController {
 
             self.present(sheet, animated: true)
         }
+    }
+}
+
+extension WunschAddView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.image.image = UIImage(named: "default")
+        picker.dismiss(animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        self.image.image = info[.originalImage] as? UIImage
+        picker.dismiss(animated: true)
     }
 }

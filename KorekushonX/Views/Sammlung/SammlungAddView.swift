@@ -15,7 +15,7 @@ class SammlungAddView: UITableViewController {
     @IBOutlet private var publisherField: UITextField!
     @IBOutlet private var countField: UITextField!
     @IBOutlet private var image: UIImageView!
-    @IBOutlet private var availableField: UISwitch!
+
     var editManga: Manga?
     var haveCount = 0
     var maxCount = 1
@@ -40,7 +40,7 @@ class SammlungAddView: UITableViewController {
                       cover: image.image?.cover() ?? UIImage(named: "default")!.cover(),
                   publisher: publisherField.text.trim(),
                    countAll: maxCount,
-                  available: availableField.isOn,
+                  available: true,
                   completed: completed)
 
         try! manager.store.save(temp)
@@ -99,7 +99,6 @@ class SammlungAddView: UITableViewController {
             countField.text = "? von \(String(manga.countAll))"
             maxCount = manga.countAll
 
-            availableField.isOn = manga.available
             image.image = UIImage(data: manga.cover.data)
             pickerView.selectRow(manga.countAll - 1, inComponent: 2, animated: false)
         } else {

@@ -6,14 +6,7 @@ class SammlungView: UIViewController {
 
     let searchController = UISearchController(searchResultsController: nil)
     let manager = SammlungManager.shared
-    let footer: NSAttributedString = {
-        let result = NSMutableAttributedString(string: "◉ = Vollständig\n", attributes: [.foregroundColor: UIColor.systemPurple])
-        let a = NSAttributedString(string: "◉ = nicht Verfügbar\n", attributes: [.foregroundColor: UIColor.systemRed])
-        let b = NSAttributedString(string: "◉ = Verfügbar", attributes: [.foregroundColor: UIColor.systemGreen])
-        result.append(a)
-        result.append(b)
-        return result
-    }()
+    let books = GekauftManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,16 +78,6 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
         }
     }
 
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "\n\n\n"
-    }
-
-    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        if let view = view as? UITableViewHeaderFooterView, !manager.filtered.isEmpty {
-            view.textLabel?.attributedText = self.footer
-        }
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filterButton.isEnabled = manager.enableButtons()
         navigationController?.tabBarItem.badgeValue = String(manager.rawCount())
@@ -135,7 +118,7 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        (cell as! SammlungCell).setUp(manager.filtered[indexPath.row])
+        (cell as! SammlungCell).setUp(manager.filtered[indexPath.row], books)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
