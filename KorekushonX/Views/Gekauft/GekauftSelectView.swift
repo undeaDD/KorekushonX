@@ -45,6 +45,10 @@ class GekauftSelectView: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.reloadData()
     }
 
+    @IBAction private func gotoNewMangaView(_ sender: UIBarButtonItem) {
+        (self.tabBarController as? TabBarController)?.addManga()
+    }
+
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.isActive, let search = searchController.searchBar.text?.lowercased(), !search.isEmpty {
             filtered = mangas.filter {

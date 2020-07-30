@@ -15,9 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.toolbarTintColor = .systemPurple
 
-        UITabBarItem.appearance().setBadgeTextAttributes([.foregroundColor: UIColor.clear, .font: UIFont.systemFont(ofSize: 12, weight: .bold)], for: .normal)
-        UITabBarItem.appearance().setBadgeTextAttributes([.foregroundColor: UIColor.systemPurple, .font: UIFont.systemFont(ofSize: 12, weight: .bold)], for: .selected)
-
         if UserDefaults.standard.object(forKey: "settingsSammlungShowCover") == nil {
             UserDefaults.standard.set(true, forKey: "settingsSammlungShowCover")
         }
@@ -33,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
 
+        UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { granted, _ in
             UserDefaults.standard.set(granted, forKey: "ErinnerungActive")
         }
 
-        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -46,6 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert])
+        completionHandler([.alert, .sound])
     }
 }

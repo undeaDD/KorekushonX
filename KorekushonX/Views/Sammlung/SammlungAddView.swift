@@ -34,14 +34,28 @@ class SammlungAddView: UITableViewController {
             completed = maxCount <= editManga!.countAll
         }
 
+        let img = image.image == UIImage(named: "default") ? nil : image.image?.cover()
         let temp = Manga(id: editManga != nil ? editManga!.id : UUID(),
                       title: titleField.text.trim(),
                      author: authorField.text.trim(),
-                      cover: image.image?.cover() ?? UIImage(named: "default")!.cover(),
+                      cover: img,
                   publisher: publisherField.text.trim(),
                    countAll: maxCount,
                   available: true,
                   completed: completed)
+
+        if manager.store.allObjects().contains(where: { stored -> Bool in
+            stored.title.lowercased() == temp.title.lowercased()
+        }) {
+            let alert = UIAlertController(title: "Duplikat", message: "Manga konnte nicht in der Sammlung gespeichert werden.", preferredStyle: .alert)
+            self.present(alert, animated: true) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
+                    self.titleField.text = nil
+                    alert.dismiss(animated: true)
+                }
+            }
+            return
+        }
 
         try! manager.store.save(temp)
         UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
@@ -55,7 +69,7 @@ class SammlungAddView: UITableViewController {
         if keepOpen {
             let alert = UIAlertController(title: "Gespeichert", message: "Manga wurde erfolgreich in der Sammlung gespeichert", preferredStyle: .alert)
             self.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
                     alert.dismiss(animated: true)
                 }
             }
@@ -99,7 +113,7 @@ class SammlungAddView: UITableViewController {
             countField.text = "? von \(String(manga.countAll))"
             maxCount = manga.countAll
 
-            image.image = UIImage(data: manga.cover.data)
+            image.image = manga.cover?.img() ?? UIImage(named: "default")
             pickerView.selectRow(manga.countAll - 1, inComponent: 2, animated: false)
         } else {
             self.navigationItem.title = "Hinzufügen"

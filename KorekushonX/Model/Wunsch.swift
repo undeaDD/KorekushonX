@@ -4,7 +4,7 @@ struct Wunsch: Codable, Identifiable {
     static let idKey = \id
     var id: UUID
     var title: String
-    var cover: Cover
+    var cover: Cover?
 }
 
 class WunschCell: UICollectionViewCell {
@@ -13,6 +13,6 @@ class WunschCell: UICollectionViewCell {
 
     func setUp(_ wunsch: Wunsch) {
         numberField.text = wunsch.title
-        imageField.image = wunsch.cover.img()
+        imageField.image = wunsch.cover?.img() ?? UIImage(named: "default")
     }
 }

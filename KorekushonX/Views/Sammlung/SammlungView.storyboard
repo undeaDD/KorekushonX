@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Myg-fN-Nwo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Myg-fN-Nwo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -30,7 +30,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="Vku-5k-AYX">
                                                     <rect key="frame" x="15" y="8" width="36" height="54"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Vku-5k-AYX" secondAttribute="height" multiplier="1:1.5" id="L82-p7-9fX"/>
                                                     </constraints>
@@ -104,17 +104,20 @@
                     <navigationItem key="navigationItem" title="Manga Sammlung" id="NkE-Jo-iGN">
                         <barButtonItem key="backBarButtonItem" title="Zurück" id="hHb-Sl-gT4"/>
                         <barButtonItem key="leftBarButtonItem" image="user" width="40" id="D8e-XM-eMZ">
+                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="YDo-Fk-CsE" kind="presentation" identifier="settings" id="yor-vh-iA1"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="add" width="20" id="HMG-4V-MBc">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="v7V-MN-Pw8" kind="show" identifier="edit" id="RCs-f3-TUa"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="filterOff" width="20" id="2B7-8K-aRa">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="filterSammlung" destination="Myg-fN-Nwo" id="uTr-wy-pgp"/>
                                 </connections>
@@ -277,7 +280,7 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="9qj-5t-xuu">
                                                     <rect key="frame" x="299" y="8" width="36" height="54"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="9qj-5t-xuu" secondAttribute="height" multiplier="1:1.5" id="z5X-aX-cPW"/>
                                                     </constraints>
@@ -350,11 +353,13 @@
                     <navigationItem key="navigationItem" title="Hinzufügen" largeTitleDisplayMode="never" id="3ox-jK-HAD">
                         <rightBarButtonItems>
                             <barButtonItem image="speichern2" width="40" id="SbS-6Y-2AI">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="save2" destination="v7V-MN-Pw8" id="L0C-Hj-6Pe"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="speichern" width="40" id="whg-XV-bNP">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="save:" destination="v7V-MN-Pw8" id="Z1J-g3-5s6"/>
                                 </connections>
@@ -395,7 +400,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="yn0-9r-mxE">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="561.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="yn0-9r-mxE" secondAttribute="height" multiplier="1:1.5" id="YIm-hE-oDH"/>
                                                     </constraints>
@@ -438,7 +443,7 @@
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 Bände" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeO-0e-2fB">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000 Bände" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeO-0e-2fB">
                                                     <rect key="frame" x="259" y="30.5" width="100" height="39.5"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -541,11 +546,13 @@
                         <barButtonItem key="backBarButtonItem" title="Zurück" id="vrF-2L-H14"/>
                         <rightBarButtonItems>
                             <barButtonItem image="editieren" id="8O3-UO-KxW">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="editManga" destination="MNc-0L-3fT" id="rYf-N9-eQS"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="teilen" id="b5f-q5-Oto">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="shareManga" destination="MNc-0L-3fT" id="IKW-aL-6xU"/>
                                 </connections>
@@ -571,7 +578,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RCs-f3-TUa"/>
+        <segue reference="dbb-zL-zLU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

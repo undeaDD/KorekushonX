@@ -85,7 +85,7 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
                 present(alert, animated: true)
             }
         case (0, 2):
-            let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Ja", style: .destructive, handler: { _ in
                 SammlungManager.shared.repairAll()

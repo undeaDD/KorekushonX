@@ -97,17 +97,20 @@
                     <navigationItem key="navigationItem" title="Gekaufte Mangas" id="H05-0o-2FW">
                         <barButtonItem key="backBarButtonItem" title="Zurück" id="nbS-o9-9eC"/>
                         <barButtonItem key="leftBarButtonItem" image="user" id="Dda-3F-HaE">
+                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="yzc-zp-aTp" kind="presentation" id="CIY-PK-6O6"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="add" width="40" id="jgY-Ah-usF">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="Ik1-Qv-4E8" kind="show" identifier="edit" id="lFn-1v-euG"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="filterOff" width="30" id="NPL-qI-hrJ">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="filterSammlung" destination="ZsM-kY-QHH" id="20I-ju-her"/>
                                 </connections>
@@ -158,6 +161,7 @@
                                                 <textField userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiss of the Fox" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWN-ed-HoJ">
                                                     <rect key="frame" x="74.5" y="8" width="284.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 </textField>
@@ -417,11 +421,13 @@
                         <barButtonItem key="backBarButtonItem" title="Zurück" id="wrV-qG-N9n"/>
                         <rightBarButtonItems>
                             <barButtonItem image="speichern2" width="30" id="T8V-CL-x4R">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="save2" destination="Ik1-Qv-4E8" id="q7z-EW-fBZ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="speichern" width="30" id="GJs-l1-L7F">
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="save:" destination="Ik1-Qv-4E8" id="gMo-1a-15M"/>
                                 </connections>
@@ -486,7 +492,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HQj-MM-bS3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Reihe auswählen" id="FVx-JY-yIc"/>
+                    <navigationItem key="navigationItem" title="Reihe auswählen" id="FVx-JY-yIc">
+                        <barButtonItem key="rightBarButtonItem" image="goBack" id="Mgl-xz-YD1">
+                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="gotoNewMangaView:" destination="egc-fL-o9J" id="mpg-v6-FN0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="xme-Pj-4cS" id="qti-Zf-aOK"/>
                     </connections>
@@ -506,9 +519,11 @@
             <point key="canvasLocation" x="594" y="528"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="add" width="30" height="30"/>
         <image name="filterOff" width="30" height="30"/>
+        <image name="goBack" width="30" height="30"/>
         <image name="speichern" width="30" height="30"/>
         <image name="speichern2" width="30" height="30"/>
         <image name="user" width="30" height="30"/>

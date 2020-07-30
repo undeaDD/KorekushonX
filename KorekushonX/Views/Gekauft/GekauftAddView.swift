@@ -47,7 +47,7 @@ class GekauftAddView: UITableViewController {
         if keepOpen {
             let alert = UIAlertController(title: "Gespeichert", message: "Band wurde erfolgreich gespeichert", preferredStyle: .alert)
             self.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
                     alert.dismiss(animated: true)
                 }
             }

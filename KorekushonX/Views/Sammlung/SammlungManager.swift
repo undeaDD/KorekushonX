@@ -31,7 +31,7 @@ class SammlungManager {
     }
 
     func shareManga(_ manga: Manga, _ viewController: UIViewController) {
-        let activityViewController = UIActivityViewController(activityItems: [manga.cover.img(), manga.title], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [manga.cover?.img() ?? UIImage(named: "default")!, manga.title], applicationActivities: nil)
         viewController.present(activityViewController, animated: true)
     }
 

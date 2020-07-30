@@ -5,7 +5,7 @@ struct Manga: Codable, Identifiable {
     var id: UUID
     var title: String
     var author: String
-    var cover: Cover
+    var cover: Cover?
     var publisher: String
     var countAll: Int
     var available: Bool
@@ -20,7 +20,7 @@ public struct Cover: Codable {
     }
 
     public init(image: UIImage) {
-        self.data = image.jpegData(compressionQuality: 0.8)!
+        self.data = image.pngData()!
     }
 }
 
@@ -40,7 +40,7 @@ class SammlungCell: UITableViewCell {
         titleField.text = manga.title
         subtitleField.text = manga.author
         countField.text = ".../\(manga.countAll)"
-        imageField.image = manga.cover.img()
+        imageField.image = manga.cover?.img() ?? UIImage(named: "default")
 
         bookStore.getMangaCount(manga.id) { count in
             DispatchQueue.main.async {

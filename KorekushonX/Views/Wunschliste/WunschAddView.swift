@@ -20,7 +20,7 @@ class WunschAddView: UITableViewController {
         if let wunsch = editWunsch {
             navigationItem.title = "Bearbeiten"
             titleField.text = wunsch.title
-            image.image = UIImage(data: wunsch.cover.data)
+            image.image = wunsch.cover?.img() ?? UIImage(named: "default")
         }
 
         imagePicker.delegate = self
@@ -36,9 +36,10 @@ class WunschAddView: UITableViewController {
     @IBAction private func save(_ keepOpen: Bool = false) {
         self.view.endEditing(true)
 
+        let img = image.image == UIImage(named: "default") ? nil : image.image?.cover()
         let temp = Wunsch(id: editWunsch != nil ? editWunsch!.id : UUID(),
                       title: titleField.text.trim(),
-                       cover: image.image?.cover() ?? UIImage(named: "default")!.cover())
+                       cover: img)
 
          try! manager.store.save(temp)
          UserDefaults.standard.set(true, forKey: "WunschNeedsUpdating")
@@ -46,7 +47,7 @@ class WunschAddView: UITableViewController {
          if keepOpen {
              let alert = UIAlertController(title: "Gespeichert", message: "Manga wurde erfolgreich gespeichert", preferredStyle: .alert)
              self.present(alert, animated: true) {
-                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
+                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
                      alert.dismiss(animated: true)
                  }
              }
