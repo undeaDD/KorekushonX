@@ -51,6 +51,7 @@
 		127719B2236E36C7001BF906 /* SammlungView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127719B1236E36C7001BF906 /* SammlungView.swift */; };
 		127719B4236EC641001BF906 /* SammlungAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127719B3236EC641001BF906 /* SammlungAddView.swift */; };
 		12CF0A2B237091CD004A23E9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CF0A2A237091CD004A23E9 /* SettingsView.swift */; };
+		12E85CF524D22E0400F0C71E /* GekauftSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E85CF424D22E0400F0C71E /* GekauftSelectView.swift */; };
 		12F25AFF237577EB0093D39D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F25AFE237577EB0093D39D /* Extensions.swift */; };
 		12F33253238573A5005EE38D /* WunschManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F33252238573A5005EE38D /* WunschManager.swift */; };
 		12F332552385748A005EE38D /* Wunsch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F332542385748A005EE38D /* Wunsch.swift */; };
@@ -105,6 +106,7 @@
 		127719B1236E36C7001BF906 /* SammlungView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammlungView.swift; sourceTree = "<group>"; };
 		127719B3236EC641001BF906 /* SammlungAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammlungAddView.swift; sourceTree = "<group>"; };
 		12CF0A2A237091CD004A23E9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		12E85CF424D22E0400F0C71E /* GekauftSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GekauftSelectView.swift; sourceTree = "<group>"; };
 		12F25AFE237577EB0093D39D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		12F33252238573A5005EE38D /* WunschManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WunschManager.swift; sourceTree = "<group>"; };
 		12F332542385748A005EE38D /* Wunsch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wunsch.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				124D0DB523829FA300DD41E0 /* GekauftManager.swift */,
 				121E7DBB23701EB0007BEF31 /* GekauftView.swift */,
 				120CC32123745F2500B7DAFB /* GekauftAddView.swift */,
+				12E85CF424D22E0400F0C71E /* GekauftSelectView.swift */,
 			);
 			path = Gekauft;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				124D0DBE2382D0C800DD41E0 /* Erinnerung.swift in Sources */,
 				1251437A23744CC300C3CC7F /* Book.swift in Sources */,
 				12F33253238573A5005EE38D /* WunschManager.swift in Sources */,
+				12E85CF524D22E0400F0C71E /* GekauftSelectView.swift in Sources */,
 				125E2506237030E200EAFCF2 /* Identifiable.swift in Sources */,
 				127719B2236E36C7001BF906 /* SammlungView.swift in Sources */,
 				125E24EF23702CD100EAFCF2 /* WunschView.swift in Sources */,
@@ -603,7 +607,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KorekushonX/KorekushonX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = AXLC3PQNC8;
 				INFOPLIST_FILE = KorekushonX/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -611,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.DeltaSiege.KorekushonX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -625,7 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KorekushonX/KorekushonX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = AXLC3PQNC8;
 				INFOPLIST_FILE = KorekushonX/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -633,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.DeltaSiege.KorekushonX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

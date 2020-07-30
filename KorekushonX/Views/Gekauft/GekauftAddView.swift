@@ -2,18 +2,18 @@ import UIKit
 
 class GekauftAddView: UITableViewController {
     let manager = GekauftManager.shared
-    let mangas = GekauftManager.shared.mangaStore.allObjects().sorted { $0.title < $1.title }
+    let mangas: [Manga] = GekauftManager.shared.mangaStore.allObjects().sorted { $0.title < $1.title }
     let datePickerView = UIDatePicker()
 
-    @IBOutlet private var mangaField: UITextField!
+    @IBOutlet var mangaField: UITextField!
     @IBOutlet private var numberField: UITextField!
     @IBOutlet private var priceField: UITextField!
     @IBOutlet private var dateField: UITextField!
     @IBOutlet private var placeField: UITextField!
     @IBOutlet private var stateField: UISegmentedControl!
     @IBOutlet private var extrasField: UITextField!
+
     var numberPickerView: UIPickerView?
-    var mangaPickerView: UIPickerView?
     var editBook: Book?
     var index = 0
 
@@ -56,14 +56,16 @@ class GekauftAddView: UITableViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectManga" {
+            let dest = segue.destination as? GekauftSelectView
+            dest?.selected = mangaField.text
+            dest?.mangas = mangas
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        mangaPickerView = UIPickerView()
-        mangaPickerView!.tag = 0
-        mangaPickerView!.delegate = self
-        mangaPickerView!.dataSource = self
-        mangaField.inputView = mangaPickerView
 
         numberPickerView = UIPickerView()
         numberPickerView!.tag = 1
@@ -90,8 +92,7 @@ class GekauftAddView: UITableViewController {
 
             datePickerView.date = book.date == 0 ? Date() : Date(timeIntervalSince1970: book.date)
             index = (mangas.enumerated().first { $0.element.id == book.mangaId })?.offset ?? 0
-            mangaPickerView?.selectRow(index, inComponent: 0, animated: false)
-            print(index)
+            //mangaPickerView?.selectRow(index, inComponent: 0, animated: false)
         } else {
             self.navigationItem.title = "Hinzufügen"
             mangaField.text = mangas[index].title
@@ -113,18 +114,11 @@ class GekauftAddView: UITableViewController {
 
 extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerView.tag == 0 ? 1 : 3
+        return 3
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch (pickerView.tag, component) {
-        case (0, _):
-            return mangas.count
-        case (1, 0):
-            return mangas[index].countAll
-        default:
-            return 1
-        }
+        return mangas[index].countAll
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -139,8 +133,6 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch (pickerView.tag, component) {
-        case (0, _):
-            return mangas[row].title
         case (1, 0):
             return String(row + 1)
         case (1, 1):
@@ -151,14 +143,6 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch pickerView.tag {
-        case 0:
-            index = row
-            mangaField.text = mangas[row].title
-            numberPickerView!.reloadAllComponents()
-            numberField.text = "1"
-        default:
-            numberField.text = String(numberPickerView!.selectedRow(inComponent: 0) + 1)
-        }
+        numberField.text = String(numberPickerView!.selectedRow(inComponent: 0) + 1)
     }
 }

@@ -50,3 +50,26 @@ extension Optional where Wrapped == String {
         } else { return "-" }
     }
 }
+
+extension Array {
+    func toIndexedDictionary(by selector: (Element) -> String) -> [Character: [Element]] {
+        var dictionary = [Character: [Element]]()
+        for element in self {
+            let selector = selector(element)
+            guard let firstCharacter = selector.firstCharacter else { continue }
+
+            if let list = dictionary[firstCharacter] {
+                dictionary[firstCharacter] = list + [element]
+            } else {
+                dictionary[firstCharacter] = [element]
+            }
+        }
+        return dictionary
+    }
+}
+
+extension String {
+    var firstCharacter: Character? {
+        return isEmpty ? Character(self[startIndex].uppercased()) : nil
+    }
+}
