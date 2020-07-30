@@ -34,7 +34,6 @@ class GekauftView: UIViewController {
             if let indexPath = sender as? IndexPath {
                 let manga = manager.mangaStore.object(withId: manager.filtered[indexPath.row].mangaId)
                 dest.manga = manga
-                dest.scrollToRow = indexPath.row
             } else {
                 dest.manga = (sender as! Manga)
             }

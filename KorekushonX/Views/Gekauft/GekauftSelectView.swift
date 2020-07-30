@@ -85,6 +85,7 @@ class GekauftSelectView: UIViewController, UITableViewDelegate, UITableViewDataS
         if let item = dataDictionary[itemKey]?[indexPath.row] {
             let vc = navigationController?.viewControllers.last as? GekauftAddView
             vc?.mangaField.text = item.title
+            vc?.index = vc?.mangas.firstIndex(where: { $0.id == item.id }) ?? 0
         } else {
             fatalError("invalid cell clicked")
         }

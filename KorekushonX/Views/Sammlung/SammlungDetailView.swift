@@ -3,7 +3,6 @@ import UIKit
 class SammlungDetailView: UIViewController {
     @IBOutlet private var tableView: UITableView!
     let manager = SammlungManager.shared
-    var scrollToRow: Int?
     var editAction: (() -> Void)?
     var removeAction: (() -> Void)?
     var shareAction: (() -> Void)?
@@ -20,15 +19,6 @@ class SammlungDetailView: UIViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if let row = scrollToRow {
-            let indexPath = IndexPath(row: row, section: 1)
-            tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-            tableView.cellForRow(at: indexPath)!.accessoryType = .checkmark
         }
     }
 
@@ -106,7 +96,6 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
 
             cell.subtitleField.text = "Extras: \(book.extras)\nKaufdatum: \(date)\n\(book.place)"
             cell.priceField.text = String(format: "%.2f", book.price) + " € " + book.emote()
-            cell.accessoryType = scrollToRow == index ? .checkmark : .none
             return cell
         default:
             return UITableViewCell()

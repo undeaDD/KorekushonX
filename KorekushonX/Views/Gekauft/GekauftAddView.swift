@@ -118,7 +118,12 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mangas[index].countAll
+        switch (pickerView.tag, component) {
+        case (1, 0):
+            return mangas[index].countAll
+        default:
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -137,8 +142,10 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
             return String(row + 1)
         case (1, 1):
             return "von"
-        default:
+        case (1, 2):
             return "\(mangas[index].countAll)"
+        default:
+            return ""
         }
     }
 
