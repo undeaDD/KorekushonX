@@ -73,6 +73,7 @@ class GekauftAddView: UITableViewController {
         numberPickerView!.dataSource = self
         numberField.inputView = numberPickerView
 
+        datePickerView.datePickerMode = .date
         dateField.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(onChange(_:)), for: .valueChanged)
 
