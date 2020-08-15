@@ -39,21 +39,17 @@ public enum KeychainAccessibilityOption: CaseIterable {
 internal extension KeychainAccessibilityOption {
 	/// `CFString` attribute for a `KeychainAccessibilityOption`
 	var attribute: CFString {
-		switch self {
-		case .always:
-			return kSecAttrAccessibleAlways
-		case .alwaysThisDeviceOnly:
-			return kSecAttrAccessibleAlwaysThisDeviceOnly
-		case .whenUnlocked:
-			return kSecAttrAccessibleWhenUnlocked
-		case .whenUnlockedThisDeviceOnly:
-			return kSecAttrAccessibleWhenUnlockedThisDeviceOnly
-		case .afterFirstUnlock:
-			return kSecAttrAccessibleAfterFirstUnlock
-		case .afterFirstUnlockThisDeviceOnly:
-			return kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-		case .whenPasscodeSetThisDeviceOnly:
-			return kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly
-		}
+        switch self {
+        case .whenUnlocked:
+            return kSecAttrAccessibleWhenUnlocked
+        case .whenUnlockedThisDeviceOnly:
+            return kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+        case .afterFirstUnlock, .always:
+            return kSecAttrAccessibleAfterFirstUnlock
+        case .afterFirstUnlockThisDeviceOnly, .alwaysThisDeviceOnly:
+            return kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+        case .whenPasscodeSetThisDeviceOnly:
+            return kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly
+        }
 	}
 }

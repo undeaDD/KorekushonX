@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZn-vx-hiw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZn-vx-hiw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +32,7 @@
         <!--Sammlung-->
         <scene sceneID="s0V-gc-1zV">
             <objects>
-                <navigationController id="zez-jy-naK" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="zez-jy-naK" customClass="SammlungNavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sammlung" image="sammlung" badgeValue="0" id="JcX-OP-t8c">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -46,23 +46,10 @@
                             <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
-                    <connections>
-                        <segue destination="R9g-Zb-111" kind="relationship" relationship="rootViewController" id="WWd-Ee-snZ"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYC-ku-Pzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="551" y="-81"/>
-        </scene>
-        <!--SammlungView-->
-        <scene sceneID="8OP-ij-W7s">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SammlungView" id="R9g-Zb-111" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="K1Q-2p-stj"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gbZ-ol-x3R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1138" y="-81"/>
         </scene>
         <!--Gekaufte-->
         <scene sceneID="4vR-uj-hTx">
@@ -170,11 +157,11 @@
             <point key="canvasLocation" x="1396" y="-2963"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="gekauft" width="30" height="30"/>
         <image name="kalender" width="30" height="30"/>
         <image name="sammlung" width="30" height="30"/>
         <image name="wunschliste" width="30" height="30"/>
     </resources>
-    <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

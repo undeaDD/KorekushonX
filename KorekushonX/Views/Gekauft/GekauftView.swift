@@ -21,7 +21,7 @@ class GekauftView: UIViewController {
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
-        manager.reloadIfNeccessary(tableView, true)
+        manager.reloadIfNeccessary(tableView, nil, true)
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
         }
@@ -48,7 +48,7 @@ class GekauftView: UIViewController {
         for elem in ["Nicht Filtern", "Generierte ausblenden", "Nach Reihe sortieren", "Preis absteigend", "Preis aufsteigend"].enumerated() {
             let temp = UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
                 UserDefaults.standard.set(elem.offset, forKey: "GekauftFilter")
-                self.manager.reloadIfNeccessary(self.tableView, true)
+                self.manager.reloadIfNeccessary(self.tableView, nil, true)
                 self.filterButton.image = self.manager.getFilterImage()
             })
             if elem.offset != 0 {
@@ -103,7 +103,7 @@ extension GekauftView: UITableViewDelegate, UITableViewDataSource, UISearchResul
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let remove = UIContextualAction(style: .destructive, title: "Löschen") { _, _, completion in
             self.manager.removeBook(self.manager.filtered[indexPath.row])
-            self.manager.reloadIfNeccessary(self.tableView, true)
+            self.manager.reloadIfNeccessary(self.tableView, nil, true)
             completion(true)
         }
         remove.image = UIImage(named: "müll")
@@ -137,6 +137,6 @@ extension GekauftView: UITableViewDelegate, UITableViewDataSource, UISearchResul
         } else {
             UserDefaults.standard.removeObject(forKey: "GekauftSearch")
         }
-        manager.reloadIfNeccessary(tableView, true)
+        manager.reloadIfNeccessary(tableView, nil, true)
     }
 }

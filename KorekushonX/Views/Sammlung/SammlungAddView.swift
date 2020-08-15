@@ -44,7 +44,7 @@ class SammlungAddView: UITableViewController {
                   available: true,
                   completed: completed)
 
-        if manager.store.allObjects().contains(where: { stored -> Bool in
+        if editManga == nil && manager.store.allObjects().contains(where: { stored -> Bool in
             stored.title.lowercased() == temp.title.lowercased()
         }) {
             let alert = UIAlertController(title: "Duplikat", message: "Manga konnte nicht in der Sammlung gespeichert werden.", preferredStyle: .alert)

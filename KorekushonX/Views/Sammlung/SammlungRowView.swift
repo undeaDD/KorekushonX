@@ -1,6 +1,6 @@
 import UIKit
 
-class SammlungView: UIViewController {
+class SammlungRowView: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var filterButton: UIBarButtonItem!
 
@@ -21,7 +21,7 @@ class SammlungView: UIViewController {
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
-        manager.reloadIfNeccessary(tableView, true)
+        manager.reloadIfNeccessary(tableView, nil, true)
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
             registerForPreviewing(with: self, sourceView: tableView)
@@ -49,7 +49,7 @@ class SammlungView: UIViewController {
         for elem in ["Nicht Filtern", "Nach Titel A-Z", "Nach Autor A-Z", "Nach Verlag A-Z", "Nur Vollständige", "Nur nicht Vollständige"].enumerated() {
             let temp = UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
                 UserDefaults.standard.set(elem.offset, forKey: "SammlungFilter")
-                self.manager.reloadIfNeccessary(self.tableView, true)
+                self.manager.reloadIfNeccessary(self.tableView, nil, true)
                 self.filterButton.image = self.manager.getFilterImage()
             })
             if elem.offset != 0 {
@@ -63,7 +63,7 @@ class SammlungView: UIViewController {
     }
 }
 
-extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UIAdaptivePresentationControllerDelegate, UIViewControllerPreviewingDelegate {
+extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UIAdaptivePresentationControllerDelegate, UIViewControllerPreviewingDelegate {
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat { 70 }
@@ -104,7 +104,7 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
 
         let remove = UIContextualAction(style: .destructive, title: "Löschen") { _, _, completion in
             self.manager.removeManga(self.manager.filtered[indexPath.row])
-            self.manager.reloadIfNeccessary(self.tableView, true)
+            self.manager.reloadIfNeccessary(self.tableView, nil, true)
             completion(true)
         }
         remove.image = UIImage(named: "müll")
@@ -114,11 +114,11 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "sammlungCell") as! SammlungCell
+        return tableView.dequeueReusableCell(withIdentifier: "sammlungCell") as! RowCell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        (cell as! SammlungCell).setUp(manager.filtered[indexPath.row], books)
+        (cell as! RowCell).setUp(manager.filtered[indexPath.row], books)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,7 +136,7 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
         } else {
             UserDefaults.standard.removeObject(forKey: "SammlungSearch")
         }
-        manager.reloadIfNeccessary(tableView, true)
+        manager.reloadIfNeccessary(tableView, nil, true)
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -152,7 +152,7 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
             }
             dest.removeAction = {
                 self.manager.removeManga(dest.manga!)
-                self.manager.reloadIfNeccessary(self.tableView, true)
+                self.manager.reloadIfNeccessary(self.tableView, nil, true)
             }
             return dest
         }
@@ -178,7 +178,7 @@ extension SammlungView: UITableViewDelegate, UITableViewDataSource, UISearchResu
 
             let remove = UIAction(title: "Löschen", image: UIImage(named: "müll"), attributes: .destructive) { _ in
                 self.manager.removeManga(manga)
-                self.manager.reloadIfNeccessary(self.tableView, true)
+                self.manager.reloadIfNeccessary(self.tableView, nil, true)
             }
 
             return UIMenu(title: "", children: [share, edit, remove])

@@ -25,7 +25,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     func addManga() {
         selectedIndex = 0
-        let vc = ((selectedViewController as? UINavigationController)?.topViewController as? SammlungView)
-        vc?.performSegue(withIdentifier: "edit", sender: nil)
+        (selectedViewController as? UINavigationController)?.topViewController?.performSegue(withIdentifier: "edit", sender: nil)
     }
 }

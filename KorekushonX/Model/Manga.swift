@@ -30,7 +30,7 @@ extension UIImage {
     }
 }
 
-class SammlungCell: UITableViewCell {
+class RowCell: UITableViewCell {
     @IBOutlet private var imageField: UIImageView!
     @IBOutlet private var titleField: UILabel!
     @IBOutlet private var subtitleField: UILabel!
@@ -47,5 +47,30 @@ class SammlungCell: UITableViewCell {
                 self.countField.text = "\(count)/\(manga.countAll)"
             }
         }
+    }
+}
+
+class BookCell: UICollectionViewCell {
+    @IBOutlet private var imageField: UIImageView!
+    /*
+    @IBOutlet private var titleField: UILabel!
+    @IBOutlet private var subtitleField: UILabel!
+    @IBOutlet private var countField: UILabel!
+    */
+
+    func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
+        imageField.image = manga.cover?.img() ?? UIImage(named: "default")
+        /*
+        titleField.text = manga.title
+        subtitleField.text = manga.author
+        countField.text = ".../\(manga.countAll)"
+        
+
+        bookStore.getMangaCount(manga.id) { count in
+            DispatchQueue.main.async {
+                self.countField.text = "\(count)/\(manga.countAll)"
+            }
+        }
+        */
     }
 }

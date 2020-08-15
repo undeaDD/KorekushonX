@@ -87,14 +87,14 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
         case (1, let index):
             let cell = tableView.dequeueReusableCell(withIdentifier: "gekauftCell") as! GekauftCell
             let book = books[index]
-            let attributed = NSMutableAttributedString(string: "\(book.number)", attributes: [.foregroundColor: UIColor.systemPurple])
-            attributed.append(NSAttributedString(string: " | \(manga?.title ?? "-")"))
+            let attributed = NSMutableAttributedString(string: "\(book.number). ", attributes: [.foregroundColor: UIColor.systemPurple])
+            attributed.append(NSAttributedString(string: manga?.title ?? "-"))
             cell.titleField.attributedText = attributed
 
             var date = manager.formatter.string(from: Date(timeIntervalSince1970: book.date))
             if book.date == 0 { date = "-" }
 
-            cell.subtitleField.text = "Extras: \(book.extras)\nKaufdatum: \(date)\n\(book.place)"
+            cell.subtitleField.text = "Kaufdatum: \(date)\nExtras: \(book.extras)\n\(book.place)"
             cell.priceField.text = String(format: "%.2f", book.price) + " € " + book.emote()
             return cell
         default:

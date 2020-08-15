@@ -14,6 +14,7 @@ disabled_rules:
   - private_outlet
   - file_name
   - function_body_length
+  - cyclomatic_complexity
 
 opt_in_rules:
   - anyobject_protocol

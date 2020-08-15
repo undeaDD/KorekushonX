@@ -9,6 +9,15 @@
           "revision": "a911a481b9a031ea6ec949030871cbb851d01111",
           "version": null
         }
+      },
+      {
+        "package": "Sheeeeeeeeet",
+        "repositoryURL": "https://github.com/danielsaidi/Sheeeeeeeeet.git",
+        "state": {
+          "branch": "master",
+          "revision": "c9f6822aec26f1349a24394d402d33b9b6e02da8",
+          "version": null
+        }
       }
     ]
   },

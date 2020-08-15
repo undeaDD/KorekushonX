@@ -42,26 +42,51 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch (indexPath.section, indexPath.row) {
-        case (0, 0):
-            if let toggle = cell.contentView.subviews.last as? UISwitch {
-                toggle.isOn = UserDefaults.standard.bool(forKey: "settingsSammlungShowCover")
-            }
-        default:
-            break
+        if let toggle = cell.contentView.subviews.last as? UISwitch {
+            toggle.isOn = UserDefaults.standard.bool(forKey: "settingsSammlungShowCover")
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
+            let alert = UIAlertController(title: nil, message: "Sammlungs Ansicht auswählen\n( Benötigt einen App neustart! )", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Zeilen (Standard)", style: .default, handler: { _ in
+                UserDefaults.standard.set(0, forKey: "settingsSammlungView")
+            }))
+
+            alert.addAction(UIAlertAction(title: "Buchrücken (Experimentell)", style: .default, handler: { _ in
+                UserDefaults.standard.set(1, forKey: "settingsSammlungView")
+            }))
+
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        case (0, 1):
+            if UIApplication.shared.supportsAlternateIcons {
+                let alert = UIAlertController(title: nil, message: "App Symbol auswählen", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "Hell (Standard)", style: .default, handler: { _ in
+                    UIApplication.shared.setAlternateIconName(nil)
+                }))
+
+                alert.addAction(UIAlertAction(title: "Dunkel", style: .default, handler: { _ in
+                    UIApplication.shared.setAlternateIconName("Dark")
+                }))
+
+                alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+                present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Nicht verfügbar", message: "Diese Funktion ist auf deinem Gerät leider nicht verfügbar.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+                present(alert, animated: true)
+            }
+        case (0, 2):
             if let toggle = tableView.cellForRow(at: indexPath)?.contentView.subviews.last as? UISwitch {
                 UserDefaults.standard.set(!toggle.isOn, forKey: "settingsSammlungShowCover")
                 toggle.setOn(!toggle.isOn, animated: true)
             }
-        case (0, 1):
+        case (0, 3):
             if #available(iOS 13.0, *) {
-                let alert = UIAlertController(title: nil, message: "App Style auswählen:", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: nil, message: "System Style auswählen", preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "Automatisch", style: .default, handler: { _ in
                     UIApplication.shared.delegate?.window??.overrideUserInterfaceStyle = .unspecified
                     UserDefaults.standard.set(0, forKey: "settingsAppStyle")
@@ -84,7 +109,7 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
                 alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
                 present(alert, animated: true)
             }
-        case (0, 2):
+        case (0, 4):
             let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Ja", style: .destructive, handler: { _ in
@@ -93,7 +118,7 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
 
             alert.addAction(UIAlertAction(title: "Nein", style: .cancel, handler: nil))
             self.present(alert, animated: true)
-        case (0, 3):
+        case (0, 5):
             let alert = UIAlertController(title: "Alles löschen? 😳", message: "Dadurch werden alle lokal gespeicherten Daten gelöscht.", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Ja", style: .destructive, handler: { _ in

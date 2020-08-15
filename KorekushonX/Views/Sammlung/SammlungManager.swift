@@ -42,7 +42,7 @@ class SammlungManager {
         UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
     }
 
-    func reloadIfNeccessary(_ tableView: UITableView, _ force: Bool = false) {
+    func reloadIfNeccessary(_ tableView: UITableView? = nil, _ collectionView: UICollectionView? = nil, _ force: Bool = false) {
         filtered = store.allObjects()
 
         switch UserDefaults.standard.integer(forKey: "SammlungFilter") {
@@ -66,7 +66,11 @@ class SammlungManager {
 
         if force || UserDefaults.standard.bool(forKey: "SammlungNeedsUpdating") {
             UserDefaults.standard.set(false, forKey: "SammlungNeedsUpdating")
-            UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { tableView.reloadData() })
+            if let tableView = tableView {
+                UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { tableView.reloadData() })
+            } else if let collectionView = collectionView {
+                UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: { collectionView.reloadData() })
+            }
         }
     }
 
