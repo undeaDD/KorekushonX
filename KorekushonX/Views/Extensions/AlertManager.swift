@@ -69,6 +69,22 @@ struct AlertManager {
         }.present(in: vc, from: vc.view)
     }
 
+    func optionMinimal(_ vc: UIViewController, _ withEdit: Bool = false, _ completion: @escaping (Int) -> Void) {
+        var items: [MenuItem] = []
+        items.append(SectionMargin())
+        items.append(SectionTitle(title: "Aktion ausführen:"))
+        if withEdit {
+            items.append(LinkItem(title: "Bearbeiten", value: 0, image: UIImage(named: "editieren")))
+        }
+        items.append(DestructiveItem(title: "Löschen", value: 1, image: UIImage(named: "müll")))
+        items.append(CancelButton(title: "Abbrechen"))
+        Menu(items: items).toActionSheet { _, item in
+            if let value = item.value as? Int {
+                completion(value)
+            }
+        }.present(in: vc, from: vc.view)
+    }
+
     func selectImage(_ vc: UIViewController, _ completion: @escaping (Int) -> Void) {
         var items: [MenuItem] = []
         items.append(SectionMargin())
@@ -91,14 +107,13 @@ struct AlertManager {
         items.append(SectionMargin())
         items.append(SectionTitle(title: "Sammlungs Ansicht auswählen:"))
         items.append(SingleSelectItem(title: "Zeilen (Standard)", isSelected: 0 == isSelected, value: 0, image: UIImage(named: "rows")))
-        items.append(SingleSelectItem(title: "Buchrücken (Experimentell)", isSelected: 1 == isSelected, value: 1, image: UIImage(named: "columns")))
-        let disabled = SingleSelectItem(title: "Kompakt (In Bearbeitung)", isSelected: false, value: 2, image: UIImage(named: "compact"))
-        disabled.isEnabled = false
-        items.append(disabled)
+        items.append(SingleSelectItem(title: "Buchrücken", isSelected: 1 == isSelected, value: 1, image: UIImage(named: "columns")))
+        items.append(SingleSelectItem(title: "Kompakt", isSelected: 2 == isSelected, value: 2, image: UIImage(named: "compact")))
         items.append(CancelButton(title: "Abbrechen"))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
                 UserDefaults.standard.set(value, forKey: "settingsSammlungView")
+                AlertManager.shared.restartNeeded(vc)
             }
         }.present(in: vc, from: vc.view)
     }
@@ -216,5 +231,17 @@ struct AlertManager {
         let alert = UIAlertController(title: "Nicht verfügbar", message: "Diese Funktion ist auf deinem Gerät leider nicht verfügbar. Vielleicht wird dies durch ein System update behoben.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
         vc.present(alert, animated: true)
+    }
+
+    func restartNeeded(_ vc: UIViewController) {
+        let alert = UIAlertController(title: "Neustart", message: "Ein Neustart der App ist erforderlich.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "App Beenden", style: .destructive, handler: { _ in
+            exit(0)
+        }))
+        vc.present(alert, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                alert.dismiss(animated: true)
+            }
+        }
     }
 }

@@ -53,6 +53,9 @@
 		127719B4236EC641001BF906 /* SammlungAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127719B3236EC641001BF906 /* SammlungAddView.swift */; };
 		12BBB88A24E90563007EE6F5 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BBB88924E90563007EE6F5 /* AlertManager.swift */; };
 		12BBB88C24E950E6007EE6F5 /* Verlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BBB88B24E950E6007EE6F5 /* Verlag.swift */; };
+		12CE27DF24E9893F00292044 /* SammlungCompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CE27DE24E9893F00292044 /* SammlungCompactView.swift */; };
+		12CE27E224E9917B00292044 /* AnimeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12CE27E124E9917B00292044 /* AnimeView.storyboard */; };
+		12CE27E424E9A3BB00292044 /* AnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CE27E324E9A3BB00292044 /* AnimeView.swift */; };
 		12CF0A2B237091CD004A23E9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CF0A2A237091CD004A23E9 /* SettingsView.swift */; };
 		12E3836F24E889B000B58BD8 /* Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E3836D24E889B000B58BD8 /* Dark@3x.png */; };
 		12E3837024E889B000B58BD8 /* Dark@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E3836E24E889B000B58BD8 /* Dark@2.png */; };
@@ -114,6 +117,9 @@
 		127719B3236EC641001BF906 /* SammlungAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammlungAddView.swift; sourceTree = "<group>"; };
 		12BBB88924E90563007EE6F5 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		12BBB88B24E950E6007EE6F5 /* Verlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verlag.swift; sourceTree = "<group>"; };
+		12CE27DE24E9893F00292044 /* SammlungCompactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SammlungCompactView.swift; sourceTree = "<group>"; };
+		12CE27E124E9917B00292044 /* AnimeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnimeView.storyboard; sourceTree = "<group>"; };
+		12CE27E324E9A3BB00292044 /* AnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeView.swift; sourceTree = "<group>"; };
 		12CF0A2A237091CD004A23E9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		12E3836D24E889B000B58BD8 /* Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dark@3x.png"; sourceTree = "<group>"; };
 		12E3836E24E889B000B58BD8 /* Dark@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dark@2.png"; sourceTree = "<group>"; };
@@ -182,7 +188,7 @@
 			path = Wunschliste;
 			sourceTree = "<group>";
 		};
-		125E24E923702B4100EAFCF2 /* Erscheinung */ = {
+		125E24E923702B4100EAFCF2 /* Erinnerung */ = {
 			isa = PBXGroup;
 			children = (
 				125E24EC23702C7100EAFCF2 /* ErinnerungView.storyboard */,
@@ -190,7 +196,7 @@
 				125E24F023702D2F00EAFCF2 /* ErinnerungView.swift */,
 				121B67C22382D66800EEBB0F /* ErinnerungAddView.swift */,
 			);
-			path = Erscheinung;
+			path = Erinnerung;
 			sourceTree = "<group>";
 		};
 		125E24F2237030E200EAFCF2 /* PersistenceKit */ = {
@@ -315,11 +321,12 @@
 		127719AD236E31C6001BF906 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				12CE27E024E9905200292044 /* Animes */,
 				126A3BE423719D6A001CBA17 /* Extensions */,
 				127719AE236E31D3001BF906 /* Sammlung */,
 				121E7DB823701C43007BEF31 /* Gekauft */,
 				125E24E823702B3B00EAFCF2 /* Wunschliste */,
-				125E24E923702B4100EAFCF2 /* Erscheinung */,
+				125E24E923702B4100EAFCF2 /* Erinnerung */,
 				121E7DBD23702092007BEF31 /* Settings */,
 			);
 			path = Views;
@@ -332,10 +339,20 @@
 				1226841E237D7D680024981B /* SammlungManager.swift */,
 				127719B1236E36C7001BF906 /* SammlungRowView.swift */,
 				12374CF424E885F000AB1135 /* SammlungBookView.swift */,
+				12CE27DE24E9893F00292044 /* SammlungCompactView.swift */,
 				127719B3236EC641001BF906 /* SammlungAddView.swift */,
 				126A3BE923719EB0001CBA17 /* SammlungDetailView.swift */,
 			);
 			path = Sammlung;
+			sourceTree = "<group>";
+		};
+		12CE27E024E9905200292044 /* Animes */ = {
+			isa = PBXGroup;
+			children = (
+				12CE27E124E9917B00292044 /* AnimeView.storyboard */,
+				12CE27E324E9A3BB00292044 /* AnimeView.swift */,
+			);
+			path = Animes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12CE27E224E9917B00292044 /* AnimeView.storyboard in Resources */,
 				124D0DBB2382A48000DD41E0 /* .swiftlint.yml in Resources */,
 				12E3837024E889B000B58BD8 /* Dark@2.png in Resources */,
 				127719A5236E2FA1001BF906 /* LaunchScreen.storyboard in Resources */,
@@ -477,6 +495,7 @@
 				1226841F237D7D680024981B /* SammlungManager.swift in Sources */,
 				12F332552385748A005EE38D /* Wunsch.swift in Sources */,
 				124D0DB623829FA300DD41E0 /* GekauftManager.swift in Sources */,
+				12CE27E424E9A3BB00292044 /* AnimeView.swift in Sources */,
 				125E250D237031EA00EAFCF2 /* Manga.swift in Sources */,
 				126A3BEA23719EB0001CBA17 /* SammlungDetailView.swift in Sources */,
 				125E2509237030E200EAFCF2 /* SingleFileStore.swift in Sources */,
@@ -485,6 +504,7 @@
 				125E2502237030E200EAFCF2 /* UserDefaultsStore.swift in Sources */,
 				125E2503237030E200EAFCF2 /* KeychainError.swift in Sources */,
 				125E2501237030E200EAFCF2 /* SingleUserDefaultsStore.swift in Sources */,
+				12CE27DF24E9893F00292044 /* SammlungCompactView.swift in Sources */,
 				121B67C32382D66800EEBB0F /* ErinnerungAddView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,11 @@ class GekauftView: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView()
+
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        gesture.minimumPressDuration = 0.5
+        gesture.delaysTouchesBegan = true
+        tableView.addGestureRecognizer(gesture)
 
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -27,6 +31,27 @@ class GekauftView: UIViewController {
         }
     }
 
+    @objc
+    func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .began { return }
+        let loc = gesture.location(in: tableView)
+
+        if let indexPath = tableView.indexPathForRow(at: loc) {
+            let manga = self.manager.filtered[indexPath.row]
+            AlertManager.shared.optionMinimal(self, true) { index in
+                switch index {
+                case 0:
+                    self.performSegue(withIdentifier: "edit", sender: manga)
+                case 1:
+                    self.manager.removeBook(manga)
+                    self.manager.reloadIfNeccessary(self.tableView, nil, true)
+                default:
+                    return
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "edit", let dest = segue.destination as? GekauftAddView, let book = sender as? Book {
             dest.editBook = book

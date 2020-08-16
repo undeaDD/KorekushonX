@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window?.tintColor = UserDefaults.standard.colorForKey(key: "settingsAccentColor") ?? .systemPurple
+        window?.tintColor = .systemPurple
         window?.backgroundColor = .black
 
         IQKeyboardManager.shared.enable = true

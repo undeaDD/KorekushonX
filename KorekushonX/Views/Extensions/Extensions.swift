@@ -72,23 +72,3 @@ extension String {
         return isEmpty ? Character(self[startIndex].uppercased()) : nil
     }
 }
-
-extension UserDefaults {
-    func colorForKey(key: String) -> UIColor? {
-        var colorReturnded: UIColor?
-        if let colorData = data(forKey: key),
-           let color = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
-            colorReturnded = color
-        }
-        return colorReturnded
-    }
-
-    func setColor(color: UIColor?, forKey key: String) {
-        var colorData: NSData?
-        if let color = color {
-            let data = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData?
-            colorData = data
-        }
-        set(colorData, forKey: key)
-    }
-}

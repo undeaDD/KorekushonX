@@ -22,6 +22,8 @@ class SammlungNavigationController: UINavigationController {
         switch UserDefaults.standard.integer(forKey: "settingsSammlungView") {
         case 1:
             setViewControllers([UIStoryboard(name: "SammlungView", bundle: .main).instantiateViewController(withIdentifier: "BookView")], animated: false)
+        case 2:
+            setViewControllers([UIStoryboard(name: "SammlungView", bundle: .main).instantiateViewController(withIdentifier: "CompactView")], animated: false)
         default:
             setViewControllers([UIStoryboard(name: "SammlungView", bundle: .main).instantiateViewController(withIdentifier: "RowView")], animated: false)
         }

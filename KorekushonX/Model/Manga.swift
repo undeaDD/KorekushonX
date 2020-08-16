@@ -52,7 +52,7 @@ class RowCell: UITableViewCell {
 
 class BookCell: UICollectionViewCell {
     @IBOutlet private var imageField: UIImageView!
-    @IBOutlet private var titleField: UILabel!
+    @IBOutlet private var titleField: UILabel?
     @IBOutlet private var countField: UILabel!
 
     func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
@@ -60,7 +60,7 @@ class BookCell: UICollectionViewCell {
         countField.text = ".../\(manga.countAll)"
         let attributed = NSMutableAttributedString(string: manga.title + "\n", attributes: [.foregroundColor: UIColor.systemPurple, .font: UIFont.systemFont(ofSize: 18, weight: .semibold)])
         attributed.append(NSAttributedString(string: manga.author, attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 15, weight: .semibold)]))
-        titleField.attributedText = attributed
+        titleField?.attributedText = attributed
 
         bookStore.getMangaCount(manga.id) { count in
             DispatchQueue.main.async { [weak self] in
@@ -75,7 +75,7 @@ class BookCell: UICollectionViewCell {
 
         var transform = CGAffineTransform.identity
         transform = transform.rotated(by: -(CGFloat.pi / 2))
-        titleField.transform = transform
-        titleField.frame = CGRect(x: 0, y: 10, width: 90, height: frame.height - 170)
+        titleField?.transform = transform
+        titleField?.frame = CGRect(x: 0, y: 10, width: 90, height: frame.height - 170)
     }
 }

@@ -17,6 +17,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.shadowRadius = 12.0
         tabBar.layer.shadowOpacity = 0.4
         delegate = self
+
+        if !UserDefaults.standard.bool(forKey: "settingsShowAnimeView") {
+            if viewControllers?.count == 5 {
+                viewControllers?.removeLast()
+                print("removed anime view :3")
+            }
+        }
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

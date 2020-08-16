@@ -10,9 +10,35 @@ class WunschView: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
 
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        gesture.minimumPressDuration = 0.5
+        gesture.delaysTouchesBegan = true
+        collectionView.addGestureRecognizer(gesture)
+
         manager.reloadIfNeccessary(collectionView, true)
         if #available(iOS 13, *) {} else {
             collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        }
+    }
+
+    @objc
+    func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .began { return }
+        let loc = gesture.location(in: collectionView)
+
+        if let indexPath = collectionView.indexPathForItem(at: loc) {
+            let manga = self.manager.list[indexPath.row]
+            AlertManager.shared.options(self) { index in
+                switch index {
+                case 0:
+                    self.manager.shareManga(manga, self)
+                case 1:
+                    self.performSegue(withIdentifier: "edit", sender: manga)
+                default:
+                    self.manager.removeManga(manga)
+                    self.manager.reloadIfNeccessary(self.collectionView, true)
+                }
+            }
         }
     }
 
@@ -71,26 +97,5 @@ extension WunschView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         self.viewWillAppear(false)
-    }
-
-    @available(iOS 13.0, *)
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let wunsch = manager.list[indexPath.row]
-        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil, actionProvider: { _ in
-            let share = UIAction(title: "Teilen", image: UIImage(named: "teilen")) { _ in
-                self.manager.shareManga(wunsch, self)
-            }
-
-            let edit = UIAction(title: "Bearbeiten", image: UIImage(named: "editieren")) { _ in
-                self.performSegue(withIdentifier: "edit", sender: wunsch)
-            }
-
-            let remove = UIAction(title: "Löschen", image: UIImage(named: "müll"), attributes: .destructive) { _ in
-                self.manager.removeManga(wunsch)
-                self.manager.reloadIfNeccessary(self.collectionView, true)
-            }
-
-            return UIMenu(title: "", children: [share, edit, remove])
-        })
     }
 }

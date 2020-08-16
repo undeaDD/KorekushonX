@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZn-vx-hiw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZn-vx-hiw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,13 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" systemColor="systemPurpleColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="zez-jy-naK" kind="relationship" relationship="viewControllers" id="FvL-Bt-JgQ"/>
                         <segue destination="2hW-Gh-nJ5" kind="relationship" relationship="viewControllers" id="S8z-P9-CIB"/>
                         <segue destination="KN8-OK-5lw" kind="relationship" relationship="viewControllers" id="i1o-9k-7PT"/>
                         <segue destination="Ewg-WR-dEH" kind="relationship" relationship="viewControllers" id="a9Z-1C-8a4"/>
+                        <segue destination="QWn-0o-ZUM" kind="relationship" relationship="viewControllers" id="wza-i1-Pk0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOb-UG-Mjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -40,10 +42,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                     </navigationBar>
                 </navigationController>
@@ -62,10 +64,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -97,10 +99,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -132,10 +134,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="systemPurpleColor"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -156,12 +158,54 @@
             </objects>
             <point key="canvasLocation" x="1396" y="-2963"/>
         </scene>
+        <!--Animes-->
+        <scene sceneID="HVB-hl-g4F">
+            <objects>
+                <navigationController id="QWn-0o-ZUM" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Animes" image="anime" id="lJz-Ix-E4X">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="1zb-9e-Y5v">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemOrangeColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" systemColor="systemOrangeColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dMY-eO-cDH" kind="relationship" relationship="rootViewController" id="O0E-fo-Yya"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQK-8Z-NRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="638"/>
+        </scene>
+        <!--AnimeView-->
+        <scene sceneID="Pi7-Py-liT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AnimeView" id="dMY-eO-cDH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gqU-xR-aVY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PAH-kw-kac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1241" y="638"/>
+        </scene>
     </scenes>
-    <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>
+        <image name="anime" width="30" height="30"/>
         <image name="gekauft" width="30" height="30"/>
         <image name="kalender" width="30" height="30"/>
         <image name="sammlung" width="30" height="30"/>
         <image name="wunschliste" width="30" height="30"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
