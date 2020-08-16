@@ -29,9 +29,7 @@ class ErinnerungManager {
         let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-            if let error = error {
-                print(error)
-            } else {
+            if error == nil {
                 DispatchQueue.main.async {
                     completion()
                 }

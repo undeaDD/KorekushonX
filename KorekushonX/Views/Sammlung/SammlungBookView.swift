@@ -83,7 +83,7 @@ extension SammlungBookView: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath)
     }
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -98,7 +98,7 @@ extension SammlungBookView: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 90, height: collectionView.frame.height - 40)
+        CGSize(width: 110, height: collectionView.frame.height - 40)
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

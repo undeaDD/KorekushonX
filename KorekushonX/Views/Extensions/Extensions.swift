@@ -12,7 +12,6 @@ class WebImage {
         URLSession.shared.dataTask(with: req) { data, _, _ in
             if let data = data, let string = String(data: data, encoding: .utf8) {
                 if let result = string.slice(from: "\"thumbnail\": \"", to: "\""), let imageUrl = URL(string: result.replacingOccurrences(of: "\\", with: "").replacingOccurrences(of: "http://", with: "https://")) {
-                    print(imageUrl)
                     if let data = try? Data(contentsOf: imageUrl) {
                         image = UIImage(data: data)
                     }
@@ -71,5 +70,25 @@ extension Array {
 extension String {
     var firstCharacter: Character? {
         return isEmpty ? Character(self[startIndex].uppercased()) : nil
+    }
+}
+
+extension UserDefaults {
+    func colorForKey(key: String) -> UIColor? {
+        var colorReturnded: UIColor?
+        if let colorData = data(forKey: key),
+           let color = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
+            colorReturnded = color
+        }
+        return colorReturnded
+    }
+
+    func setColor(color: UIColor?, forKey key: String) {
+        var colorData: NSData?
+        if let color = color {
+            let data = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData?
+            colorData = data
+        }
+        set(colorData, forKey: key)
     }
 }

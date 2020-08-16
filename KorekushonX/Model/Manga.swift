@@ -63,7 +63,8 @@ class BookCell: UICollectionViewCell {
         titleField.attributedText = attributed
 
         bookStore.getMangaCount(manga.id) { count in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.countField.text = "\(count)/\(manga.countAll)"
             }
         }
@@ -75,6 +76,6 @@ class BookCell: UICollectionViewCell {
         var transform = CGAffineTransform.identity
         transform = transform.rotated(by: -(CGFloat.pi / 2))
         titleField.transform = transform
-        titleField.frame = CGRect(x: 0, y: 10, width: frame.width, height: frame.height - 170)
+        titleField.frame = CGRect(x: 0, y: 10, width: 90, height: frame.height - 170)
     }
 }

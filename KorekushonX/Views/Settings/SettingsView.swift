@@ -1,7 +1,7 @@
 import MessageUI
 import UIKit
 
-class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
+class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UIColorPickerViewControllerDelegate {
     @IBAction private func dismiss() {
         if #available(iOS 13.0, *) {
             if let presenting = self.navigationController?.presentationController {
@@ -48,23 +48,32 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
-            AlertManager.shared.selectSammlungType(self)
+            if #available(iOS 14.0, *) {
+                let vc = UIColorPickerViewController()
+                vc.delegate = self
+                vc.selectedColor = UserDefaults.standard.colorForKey(key: "settingsAccentColor") ?? .systemPurple
+                present(vc, animated: true)
+            } else {
+                AlertManager.shared.errorNotAvailable(self)
+            }
         case (0, 1):
-            AlertManager.shared.selectAppIcon(self)
+            AlertManager.shared.selectSammlungType(self)
         case (0, 2):
+            AlertManager.shared.selectAppIcon(self)
+        case (0, 3):
             if let toggle = tableView.cellForRow(at: indexPath)?.contentView.subviews.last as? UISwitch {
                 UserDefaults.standard.set(!toggle.isOn, forKey: "settingsSammlungShowCover")
                 toggle.setOn(!toggle.isOn, animated: true)
             }
-        case (0, 3):
+        case (0, 4):
             if #available(iOS 13.0, *) {
                 AlertManager.shared.selectSystemStyle(self)
             } else {
                 AlertManager.shared.errorNotAvailable(self)
             }
-        case (0, 4):
-            AlertManager.shared.repairData(self)
         case (0, 5):
+            AlertManager.shared.repairData(self)
+        case (0, 6):
             AlertManager.shared.removeAll(self)
         case (1, let index):
             performSegue(withIdentifier: "webView", sender: index)
@@ -75,5 +84,11 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+    }
+
+    @available(iOS 14.0, *)
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        UIApplication.shared.windows.first?.tintColor = viewController.selectedColor
+        UserDefaults.standard.setColor(color: viewController.selectedColor, forKey: "settingsAccentColor")
     }
 }
