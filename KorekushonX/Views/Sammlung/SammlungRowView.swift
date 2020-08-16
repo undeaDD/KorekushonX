@@ -14,6 +14,11 @@ class SammlungRowView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        gesture.minimumPressDuration = 0.5
+        gesture.delaysTouchesBegan = true
+        tableView.addGestureRecognizer(gesture)
+
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
@@ -24,7 +29,27 @@ class SammlungRowView: UIViewController {
         manager.reloadIfNeccessary(tableView, nil, true)
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
-            registerForPreviewing(with: self, sourceView: tableView)
+        }
+    }
+
+    @objc
+    func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .began { return }
+        let loc = gesture.location(in: tableView)
+
+        if let indexPath = tableView.indexPathForRow(at: loc) {
+            let manga = self.manager.filtered[indexPath.row]
+            AlertManager.shared.options(self) { index in
+                switch index {
+                case 0:
+                    self.manager.shareManga(manga, self)
+                case 1:
+                    self.performSegue(withIdentifier: "edit", sender: manga)
+                default:
+                    self.manager.removeManga(manga)
+                    self.manager.reloadIfNeccessary(self.tableView, nil, true)
+                }
+            }
         }
     }
 
@@ -44,26 +69,14 @@ class SammlungRowView: UIViewController {
     }
 
     @IBAction private func filterSammlung() {
-        let sheet = UIAlertController(title: "Sammlung filtern", message: nil, preferredStyle: .actionSheet)
-
-        for elem in ["Nicht Filtern", "Nach Titel A-Z", "Nach Autor A-Z", "Nach Verlag A-Z", "Nur Vollständige", "Nur nicht Vollständige"].enumerated() {
-            let temp = UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
-                UserDefaults.standard.set(elem.offset, forKey: "SammlungFilter")
-                self.manager.reloadIfNeccessary(self.tableView, nil, true)
-                self.filterButton.image = self.manager.getFilterImage()
-            })
-            if elem.offset != 0 {
-                temp.setValue(UserDefaults.standard.integer(forKey: "SammlungFilter") == elem.offset, forKey: "checked")
-            }
-            sheet.addAction(temp)
+        AlertManager.shared.filterSammlung(self) {
+            self.manager.reloadIfNeccessary(self.tableView, nil, true)
+            self.filterButton.image = self.manager.getFilterImage()
         }
-
-        sheet.view.tintColor = .systemPurple
-        self.present(sheet, animated: true)
     }
 }
 
-extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UIAdaptivePresentationControllerDelegate, UIViewControllerPreviewingDelegate {
+extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UIAdaptivePresentationControllerDelegate {
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat { 70 }
@@ -137,60 +150,5 @@ extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchR
             UserDefaults.standard.removeObject(forKey: "SammlungSearch")
         }
         manager.reloadIfNeccessary(tableView, nil, true)
-    }
-
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        if let indexPath = tableView.indexPathForRow(at: location) {
-            previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
-            let dest = storyboard?.instantiateViewController(withIdentifier: "detailView") as! SammlungDetailView
-            dest.manga = manager.filtered[indexPath.row]
-            dest.editAction = {
-                self.performSegue(withIdentifier: "edit", sender: dest.manga!)
-            }
-            dest.shareAction = {
-                self.manager.shareManga(dest.manga!, self)
-            }
-            dest.removeAction = {
-                self.manager.removeManga(dest.manga!)
-                self.manager.reloadIfNeccessary(self.tableView, nil, true)
-            }
-            return dest
-        }
-
-        return nil
-    }
-
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        navigationController?.pushViewController(viewControllerToCommit, animated: true)
-    }
-
-    @available(iOS 13.0, *)
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let manga = self.manager.filtered[indexPath.row]
-        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil, actionProvider: { _ in
-            let share = UIAction(title: "Teilen", image: UIImage(named: "teilen")) { _ in
-                self.manager.shareManga(manga, self)
-            }
-
-            let edit = UIAction(title: "Bearbeiten", image: UIImage(named: "editieren")) { _ in
-                self.performSegue(withIdentifier: "edit", sender: manga)
-            }
-
-            let remove = UIAction(title: "Löschen", image: UIImage(named: "müll"), attributes: .destructive) { _ in
-                self.manager.removeManga(manga)
-                self.manager.reloadIfNeccessary(self.tableView, nil, true)
-            }
-
-            return UIMenu(title: "", children: [share, edit, remove])
-        })
-    }
-
-    @available(iOS 13.0, *)
-    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addCompletion {
-            let dest = self.storyboard?.instantiateViewController(withIdentifier: "detailView") as! SammlungDetailView
-            dest.manga = self.manager.filtered[(configuration.identifier as! IndexPath).row]
-            self.show(dest, sender: self)
-        }
     }
 }

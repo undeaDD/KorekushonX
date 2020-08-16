@@ -19,7 +19,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="QSm-3t-kVm">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="erinnerungCell" rowHeight="70" id="2vO-xx-EJj" customClass="ErinnerungCell" customModule="KorekushonX" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.5" width="374" height="70"/>
@@ -29,14 +29,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erinnerung Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tF7-fr-QSX">
-                                                    <rect key="frame" x="35" y="15" width="304" height="20.5"/>
+                                                    <rect key="frame" x="8" y="15" width="358" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erinnern am: 00.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLY-kD-yoe">
-                                                    <rect key="frame" x="35" y="38" width="304" height="17"/>
+                                                    <rect key="frame" x="8" y="38" width="358" height="17"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,10 +46,10 @@
                                             <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="tF7-fr-QSX" firstAttribute="top" secondItem="DZ3-y3-UYa" secondAttribute="top" constant="15" id="1fo-ty-xer"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="tF7-fr-QSX" secondAttribute="trailing" constant="15" id="6Tv-5i-O3F"/>
-                                                <constraint firstItem="tF7-fr-QSX" firstAttribute="leading" secondItem="DZ3-y3-UYa" secondAttribute="leadingMargin" constant="15" id="8M9-Sr-oAg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="iLY-kD-yoe" secondAttribute="trailing" constant="15" id="9bA-r4-Qfu"/>
-                                                <constraint firstItem="iLY-kD-yoe" firstAttribute="leading" secondItem="DZ3-y3-UYa" secondAttribute="leadingMargin" constant="15" id="IgR-UV-2RI"/>
+                                                <constraint firstAttribute="trailing" secondItem="tF7-fr-QSX" secondAttribute="trailing" constant="8" id="6Tv-5i-O3F"/>
+                                                <constraint firstItem="tF7-fr-QSX" firstAttribute="leading" secondItem="DZ3-y3-UYa" secondAttribute="leading" constant="8" id="8M9-Sr-oAg"/>
+                                                <constraint firstAttribute="trailing" secondItem="iLY-kD-yoe" secondAttribute="trailing" constant="8" id="9bA-r4-Qfu"/>
+                                                <constraint firstItem="iLY-kD-yoe" firstAttribute="leading" secondItem="DZ3-y3-UYa" secondAttribute="leading" constant="8" id="IgR-UV-2RI"/>
                                                 <constraint firstAttribute="bottom" secondItem="iLY-kD-yoe" secondAttribute="bottom" constant="15" id="nwL-o5-98x"/>
                                             </constraints>
                                         </tableViewCellContentView>

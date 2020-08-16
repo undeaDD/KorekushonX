@@ -41,16 +41,11 @@ class WunschAddView: UITableViewController {
                       title: titleField.text.trim(),
                        cover: img)
 
-         try! manager.store.save(temp)
+         try? manager.store.save(temp)
          UserDefaults.standard.set(true, forKey: "WunschNeedsUpdating")
 
          if keepOpen {
-             let alert = UIAlertController(title: "Gespeichert", message: "Manga wurde erfolgreich gespeichert", preferredStyle: .alert)
-             self.present(alert, animated: true) {
-                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-                     alert.dismiss(animated: true)
-                 }
-             }
+            AlertManager.shared.savedInfo(self, "Reihe")
          } else {
              self.navigationController?.popToRootViewController(animated: true)
          }
@@ -58,34 +53,22 @@ class WunschAddView: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
-            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-            sheet.addAction(UIAlertAction(title: "Automatisch (via API)", style: .default, handler: { _ in
-                let alertController = UIAlertController(title: "Suchbegriff", message: "Nach dem Bild suchen\n(Manga Titel)", preferredStyle: .alert)
-                alertController.addTextField { textField in textField.placeholder = "Kiss of the Fox" }
-                alertController.addAction(UIAlertAction(title: "Suchen", style: .default) { [weak alertController] _ in
-                    guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-                    self.image.image = WebImage.apiImage(textField.text.trim())
-                })
-                alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }))
-
-            sheet.addAction(UIAlertAction(title: "Fotoalbum", style: .default, handler: { _ in
-                self.imagePicker.sourceType = .photoLibrary
-                self.present(self.imagePicker, animated: true)
-            }))
-
-            sheet.addAction(UIAlertAction(title: "Kamera", style: .default, handler: { _ in
-                self.imagePicker.sourceType = .camera
-                self.present(self.imagePicker, animated: true)
-            }))
-
-            sheet.addAction(UIAlertAction(title: "Kein Cover nutzen", style: .cancel, handler: { _ in
-                self.image.image = UIImage(named: "default")
-            }))
-
-            self.present(sheet, animated: true)
+            AlertManager.shared.selectImage(self) { index in
+                switch index {
+                case 0:
+                    AlertManager.shared.manualImageSearch(self) { text in
+                        self.image.image = WebImage.apiImage(text)
+                    }
+                case 1:
+                    self.imagePicker.sourceType = .photoLibrary
+                    self.present(self.imagePicker, animated: true)
+                case 2:
+                    self.imagePicker.sourceType = .camera
+                    self.present(self.imagePicker, animated: true)
+                default:
+                    self.image.image = UIImage(named: "default")
+                }
+            }
         }
     }
 }

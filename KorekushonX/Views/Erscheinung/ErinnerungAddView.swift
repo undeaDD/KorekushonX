@@ -34,12 +34,7 @@ class ErinnerungAddView: UITableViewController {
             UserDefaults.standard.set(true, forKey: "ErinnerungNeedsUpdating")
 
             if keepOpen {
-                let alert = UIAlertController(title: "Gespeichert", message: "Erinnerung wurde erfolgreich gespeichert", preferredStyle: .alert)
-                self.present(alert, animated: true) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
-                        alert.dismiss(animated: true)
-                    }
-                }
+                AlertManager.shared.savedInfo(self, "Erinnerung")
             } else {
                 self.navigationController?.popToRootViewController(animated: true)
             }

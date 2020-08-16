@@ -55,20 +55,18 @@ extension WunschView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let wunsch = manager.list[indexPath.row]
-        sheet.addAction(UIAlertAction(title: "Teilen", style: .default, handler: { _ in
-            self.manager.shareManga(wunsch, self)
-        }))
-        sheet.addAction(UIAlertAction(title: "Bearbeiten", style: .default, handler: { _ in
-            self.performSegue(withIdentifier: "edit", sender: wunsch)
-        }))
-        sheet.addAction(UIAlertAction(title: "Löschen", style: .destructive, handler: { _ in
-            self.manager.removeManga(wunsch)
-            self.manager.reloadIfNeccessary(self.collectionView, true)
-        }))
-        sheet.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
-        present(sheet, animated: true)
+        AlertManager.shared.options(self) { index in
+            switch index {
+            case 0:
+                self.manager.shareManga(wunsch, self)
+            case 1:
+                self.performSegue(withIdentifier: "edit", sender: wunsch)
+            default:
+                self.manager.removeManga(wunsch)
+                self.manager.reloadIfNeccessary(self.collectionView, true)
+            }
+        }
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

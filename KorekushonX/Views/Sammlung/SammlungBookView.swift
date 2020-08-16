@@ -36,22 +36,17 @@ class SammlungBookView: UIViewController {
 
         if let indexPath = collectionView.indexPathForItem(at: loc) {
             let manga = self.manager.filtered[indexPath.row]
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Sammlung Teilen", style: .default, handler: { _ in
-                self.manager.shareManga(manga, self)
-            }))
-
-            alert.addAction(UIAlertAction(title: "Sammlung Bearbeiten", style: .default, handler: { _ in
-                self.performSegue(withIdentifier: "edit", sender: manga)
-            }))
-
-            alert.addAction(UIAlertAction(title: "Sammlung Löschen", style: .destructive, handler: { _ in
-                self.manager.removeManga(manga)
-                self.manager.reloadIfNeccessary(nil, self.collectionView, true)
-            }))
-
-            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
-            present(alert, animated: true)
+            AlertManager.shared.options(self) { index in
+                switch index {
+                case 0:
+                    self.manager.shareManga(manga, self)
+                case 1:
+                    self.performSegue(withIdentifier: "edit", sender: manga)
+                default:
+                    self.manager.removeManga(manga)
+                    self.manager.reloadIfNeccessary(nil, self.collectionView, true)
+                }
+            }
         }
     }
 
@@ -71,22 +66,10 @@ class SammlungBookView: UIViewController {
     }
 
     @IBAction private func filterSammlung() {
-        let sheet = UIAlertController(title: "Sammlung filtern", message: nil, preferredStyle: .actionSheet)
-
-        for elem in ["Nicht Filtern", "Nach Titel A-Z", "Nach Autor A-Z", "Nach Verlag A-Z", "Nur Vollständige", "Nur nicht Vollständige"].enumerated() {
-            let temp = UIAlertAction(title: elem.element, style: elem.offset == 0 ? .cancel : .default, handler: { _ in
-                UserDefaults.standard.set(elem.offset, forKey: "SammlungFilter")
-                self.manager.reloadIfNeccessary(nil, self.collectionView, true)
-                self.filterButton.image = self.manager.getFilterImage()
-            })
-            if elem.offset != 0 {
-                temp.setValue(UserDefaults.standard.integer(forKey: "SammlungFilter") == elem.offset, forKey: "checked")
-            }
-            sheet.addAction(temp)
+        AlertManager.shared.filterSammlung(self) {
+            self.manager.reloadIfNeccessary(nil, self.collectionView, true)
+            self.filterButton.image = self.manager.getFilterImage()
         }
-
-        sheet.view.tintColor = .systemPurple
-        self.present(sheet, animated: true)
     }
 }
 

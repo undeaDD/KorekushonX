@@ -5,16 +5,9 @@ analyzer_rules:
 
 disabled_rules:
   - force_cast
-  - force_try
   - line_length
   - identifier_name
-  - type_name
-  - object_literal
-  - fallthrough
-  - private_outlet
-  - file_name
   - function_body_length
-  - cyclomatic_complexity
 
 opt_in_rules:
   - anyobject_protocol

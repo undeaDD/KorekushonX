@@ -1,7 +1,7 @@
 import UIKit
 
 struct Manga: Codable, Identifiable {
-    static let idKey = \id
+    static let idKey = \Manga.id
     var id: UUID
     var title: String
     var author: String
@@ -52,25 +52,29 @@ class RowCell: UITableViewCell {
 
 class BookCell: UICollectionViewCell {
     @IBOutlet private var imageField: UIImageView!
-    /*
     @IBOutlet private var titleField: UILabel!
-    @IBOutlet private var subtitleField: UILabel!
     @IBOutlet private var countField: UILabel!
-    */
 
     func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
         imageField.image = manga.cover?.img() ?? UIImage(named: "default")
-        /*
-        titleField.text = manga.title
-        subtitleField.text = manga.author
         countField.text = ".../\(manga.countAll)"
-        
+        let attributed = NSMutableAttributedString(string: manga.title + "\n", attributes: [.foregroundColor: UIColor.systemPurple, .font: UIFont.systemFont(ofSize: 18, weight: .semibold)])
+        attributed.append(NSAttributedString(string: manga.author, attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 15, weight: .semibold)]))
+        titleField.attributedText = attributed
 
         bookStore.getMangaCount(manga.id) { count in
             DispatchQueue.main.async {
                 self.countField.text = "\(count)/\(manga.countAll)"
             }
         }
-        */
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        var transform = CGAffineTransform.identity
+        transform = transform.rotated(by: -(CGFloat.pi / 2))
+        titleField.transform = transform
+        titleField.frame = CGRect(x: 0, y: 10, width: frame.width, height: frame.height - 170)
     }
 }

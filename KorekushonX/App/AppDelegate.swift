@@ -1,4 +1,5 @@
 import IQKeyboardManagerSwift
+import Sheeeeeeeeet
 import UIKit
 
 @UIApplicationMain
@@ -14,6 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         IQKeyboardManager.shared.shouldPlayInputClicks = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.toolbarTintColor = .systemPurple
+
+        let linkItem = ActionSheetLinkItemCell.appearance()
+        linkItem.tintColor = .systemPurple
+        linkItem.titleColor = .systemPurple
+
+        ActionSheetSectionTitleCell.appearance().titleColor = .systemPurple
+        let singleSelect = ActionSheetSingleSelectItemCell.appearance()
+        singleSelect.selectedTintColor = .systemPurple
+        singleSelect.selectedIcon = UIImage(named: "selected")
+        singleSelect.selectedTitleColor = .systemPurple
+        singleSelect.selectedIconColor = .systemPurple
+        singleSelect.unselectedIcon = UIImage(named: "unselected")
+        singleSelect.unselectedIconColor = .systemPurple
 
         if UserDefaults.standard.object(forKey: "settingsSammlungShowCover") == nil {
             UserDefaults.standard.set(true, forKey: "settingsSammlungShowCover")

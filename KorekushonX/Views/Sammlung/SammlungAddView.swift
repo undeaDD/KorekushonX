@@ -47,17 +47,12 @@ class SammlungAddView: UITableViewController {
         if editManga == nil && manager.store.allObjects().contains(where: { stored -> Bool in
             stored.title.lowercased() == temp.title.lowercased()
         }) {
-            let alert = UIAlertController(title: "Duplikat", message: "Manga konnte nicht in der Sammlung gespeichert werden.", preferredStyle: .alert)
-            self.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
-                    self.titleField.text = nil
-                    alert.dismiss(animated: true)
-                }
-            }
+            AlertManager.shared.duplicateError(self, "Reihe")
+            self.titleField.text = nil
             return
         }
 
-        try! manager.store.save(temp)
+        try? manager.store.save(temp)
         UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
 
         if editManga == nil {
@@ -67,12 +62,7 @@ class SammlungAddView: UITableViewController {
         }
 
         if keepOpen {
-            let alert = UIAlertController(title: "Gespeichert", message: "Manga wurde erfolgreich in der Sammlung gespeichert", preferredStyle: .alert)
-            self.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-                    alert.dismiss(animated: true)
-                }
-            }
+            AlertManager.shared.savedInfo(self, "Reihe")
         } else {
             self.navigationController?.popToRootViewController(animated: true)
         }
@@ -101,9 +91,16 @@ class SammlungAddView: UITableViewController {
         super.viewDidLoad()
 
         let pickerView = UIPickerView()
+        pickerView.tag = 0
         pickerView.dataSource = self
         pickerView.delegate = self
         countField.inputView = pickerView
+
+        let verlagPickerView = UIPickerView()
+        verlagPickerView.tag = 1
+        verlagPickerView.dataSource = self
+        verlagPickerView.delegate = self
+        publisherField.inputView = verlagPickerView
 
         if let manga = editManga {
             navigationItem.title = "Bearbeiten"
@@ -131,36 +128,31 @@ class SammlungAddView: UITableViewController {
 extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 0 {
-            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-            sheet.addAction(UIAlertAction(title: "Automatisch (via API)", style: .default, handler: { _ in
-                self.image.image = WebImage.apiImage(self.titleField.text.trim())
-            }))
-
-            sheet.addAction(UIAlertAction(title: "Fotoalbum", style: .default, handler: { _ in
-                self.imagePicker.sourceType = .photoLibrary
-                self.present(self.imagePicker, animated: true)
-            }))
-
-            sheet.addAction(UIAlertAction(title: "Kamera", style: .default, handler: { _ in
-                self.imagePicker.sourceType = .camera
-                self.present(self.imagePicker, animated: true)
-            }))
-
-            sheet.addAction(UIAlertAction(title: "Kein Cover nutzen", style: .cancel, handler: { _ in
-                self.image.image = UIImage(named: "default")
-            }))
-
-            self.present(sheet, animated: true)
+            AlertManager.shared.selectImage(self) { index in
+                switch index {
+                case 0:
+                    self.image.image = WebImage.apiImage(self.titleField.text.trim())
+                case 1:
+                    self.imagePicker.sourceType = .photoLibrary
+                    self.present(self.imagePicker, animated: true)
+                case 2:
+                    self.imagePicker.sourceType = .camera
+                    self.present(self.imagePicker, animated: true)
+                default:
+                    self.image.image = UIImage(named: "default")
+                }
+            }
         }
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return pickerView.tag == 0 ? 3 : 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 1 {
+        if pickerView.tag == 1 {
+            return Verlag.allCases.count
+        } else if component == 1 {
             return 1
         } else if component == 2 {
             return 100
@@ -172,7 +164,9 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 1 {
+        if pickerView.tag == 1 {
+            return Verlag.allCases[row].rawValue
+        } else if component == 1 {
             return "von"
         } else if component == 2 {
             return String(row + 1)
@@ -184,6 +178,11 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 1 {
+            publisherField.text = Verlag.allCases[row].rawValue
+            return
+        }
+
         if component == 0 {
             let max = pickerView.selectedRow(inComponent: 2)
             if row > max + 1 {

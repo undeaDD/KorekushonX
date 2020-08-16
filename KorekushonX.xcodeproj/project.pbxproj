@@ -51,6 +51,8 @@
 		127719B0236E31E3001BF906 /* SammlungView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127719AF236E31E3001BF906 /* SammlungView.storyboard */; };
 		127719B2236E36C7001BF906 /* SammlungRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127719B1236E36C7001BF906 /* SammlungRowView.swift */; };
 		127719B4236EC641001BF906 /* SammlungAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127719B3236EC641001BF906 /* SammlungAddView.swift */; };
+		12BBB88A24E90563007EE6F5 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BBB88924E90563007EE6F5 /* AlertManager.swift */; };
+		12BBB88C24E950E6007EE6F5 /* Verlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BBB88B24E950E6007EE6F5 /* Verlag.swift */; };
 		12CF0A2B237091CD004A23E9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CF0A2A237091CD004A23E9 /* SettingsView.swift */; };
 		12E3836F24E889B000B58BD8 /* Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E3836D24E889B000B58BD8 /* Dark@3x.png */; };
 		12E3837024E889B000B58BD8 /* Dark@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E3836E24E889B000B58BD8 /* Dark@2.png */; };
@@ -110,6 +112,8 @@
 		127719AF236E31E3001BF906 /* SammlungView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SammlungView.storyboard; sourceTree = "<group>"; };
 		127719B1236E36C7001BF906 /* SammlungRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammlungRowView.swift; sourceTree = "<group>"; };
 		127719B3236EC641001BF906 /* SammlungAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammlungAddView.swift; sourceTree = "<group>"; };
+		12BBB88924E90563007EE6F5 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		12BBB88B24E950E6007EE6F5 /* Verlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verlag.swift; sourceTree = "<group>"; };
 		12CF0A2A237091CD004A23E9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		12E3836D24E889B000B58BD8 /* Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dark@3x.png"; sourceTree = "<group>"; };
 		12E3836E24E889B000B58BD8 /* Dark@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dark@2.png"; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				12F332542385748A005EE38D /* Wunsch.swift */,
 				1251437923744CC300C3CC7F /* Book.swift */,
 				124D0DBD2382D0C800DD41E0 /* Erinnerung.swift */,
+				12BBB88B24E950E6007EE6F5 /* Verlag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				126A3BE523719D7B001CBA17 /* NavigationController.swift */,
 				126A3BE723719E24001CBA17 /* TabBarController.swift */,
 				12F25AFE237577EB0093D39D /* Extensions.swift */,
+				12BBB88924E90563007EE6F5 /* AlertManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 				125E24EF23702CD100EAFCF2 /* WunschView.swift in Sources */,
 				12CF0A2B237091CD004A23E9 /* SettingsView.swift in Sources */,
 				12F3325923869015005EE38D /* WunschAddView.swift in Sources */,
+				12BBB88A24E90563007EE6F5 /* AlertManager.swift in Sources */,
 				12F25AFF237577EB0093D39D /* Extensions.swift in Sources */,
 				125E2507237030E200EAFCF2 /* Expiration.swift in Sources */,
 				12771999236E2FA0001BF906 /* AppDelegate.swift in Sources */,
@@ -463,6 +470,7 @@
 				125E24F123702D2F00EAFCF2 /* ErinnerungView.swift in Sources */,
 				121B67CB2382EAB100EEBB0F /* SettingsWebView.swift in Sources */,
 				125E2505237030E200EAFCF2 /* SingleKeychainStore.swift in Sources */,
+				12BBB88C24E950E6007EE6F5 /* Verlag.swift in Sources */,
 				126A3BE823719E24001CBA17 /* TabBarController.swift in Sources */,
 				120CC32223745F2500B7DAFB /* GekauftAddView.swift in Sources */,
 				125E2504237030E200EAFCF2 /* KeychainAccessibilityOption.swift in Sources */,

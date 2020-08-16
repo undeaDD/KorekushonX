@@ -1,7 +1,7 @@
 import UIKit
 
 struct Erinnerung: Codable, Identifiable {
-    static let idKey = \id
+    static let idKey = \Erinnerung.id
     var id: String
 
     var title: String

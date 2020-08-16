@@ -1,8 +1,9 @@
 import UIKit
 
 struct Wunsch: Codable, Identifiable {
-    static let idKey = \id
+    static let idKey = \Wunsch.id
     var id: UUID
+
     var title: String
     var cover: Cover?
 }

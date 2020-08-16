@@ -24,14 +24,8 @@ class ErinnerungView: UIViewController {
         let enabled = UserDefaults.standard.bool(forKey: "ErinnerungActive")
         self.navigationItem.rightBarButtonItem?.isEnabled = enabled
         if !enabled {
-            let alert = UIAlertController(title: "Warnung", message: "Mitteilungen werden für Erinnerungen benötigt. Du kannst Mitteilungen in den Einstellungen wieder einschalten. Starte anschließend die App neu !!!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Nein", style: .destructive, handler: { _ in
-                self.tabBarController?.selectedIndex = 0
-            }))
-            alert.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { _ in
-                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-            }))
-            present(alert, animated: true)
+            AlertManager.shared.notificationError(self)
+            self.tabBarController?.selectedIndex = 0
         }
     }
 }

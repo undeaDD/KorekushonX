@@ -1,7 +1,7 @@
 import UIKit
 
 struct Book: Codable, Identifiable {
-    static let idKey = \id
+    static let idKey = \Book.id
     var id: UUID
     var mangaId: UUID
 
