@@ -51,7 +51,7 @@ class GekauftView: UIViewController {
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "edit", let dest = segue.destination as? GekauftAddView, let book = sender as? Book {
             dest.editBook = book

@@ -21,7 +21,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         if !UserDefaults.standard.bool(forKey: "settingsShowAnimeView") {
             if viewControllers?.count == 5 {
                 viewControllers?.removeLast()
-                print("removed anime view :3")
             }
         }
     }

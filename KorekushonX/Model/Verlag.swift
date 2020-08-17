@@ -9,5 +9,6 @@ enum Verlag: String, CaseIterable {
     case kaze = "Kaze Manga"
     case panini = "Panini Manga"
     case cult = "Manga Cult"
+    case shueisha = "Shueisha"
     case unknown = "Unbekannt"
 }

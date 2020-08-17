@@ -40,7 +40,6 @@ opt_in_rules:
   - modifier_order
   - nimble_operator
   - nslocalizedstring_key
-  - number_separator
   - operator_usage_whitespace
   - overridden_super_call
   - override_in_extension

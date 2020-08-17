@@ -24,12 +24,6 @@ public struct Cover: Codable {
     }
 }
 
-extension UIImage {
-    func cover() -> Cover {
-        return Cover(image: self)
-    }
-}
-
 class RowCell: UITableViewCell {
     @IBOutlet private var imageField: UIImageView!
     @IBOutlet private var titleField: UILabel!
@@ -42,8 +36,40 @@ class RowCell: UITableViewCell {
         countField.text = ".../\(manga.countAll)"
         imageField.image = manga.cover?.img() ?? UIImage(named: "default")
 
+        if let img = manga.cover?.img(), img != UIImage(named: "default") {
+            let color = img.averageColor
+            backgroundColor = color
+
+            if color?.isDarkColor ?? false {
+                titleField.textColor = .white
+                subtitleField.textColor = .lightGray
+                countField.textColor = .white
+            } else {
+                titleField.textColor = .black
+                subtitleField.textColor = .darkGray
+                countField.textColor = .black
+            }
+        } else {
+            if #available(iOS 13.0, *) {
+                backgroundColor = .tertiarySystemBackground
+            } else {
+                backgroundColor = .white
+            }
+
+            titleField.textColor = .systemPurple
+            subtitleField.textColor = .gray
+            countField.textColor = .systemPurple
+        }
+
+        if #available(iOS 13.0, *) {
+            let image = UIImageView(image: UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate))
+            image.tintColor = subtitleField.textColor
+            accessoryView = image
+        }
+
         bookStore.getMangaCount(manga.id) { count in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.countField.text = "\(count)/\(manga.countAll)"
             }
         }
@@ -58,9 +84,35 @@ class BookCell: UICollectionViewCell {
     func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
         imageField.image = manga.cover?.img() ?? UIImage(named: "default")
         countField.text = ".../\(manga.countAll)"
-        let attributed = NSMutableAttributedString(string: manga.title + "\n", attributes: [.foregroundColor: UIColor.systemPurple, .font: UIFont.systemFont(ofSize: 18, weight: .semibold)])
-        attributed.append(NSAttributedString(string: manga.author, attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 15, weight: .semibold)]))
-        titleField?.attributedText = attributed
+
+        let bgView = contentView.subviews.first
+        if let img = manga.cover?.img(), img != UIImage(named: "default") {
+            let color = img.averageColor
+            bgView?.backgroundColor = color
+
+            if color?.isDarkColor ?? false {
+                let attributed = NSMutableAttributedString(string: manga.title + "\n", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 20, weight: .semibold)])
+                attributed.append(NSAttributedString(string: manga.author, attributes: [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)]))
+                titleField?.attributedText = attributed
+                countField.textColor = .white
+            } else {
+                let attributed = NSMutableAttributedString(string: manga.title + "\n", attributes: [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 20, weight: .semibold)])
+                attributed.append(NSAttributedString(string: manga.author, attributes: [.foregroundColor: UIColor.darkGray, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)]))
+                titleField?.attributedText = attributed
+                countField.textColor = .black
+            }
+        } else {
+            if #available(iOS 13.0, *) {
+                bgView?.backgroundColor = .tertiarySystemBackground
+            } else {
+                bgView?.backgroundColor = .white
+            }
+
+            let attributed = NSMutableAttributedString(string: manga.title + "\n", attributes: [.foregroundColor: UIColor.systemPurple, .font: UIFont.systemFont(ofSize: 20, weight: .semibold)])
+            attributed.append(NSAttributedString(string: manga.author, attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)]))
+            titleField?.attributedText = attributed
+            countField.textColor = .systemPurple
+        }
 
         bookStore.getMangaCount(manga.id) { count in
             DispatchQueue.main.async { [weak self] in

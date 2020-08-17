@@ -11,6 +11,16 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
         navigationController?.dismiss(animated: true)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let footer = tableView.footerView(forSection: 1) {
+            let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
+            footer.textLabel?.text = "Version: \(version) (\(build))"
+            footer.sizeToFit()
+        }
+    }
+
     @IBAction private func like() {
         if MFMailComposeViewController.canSendMail() {
             let composePicker = MFMailComposeViewController()

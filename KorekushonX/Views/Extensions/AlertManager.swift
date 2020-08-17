@@ -156,91 +156,109 @@ struct AlertManager {
     }
 
     func repairData(_ vc: UIViewController) {
-        let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.", preferredStyle: .alert)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.", preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
-            SammlungManager.shared.repairAll()
-        }))
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
+                SammlungManager.shared.repairAll()
+            }))
 
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
-        vc.present(alert, animated: true)
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            vc.present(alert, animated: true)
+        }
     }
 
     func removeAll(_ vc: UIViewController) {
-        let alert = UIAlertController(title: "Alles löschen?", message: "Dadurch werden alle lokal gespeicherten Daten gelöscht.", preferredStyle: .alert)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Alles löschen?", message: "Dadurch werden alle lokal gespeicherten Daten gelöscht.", preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
-            FilesStore<Manga>(uniqueIdentifier: "mangas").deleteAll()
-            FilesStore<Book>(uniqueIdentifier: "books").deleteAll()
-            FilesStore<Wunsch>(uniqueIdentifier: "wishes").deleteAll()
-            UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
-            UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
-            UserDefaults.standard.set(true, forKey: "WunschNeedsUpdating")
-            ErinnerungManager.shared.removeAll()
-        }))
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
+                FilesStore<Manga>(uniqueIdentifier: "mangas").deleteAll()
+                FilesStore<Book>(uniqueIdentifier: "books").deleteAll()
+                FilesStore<Wunsch>(uniqueIdentifier: "wishes").deleteAll()
+                UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
+                UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
+                UserDefaults.standard.set(true, forKey: "WunschNeedsUpdating")
+                ErinnerungManager.shared.removeAll()
+            }))
 
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
-        vc.present(alert, animated: true)
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            vc.present(alert, animated: true)
+        }
     }
 
     func manualImageSearch(_ vc: UIViewController, _ completion: @escaping (String) -> Void) {
-        let alertController = UIAlertController(title: "Suchbegriff", message: "Nach dem Bild suchen\n(Manga Titel)", preferredStyle: .alert)
-        alertController.addTextField { textField in textField.placeholder = "Kiss of the Fox" }
-        alertController.addAction(UIAlertAction(title: "Suchen", style: .default) { [weak alertController] _ in
-            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            completion(textField.text.trim())
-        })
-        alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
-        vc.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Suchbegriff", message: "Nach dem Bild suchen\n(Manga Titel)", preferredStyle: .alert)
+            alertController.addTextField { textField in textField.placeholder = "Kiss of the Fox" }
+            alertController.addAction(UIAlertAction(title: "Suchen", style: .default) { [weak alertController] _ in
+                guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+                completion(textField.text.trim())
+            })
+            alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            vc.present(alertController, animated: true, completion: nil)
+        }
     }
 
     func duplicateError(_ vc: UIViewController, _ type: String) {
-        let alert = UIAlertController(title: "Duplikat", message: "\(type) konnte nicht gespeichert werden.", preferredStyle: .alert)
-        vc.present(alert, animated: true) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
-                alert.dismiss(animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Duplikat", message: "\(type) konnte nicht gespeichert werden.", preferredStyle: .alert)
+            vc.present(alert, animated: true) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
+                    alert.dismiss(animated: true)
+                }
             }
         }
     }
 
     func savedInfo(_ vc: UIViewController, _ type: String) {
-        let alert = UIAlertController(title: "Gespeichert", message: "\(type) wurde erfolgreich gespeichert", preferredStyle: .alert)
-        vc.present(alert, animated: true) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-                alert.dismiss(animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Gespeichert", message: "\(type) wurde erfolgreich gespeichert", preferredStyle: .alert)
+            vc.present(alert, animated: true) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+                    alert.dismiss(animated: true)
+                }
             }
         }
     }
 
     func notificationError(_ vc: UIViewController) {
-        let alert = UIAlertController(title: "Warnung", message: "Mitteilungen werden für Erinnerungen benötigt. Du kannst Mitteilungen in den Einstellungen wieder einschalten. Starte anschließend die App neu !!!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Nein", style: .destructive, handler: nil))
-        alert.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { _ in
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-        }))
-        vc.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Warnung", message: "Mitteilungen werden für Erinnerungen benötigt. Du kannst Mitteilungen in den Einstellungen wieder einschalten. Starte anschließend die App neu !!!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Nein", style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { _ in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }))
+            vc.present(alert, animated: true)
+        }
     }
 
     func emailError(_ vc: UIViewController) {
-        let alert = UIAlertController(title: "Kein Konto gefunden", message: "Du hast kein Mailkonto eingerichtet, um Feedback zu versenden. Hier ist meine Mail Adresse, falls du von einem anderen Gerät Feedback senden willst.\n\ndominic.drees@live.de", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-        vc.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Kein Konto gefunden", message: "Du hast kein Mailkonto eingerichtet, um Feedback zu versenden. Hier ist meine Mail Adresse, falls du von einem anderen Gerät Feedback senden willst.\n\ndominic.drees@live.de", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            vc.present(alert, animated: true)
+        }
     }
 
     func errorNotAvailable(_ vc: UIViewController) {
-        let alert = UIAlertController(title: "Nicht verfügbar", message: "Diese Funktion ist auf deinem Gerät leider nicht verfügbar. Vielleicht wird dies durch ein System update behoben.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-        vc.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Nicht verfügbar", message: "Diese Funktion ist auf deinem Gerät leider nicht verfügbar. Vielleicht wird dies durch ein System update behoben.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            vc.present(alert, animated: true)
+        }
     }
 
     func restartNeeded(_ vc: UIViewController) {
-        let alert = UIAlertController(title: "Neustart", message: "Ein Neustart der App ist erforderlich.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "App Beenden", style: .destructive, handler: { _ in
-            exit(0)
-        }))
-        vc.present(alert, animated: true) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-                alert.dismiss(animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Neustart", message: "Ein Neustart der App ist erforderlich.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "App Beenden", style: .destructive, handler: { _ in
+                exit(0)
+            }))
+            vc.present(alert, animated: true) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                    alert.dismiss(animated: true)
+                }
             }
         }
     }
