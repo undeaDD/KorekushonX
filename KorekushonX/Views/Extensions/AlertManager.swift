@@ -30,6 +30,30 @@ struct AlertManager {
         }.present(in: vc, from: vc.view)
     }
 
+    func filterAnimes(_ vc: UIViewController, _ completion: @escaping () -> Void) {
+        let spacer = SectionMargin()
+        let title = SectionTitle(title: "Animes Filtern:")
+
+        var items: [MenuItem] = [spacer, title]
+        for elem in ["Laufend", "Warteliste", "Geschaut"].enumerated() {
+            let isSelected = UserDefaults.standard.integer(forKey: "AnimeFilter") == (elem.offset + 1)
+            let temp = SingleSelectItem(title: elem.element, isSelected: isSelected, value: elem.offset + 1)
+            items.append(temp)
+        }
+
+        items.append(DestructiveButton(title: "Nicht Filtern"))
+        items.append(CancelButton(title: "Abbrechen"))
+        Menu(items: items).toActionSheet { _, item in
+            if let value = item.value as? Int {
+                UserDefaults.standard.set(value, forKey: "AnimeFilter")
+                completion()
+            } else if (item as? DestructiveButton) != nil {
+                UserDefaults.standard.set(0, forKey: "AnimeFilter")
+                completion()
+            }
+        }.present(in: vc, from: vc.view)
+    }
+
     func filterGekaufte(_ vc: UIViewController, _ completion: @escaping () -> Void) {
         let spacer = SectionMargin()
         let title = SectionTitle(title: "Bände Filtern:")
@@ -103,18 +127,22 @@ struct AlertManager {
 
     func selectSammlungType(_ vc: UIViewController) {
         var items: [MenuItem] = []
-        let isSelected = UserDefaults.standard.integer(forKey: "settingsSammlungView")
+        let isSelected: [Int] = UserDefaults.standard.array(forKey: "settingsSammlungView") as? [Int] ?? [0]
         items.append(SectionMargin())
         items.append(SectionTitle(title: "Sammlungs Ansicht auswählen:"))
-        items.append(SingleSelectItem(title: "Zeilen (Standard)", isSelected: 0 == isSelected, value: 0, image: UIImage(named: "rows")))
-        items.append(SingleSelectItem(title: "Buchrücken", isSelected: 1 == isSelected, value: 1, image: UIImage(named: "columns")))
-        items.append(SingleSelectItem(title: "Kompakt", isSelected: 2 == isSelected, value: 2, image: UIImage(named: "compact")))
+        items.append(MultiSelectItem(title: "Zeilen (Standard)", isSelected: isSelected.contains(0), value: 0, image: UIImage(named: "rows")))
+        items.append(MultiSelectItem(title: "Buchrücken", isSelected: isSelected.contains(1), value: 1, image: UIImage(named: "columns")))
+        items.append(MultiSelectItem(title: "Kompakt", isSelected: isSelected.contains(2), value: 2, image: UIImage(named: "compact")))
         items.append(CancelButton(title: "Abbrechen"))
-        Menu(items: items).toActionSheet { _, item in
-            if let value = item.value as? Int {
-                UserDefaults.standard.set(value, forKey: "settingsSammlungView")
-                AlertManager.shared.restartNeeded(vc)
+        Menu(items: items).toActionSheet { sheet, item in
+            var array: [Int] = sheet.items.compactMap { item in
+                if let item = item as? MultiSelectItem {
+                    return item.isSelected ? (item.value as? Int) : nil
+                } else { return nil }
             }
+            if array.isEmpty { array.append(0) }
+            UserDefaults.standard.set(array, forKey: "settingsSammlungView")
+            AlertManager.shared.restartNeeded(vc)
         }.present(in: vc, from: vc.view)
     }
 
@@ -160,7 +188,11 @@ struct AlertManager {
             let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
-                SammlungManager.shared.repairAll()
+                let alert2 = UIAlertController(title: "Bitte Warten", message: "Lokale Daten werden repariert...", preferredStyle: .alert)
+                vc.present(alert2, animated: true)
+                SammlungManager.shared.repairAll {
+                    alert2.dismiss(animated: true)
+                }
             }))
 
             alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
@@ -255,6 +287,7 @@ struct AlertManager {
             alert.addAction(UIAlertAction(title: "App Beenden", style: .destructive, handler: { _ in
                 exit(0)
             }))
+            alert.addAction(UIAlertAction(title: "Später", style: .cancel))
             vc.present(alert, animated: true) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
                     alert.dismiss(animated: true)

@@ -18,9 +18,9 @@ class WunschAddView: UITableViewController {
         super.viewDidLoad()
 
         if let wunsch = editWunsch {
-            navigationItem.title = "Bearbeiten"
+            navigationItem.title = Constants.Keys.edit.locale
             titleField.text = wunsch.title
-            image.image = wunsch.cover?.img() ?? UIImage(named: "default")
+            image.image = wunsch.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
         }
 
         imagePicker.delegate = self
@@ -36,16 +36,16 @@ class WunschAddView: UITableViewController {
     @IBAction private func save(_ keepOpen: Bool = false) {
         self.view.endEditing(true)
 
-        let img = image.image == UIImage(named: "default") ? nil : image.image?.cover()
+        let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : image.image?.cover()
         let temp = Wunsch(id: editWunsch != nil ? editWunsch!.id : UUID(),
                       title: titleField.text.trim(),
                        cover: img)
 
          try? manager.store.save(temp)
-         UserDefaults.standard.set(true, forKey: "WunschNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.wishesReload.rawValue)
 
          if keepOpen {
-            AlertManager.shared.savedInfo(self, "Reihe")
+            AlertManager.shared.savedInfo(self, Constants.Keys.reihe.locale)
          } else {
              self.navigationController?.popToRootViewController(animated: true)
          }
@@ -66,7 +66,7 @@ class WunschAddView: UITableViewController {
                     self.imagePicker.sourceType = .camera
                     self.present(self.imagePicker, animated: true)
                 default:
-                    self.image.image = UIImage(named: "default")
+                    self.image.image = UIImage(named: Constants.Images.default.rawValue)
                 }
             }
         }
@@ -75,7 +75,7 @@ class WunschAddView: UITableViewController {
 
 extension WunschAddView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.image.image = UIImage(named: "default")
+        self.image.image = UIImage(named: Constants.Images.default.rawValue)
         picker.dismiss(animated: true)
     }
 

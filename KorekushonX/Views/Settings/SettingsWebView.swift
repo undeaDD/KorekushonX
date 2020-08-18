@@ -3,7 +3,7 @@ import WebKit
 
 class SettingsWebView: UIViewController, WKNavigationDelegate {
     @IBOutlet private var webView: WKWebView!
-    var file: String = "Impressum"
+    var file: String = Constants.HTML.imprint.rawValue
 
     override func viewDidLoad() {
         super.viewDidLoad()

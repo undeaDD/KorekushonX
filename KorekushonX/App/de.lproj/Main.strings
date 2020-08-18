@@ -1,0 +1,15 @@
+
+/* Class = "UITabBarItem"; title = "Sammlung"; ObjectID = "JcX-OP-t8c"; */
+"JcX-OP-t8c.title" = "Sammlung";
+
+/* Class = "UITabBarItem"; title = "Erinnerungen"; ObjectID = "eDa-oc-63f"; */
+"eDa-oc-63f.title" = "Erinnerungen";
+
+/* Class = "UITabBarItem"; title = "Animes"; ObjectID = "lJz-Ix-E4X"; */
+"lJz-Ix-E4X.title" = "Animes";
+
+/* Class = "UITabBarItem"; title = "Wunschliste"; ObjectID = "zPB-pp-KXe"; */
+"zPB-pp-KXe.title" = "Wunschliste";
+
+/* Class = "UITabBarItem"; title = "Gekaufte"; ObjectID = "zk9-xp-mMc"; */
+"zk9-xp-mMc.title" = "Gekaufte";

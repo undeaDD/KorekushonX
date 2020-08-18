@@ -36,8 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "de"
-      region = "DE"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -46,6 +44,7 @@
       enableGPUFrameCaptureMode = "3"
       enableGPUValidationMode = "1"
       allowLocationSimulation = "NO"
+      showNonLocalizedStrings = "YES"
       GPUProfilerEnabled = "No">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">

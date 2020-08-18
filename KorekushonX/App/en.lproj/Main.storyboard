@@ -31,11 +31,11 @@
             </objects>
             <point key="canvasLocation" x="-342" y="-81"/>
         </scene>
-        <!--Sammlung-->
+        <!--Collection-->
         <scene sceneID="s0V-gc-1zV">
             <objects>
                 <navigationController id="zez-jy-naK" customClass="SammlungNavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sammlung" image="sammlung" badgeValue="0" id="JcX-OP-t8c">
+                    <tabBarItem key="tabBarItem" title="Collection" image="sammlung" id="JcX-OP-t8c">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="LND-Wg-6rU">
@@ -53,11 +53,11 @@
             </objects>
             <point key="canvasLocation" x="551" y="-81"/>
         </scene>
-        <!--Gekaufte-->
+        <!--Books-->
         <scene sceneID="4vR-uj-hTx">
             <objects>
                 <navigationController id="2hW-Gh-nJ5" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gekaufte" image="gekauft" badgeValue="0" id="zk9-xp-mMc">
+                    <tabBarItem key="tabBarItem" title="Books" image="gekauft" id="zk9-xp-mMc">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="FGe-fd-bZf">
@@ -88,11 +88,11 @@
             </objects>
             <point key="canvasLocation" x="1125" y="-849"/>
         </scene>
-        <!--Wunschliste-->
+        <!--Wishlist-->
         <scene sceneID="Jao-g3-Zgh">
             <objects>
                 <navigationController id="KN8-OK-5lw" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wunschliste" image="wunschliste" id="zPB-pp-KXe">
+                    <tabBarItem key="tabBarItem" title="Wishlist" image="wunschliste" id="zPB-pp-KXe">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Hu3-G8-Tey">
@@ -123,11 +123,11 @@
             </objects>
             <point key="canvasLocation" x="1125" y="-1574"/>
         </scene>
-        <!--Erinnerungen-->
+        <!--Reminder-->
         <scene sceneID="S8l-ns-TY1">
             <objects>
                 <navigationController id="Ewg-WR-dEH" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Erinnerungen" image="kalender" id="eDa-oc-63f">
+                    <tabBarItem key="tabBarItem" title="Reminder" image="kalender" id="eDa-oc-63f">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iwC-Zt-FG6">
@@ -146,7 +146,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7R-Tk-1hV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-2963"/>
+            <point key="canvasLocation" x="551" y="-2356"/>
         </scene>
         <!--ErinnerungView-->
         <scene sceneID="Ka8-cq-MVd">
@@ -156,13 +156,13 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8W-ms-lct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="-2963"/>
+            <point key="canvasLocation" x="1112" y="-2356"/>
         </scene>
-        <!--Animes-->
+        <!--Anime-->
         <scene sceneID="HVB-hl-g4F">
             <objects>
                 <navigationController id="QWn-0o-ZUM" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Animes" image="anime" id="lJz-Ix-E4X">
+                    <tabBarItem key="tabBarItem" title="Anime" image="anime" id="lJz-Ix-E4X">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="1zb-9e-Y5v">

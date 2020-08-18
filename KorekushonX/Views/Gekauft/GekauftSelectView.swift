@@ -20,7 +20,7 @@ class GekauftSelectView: UIViewController, UITableViewDelegate, UITableViewDataS
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Suchen"
+        searchController.searchBar.placeholder = Constants.Keys.search.locale
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.largeTitleDisplayMode = .automatic
@@ -70,25 +70,20 @@ class GekauftSelectView: UIViewController, UITableViewDelegate, UITableViewDataS
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemKey = dataSectionTitles[indexPath.section]
-        if let item = dataDictionary[itemKey]?[indexPath.row] {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "mangaCell", for: indexPath)
-            cell.textLabel?.text = item.title
-            cell.accessoryType = cell.textLabel?.text?.lowercased() == selected?.lowercased() ? .checkmark : .none
-            return cell
-        }
-        fatalError("invalid cell dequeued")
+        let item = dataDictionary[itemKey]![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Keys.booksMangaCell.rawValue, for: indexPath)
+        cell.textLabel?.text = item.title
+        cell.accessoryType = cell.textLabel?.text?.lowercased() == selected?.lowercased() ? .checkmark : .none
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.popViewController(animated: true)
         let itemKey = dataSectionTitles[indexPath.section]
-        if let item = dataDictionary[itemKey]?[indexPath.row] {
-            let vc = navigationController?.viewControllers.last as? GekauftAddView
-            vc?.mangaField.text = item.title
-            vc?.index = vc?.mangas.firstIndex(where: { $0.id == item.id }) ?? 0
-        } else {
-            fatalError("invalid cell clicked")
-        }
+        let item = dataDictionary[itemKey]![indexPath.row]
+        let vc = navigationController?.viewControllers.last as? GekauftAddView
+        vc?.mangaField.text = item.title
+        vc?.index = vc?.mangas.firstIndex(where: { $0.id == item.id }) ?? 0
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

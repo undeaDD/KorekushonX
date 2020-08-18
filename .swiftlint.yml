@@ -9,6 +9,7 @@ disabled_rules:
   - identifier_name
   - function_body_length
   - cyclomatic_complexity
+  - type_body_length
 
 opt_in_rules:
   - anyobject_protocol
@@ -39,7 +40,6 @@ opt_in_rules:
   - lower_acl_than_parent
   - modifier_order
   - nimble_operator
-  - nslocalizedstring_key
   - operator_usage_whitespace
   - overridden_super_call
   - override_in_extension

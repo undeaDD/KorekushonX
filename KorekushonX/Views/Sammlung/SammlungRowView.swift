@@ -22,7 +22,7 @@ class SammlungRowView: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Suchen"
+        searchController.searchBar.placeholder = Constants.Keys.search.locale
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
@@ -44,7 +44,7 @@ class SammlungRowView: UIViewController {
                 case 0:
                     self.manager.shareManga(manga, self)
                 case 1:
-                    self.performSegue(withIdentifier: "edit", sender: manga)
+                    self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: manga)
                 default:
                     self.manager.removeManga(manga)
                     self.manager.reloadIfNeccessary(self.tableView, nil, true)
@@ -54,11 +54,11 @@ class SammlungRowView: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "edit", let dest = segue.destination as? SammlungAddView, let manga = sender as? Manga {
+        if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? SammlungAddView, let manga = sender as? Manga {
             dest.editManga = manga
-        } else if segue.identifier == "detail", let dest = segue.destination as? SammlungDetailView, let manga = sender as? Manga {
+        } else if segue.identifier == Constants.Segues.detail.rawValue, let dest = segue.destination as? SammlungDetailView, let manga = sender as? Manga {
             dest.manga = manga
-        } else if segue.identifier == "settings", let nav = segue.destination as? NavigationController {
+        } else if segue.identifier == Constants.Segues.settings.rawValue, let nav = segue.destination as? NavigationController {
             nav.presentationController?.delegate = self
         }
     }
@@ -98,36 +98,36 @@ extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchR
     }
 
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let edit = UIContextualAction(style: .normal, title: "Bearbeiten") { _, _, completion in
-            self.performSegue(withIdentifier: "edit", sender: self.manager.filtered[indexPath.row])
+        let edit = UIContextualAction(style: .normal, title: Constants.Keys.edit.locale) { _, _, completion in
+            self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: self.manager.filtered[indexPath.row])
             completion(true)
         }
-        edit.image = UIImage(named: "editieren")
+        edit.image = UIImage(named: Constants.Images.edit.rawValue)
         edit.backgroundColor = .systemPurple
         return UISwipeActionsConfiguration(actions: [edit])
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let share = UIContextualAction(style: .normal, title: "Teilen") { _, _, completion in
+        let share = UIContextualAction(style: .normal, title: Constants.Keys.share.locale) { _, _, completion in
             self.manager.shareManga(self.manager.filtered[indexPath.row], self)
             completion(true)
         }
-        share.image = UIImage(named: "teilen")
+        share.image = UIImage(named: Constants.Images.share.rawValue)
         share.backgroundColor = .systemPurple
 
-        let remove = UIContextualAction(style: .destructive, title: "Löschen") { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
             self.manager.removeManga(self.manager.filtered[indexPath.row])
             self.manager.reloadIfNeccessary(self.tableView, nil, true)
             completion(true)
         }
-        remove.image = UIImage(named: "müll")
+        remove.image = UIImage(named: Constants.Images.trash.rawValue)
         remove.backgroundColor = .systemRed
 
         return UISwipeActionsConfiguration(actions: [remove, share])
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "sammlungCell") as! RowCell
+        return tableView.dequeueReusableCell(withIdentifier: RowCell.reuseIdentifier) as! RowCell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -135,7 +135,7 @@ extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchR
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detail", sender: manager.filtered[indexPath.row])
+        performSegue(withIdentifier: Constants.Segues.detail.rawValue, sender: manager.filtered[indexPath.row])
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
@@ -145,9 +145,9 @@ extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchR
     func updateSearchResults(for searchController: UISearchController) {
         navigationController?.navigationBar.prefersLargeTitles = !self.searchController.isActive
         if searchController.isActive, let text = searchController.searchBar.text, !text.isEmpty {
-            UserDefaults.standard.set(text.lowercased(), forKey: "SammlungSearch")
+            UserDefaults.standard.set(text.lowercased(), forKey: Constants.Keys.mangaSearch.rawValue)
         } else {
-            UserDefaults.standard.removeObject(forKey: "SammlungSearch")
+            UserDefaults.standard.removeObject(forKey: Constants.Keys.mangaSearch.rawValue)
         }
         manager.reloadIfNeccessary(tableView, nil, true)
     }

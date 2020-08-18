@@ -34,7 +34,7 @@ class SammlungAddView: UITableViewController {
             completed = maxCount <= editManga!.countAll
         }
 
-        let img = image.image == UIImage(named: "default") ? nil : image.image?.cover()
+        let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : image.image?.cover()
         let temp = Manga(id: editManga != nil ? editManga!.id : UUID(),
                       title: titleField.text.trim(),
                      author: authorField.text.trim(),
@@ -89,7 +89,6 @@ class SammlungAddView: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let pickerView = UIPickerView()
         pickerView.tag = 0
         pickerView.dataSource = self
@@ -110,7 +109,7 @@ class SammlungAddView: UITableViewController {
             countField.text = "? von \(String(manga.countAll))"
             maxCount = manga.countAll
 
-            image.image = manga.cover?.img() ?? UIImage(named: "default")
+            image.image = manga.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
             pickerView.selectRow(manga.countAll - 1, inComponent: 2, animated: false)
         } else {
             self.navigationItem.title = "Hinzufügen"
@@ -139,7 +138,7 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
                     self.imagePicker.sourceType = .camera
                     self.present(self.imagePicker, animated: true)
                 default:
-                    self.image.image = UIImage(named: "default")
+                    self.image.image = UIImage(named: Constants.Images.default.rawValue)
                 }
             }
         }
@@ -206,7 +205,7 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
     }
 
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.image.image = UIImage(named: "default")
+        self.image.image = UIImage(named: Constants.Images.default.rawValue)
         picker.dismiss(animated: true)
     }
 

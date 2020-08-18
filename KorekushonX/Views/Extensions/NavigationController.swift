@@ -19,13 +19,17 @@ class SammlungNavigationController: UINavigationController {
         } else {
             self.view.backgroundColor = .white
         }
-        switch UserDefaults.standard.integer(forKey: "settingsSammlungView") {
+
+        var array: [Int] = UserDefaults.standard.array(forKey: Constants.Keys.selectedSammlungView.rawValue) as? [Int] ?? [0]
+        if array.isEmpty { array.append(0) }
+
+        switch array.randomElement() {
         case 1:
-            setViewControllers([UIStoryboard(name: "SammlungView", bundle: .main).instantiateViewController(withIdentifier: "BookView")], animated: false)
+            setViewControllers([UIStoryboard(name: Constants.Keys.sammlungView.rawValue, bundle: .main).instantiateViewController(withIdentifier: Constants.Keys.bookView.rawValue)], animated: false)
         case 2:
-            setViewControllers([UIStoryboard(name: "SammlungView", bundle: .main).instantiateViewController(withIdentifier: "CompactView")], animated: false)
+            setViewControllers([UIStoryboard(name: Constants.Keys.sammlungView.rawValue, bundle: .main).instantiateViewController(withIdentifier: Constants.Keys.compactView.rawValue)], animated: false)
         default:
-            setViewControllers([UIStoryboard(name: "SammlungView", bundle: .main).instantiateViewController(withIdentifier: "RowView")], animated: false)
+            setViewControllers([UIStoryboard(name: Constants.Keys.sammlungView.rawValue, bundle: .main).instantiateViewController(withIdentifier: Constants.Keys.rowView.rawValue)], animated: false)
         }
     }
 }

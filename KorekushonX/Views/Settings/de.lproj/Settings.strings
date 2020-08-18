@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Alle Daten löschen"; ObjectID = "61N-Vf-gd0"; */
+"61N-Vf-gd0.text" = "Alle Daten löschen";
+
+/* Class = "UILabel"; text = "Datenschutz"; ObjectID = "8yh-In-tye"; */
+"8yh-In-tye.text" = "Datenschutz";
+
+/* Class = "UILabel"; text = "App Symbol wählen"; ObjectID = "A0h-NJ-IBu"; */
+"A0h-NJ-IBu.text" = "App Symbol wählen";
+
+/* Class = "UILabel"; text = "Impressum"; ObjectID = "CGm-yc-MMq"; */
+"CGm-yc-MMq.text" = "Impressum";
+
+/* Class = "UILabel"; text = "Anime Ansicht anzeigen?"; ObjectID = "EdI-8a-bJ3"; */
+"EdI-8a-bJ3.text" = "Anime Ansicht anzeigen?";
+
+/* Class = "UILabel"; text = "Alle Daten reparieren"; ObjectID = "Ltj-lD-pa8"; */
+"Ltj-lD-pa8.text" = "Alle Daten reparieren";
+
+/* Class = "UILabel"; text = "Bild in Details anzeigen?"; ObjectID = "R3X-dX-ZC0"; */
+"R3X-dX-ZC0.text" = "Bild in Details anzeigen?";
+
+/* Class = "UILabel"; text = "Versionsänderungen"; ObjectID = "TGC-KD-nH6"; */
+"TGC-KD-nH6.text" = "Versionsänderungen";
+
+/* Class = "UITableViewSection"; footerTitle = "Version: 0.0.0 (0)"; ObjectID = "TqI-xs-k89"; */
+"TqI-xs-k89.footerTitle" = "Version: 0.0.0 (0)";
+
+/* Class = "UITableViewSection"; headerTitle = "Rechtliches"; ObjectID = "TqI-xs-k89"; */
+"TqI-xs-k89.headerTitle" = "Rechtliches";
+
+/* Class = "UILabel"; text = "Bildfarben errechnen?"; ObjectID = "baq-Hm-CzE"; */
+"baq-Hm-CzE.text" = "Bildfarben errechnen?";
+
+/* Class = "UILabel"; text = "Sammlung Ansicht wählen"; ObjectID = "cdk-G7-jL2"; */
+"cdk-G7-jL2.text" = "Sammlung Ansicht wählen";
+
+/* Class = "UITableViewSection"; headerTitle = "Einstellungen"; ObjectID = "qUs-71-z34"; */
+"qUs-71-z34.headerTitle" = "Einstellungen";
+
+/* Class = "UILabel"; text = "System Style wählen"; ObjectID = "rUv-4e-8xm"; */
+"rUv-4e-8xm.text" = "System Style wählen";
+
+/* Class = "UINavigationItem"; title = "Menü"; ObjectID = "wJJ-oV-y7H"; */
+"wJJ-oV-y7H.title" = "Menü";
+
+/* Class = "UILabel"; text = "Lizenzen"; ObjectID = "zIx-eG-DgC"; */
+"zIx-eG-DgC.text" = "Lizenzen";

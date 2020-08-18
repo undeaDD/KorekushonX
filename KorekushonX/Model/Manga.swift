@@ -10,13 +10,14 @@ struct Manga: Codable, Identifiable {
     var countAll: Int
     var available: Bool
     var completed: Bool
+    var coverColor: CoverColor?
 }
 
 public struct Cover: Codable {
     public let data: Data
 
     public func img() -> UIImage {
-        return UIImage(data: data) ?? UIImage(named: "default")!
+        return UIImage(data: data) ?? UIImage(named: Constants.Images.default.rawValue)!
     }
 
     public init(image: UIImage) {
@@ -29,18 +30,17 @@ class RowCell: UITableViewCell {
     @IBOutlet private var titleField: UILabel!
     @IBOutlet private var subtitleField: UILabel!
     @IBOutlet private var countField: UILabel!
+    static let reuseIdentifier = "sammlungCell"
 
     func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
         titleField.text = manga.title
         subtitleField.text = manga.author
         countField.text = ".../\(manga.countAll)"
-        imageField.image = manga.cover?.img() ?? UIImage(named: "default")
+        imageField.image = manga.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
 
-        if let img = manga.cover?.img(), img != UIImage(named: "default") {
-            let color = img.averageColor
+        if UserDefaults.standard.bool(forKey: Constants.Keys.calculateColors.rawValue), let color = manga.coverColor?.color {
             backgroundColor = color
-
-            if color?.isDarkColor ?? false {
+            if color.isDarkColor {
                 titleField.textColor = .white
                 subtitleField.textColor = .lightGray
                 countField.textColor = .white
@@ -62,7 +62,7 @@ class RowCell: UITableViewCell {
         }
 
         if #available(iOS 13.0, *) {
-            let image = UIImageView(image: UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate))
+            let image = UIImageView(image: UIImage(systemName: Constants.Images.chevronRight.rawValue)?.withRenderingMode(.alwaysTemplate))
             image.tintColor = subtitleField.textColor
             accessoryView = image
         }
@@ -80,13 +80,14 @@ class BookCell: UICollectionViewCell {
     @IBOutlet private var imageField: UIImageView!
     @IBOutlet private var titleField: UILabel?
     @IBOutlet private var countField: UILabel!
+    static let reuseIdentifier = "bookCell"
 
     func setUp(_ manga: Manga, _ bookStore: GekauftManager) {
-        imageField.image = manga.cover?.img() ?? UIImage(named: "default")
+        imageField.image = manga.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
         countField.text = ".../\(manga.countAll)"
-
         let bgView = contentView.subviews.first
-        if let img = manga.cover?.img(), img != UIImage(named: "default") {
+
+        if UserDefaults.standard.bool(forKey: Constants.Keys.calculateColors.rawValue), let img = manga.cover?.img(), img != UIImage(named: Constants.Images.default.rawValue) {
             let color = img.averageColor
             bgView?.backgroundColor = color
 

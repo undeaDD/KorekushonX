@@ -17,7 +17,7 @@
             </objects>
             <point key="canvasLocation" x="689" y="-281"/>
         </scene>
-        <!--Gekaufte Mangas-->
+        <!--Bought Books-->
         <scene sceneID="nob-4I-pCk">
             <objects>
                 <viewController id="ZsM-kY-QHH" customClass="GekauftView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,14 +47,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band: 1 | Gekauft am: 00.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA0-cS-ONr">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book: 1 | Bought: 00.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA0-cS-ONr">
                                                     <rect key="frame" x="8" y="32.5" width="285" height="15.5"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00,00 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1S-8d-PmU">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1S-8d-PmU">
                                                     <rect key="frame" x="301" y="8" width="65" height="44"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
@@ -98,8 +98,8 @@
                             <constraint firstItem="fIe-9Z-Vwk" firstAttribute="trailing" secondItem="tCk-FK-DlO" secondAttribute="trailing" id="tog-qw-IYw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Gekaufte Mangas" id="H05-0o-2FW">
-                        <barButtonItem key="backBarButtonItem" title="Zurück" id="nbS-o9-9eC"/>
+                    <navigationItem key="navigationItem" title="Bought Books" id="H05-0o-2FW">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="nbS-o9-9eC"/>
                         <barButtonItem key="leftBarButtonItem" image="user" id="Dda-3F-HaE">
                             <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
@@ -133,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="163.768115942029" y="103.79464285714285"/>
         </scene>
-        <!--Hinzufügen-->
+        <!--Add new-->
         <scene sceneID="Khx-2L-5HC">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="Ik1-Qv-4E8" customClass="GekauftAddView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,7 +143,7 @@
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <sections>
-                            <tableViewSection footerTitle="* Diese Texte kurz halten" id="swS-t4-DNd">
+                            <tableViewSection footerTitle="* Short texts" id="swS-t4-DNd">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="vii-Lx-ZuD">
                                         <rect key="frame" x="20" y="18" width="374" height="50"/>
@@ -152,8 +152,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reihe:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIC-lq-XPF">
-                                                    <rect key="frame" x="15" y="8" width="51" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manga:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIC-lq-XPF">
+                                                    <rect key="frame" x="15" y="8" width="60.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="a19-b8-EDr"/>
@@ -163,7 +163,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiss of the Fox" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWN-ed-HoJ">
-                                                    <rect key="frame" x="74" y="8" width="285" height="34"/>
+                                                    <rect key="frame" x="83.5" y="8" width="275.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -193,8 +193,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nummer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mju-uR-ss5">
-                                                    <rect key="frame" x="15" y="8" width="76" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mju-uR-ss5">
+                                                    <rect key="frame" x="15" y="8" width="71.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="uBF-2J-kJI"/>
@@ -204,7 +204,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 von 3" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SlL-of-UdG">
-                                                    <rect key="frame" x="99" y="8" width="260" height="34"/>
+                                                    <rect key="frame" x="94.5" y="8" width="264.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -230,8 +230,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kaufpreis (in €):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3b-KB-doD">
-                                                    <rect key="frame" x="15" y="8" width="132" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price (in $):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3b-KB-doD">
+                                                    <rect key="frame" x="15" y="8" width="95" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="NLr-mQ-PPD"/>
@@ -241,7 +241,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="7,00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODi-zE-5Qo">
-                                                    <rect key="frame" x="155" y="8" width="204" height="34"/>
+                                                    <rect key="frame" x="118" y="8" width="241" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -267,8 +267,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kaufdatum:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIo-5z-uAT">
-                                                    <rect key="frame" x="15" y="8" width="96" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bought:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIo-5z-uAT">
+                                                    <rect key="frame" x="15" y="8" width="65" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="6ZT-GH-RaW"/>
@@ -278,7 +278,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="00.00.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-iA-nI0">
-                                                    <rect key="frame" x="119" y="8" width="240" height="34"/>
+                                                    <rect key="frame" x="88" y="8" width="271" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -304,8 +304,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kaufort *:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19g-vM-aOg">
-                                                    <rect key="frame" x="15" y="8" width="79" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bought at *:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19g-vM-aOg">
+                                                    <rect key="frame" x="15" y="8" width="96.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="B8p-QW-60k"/>
@@ -315,7 +315,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amazon" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XqS-64-86v">
-                                                    <rect key="frame" x="102" y="8" width="257" height="34"/>
+                                                    <rect key="frame" x="119.5" y="8" width="239.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -341,8 +341,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zustand:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L1-Ie-u0e">
-                                                    <rect key="frame" x="15" y="8" width="73" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L1-Ie-u0e">
+                                                    <rect key="frame" x="15" y="8" width="84.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="e73-Yp-xMl"/>
@@ -352,7 +352,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="Rl5-wY-T03">
-                                                    <rect key="frame" x="103" y="9.5" width="256" height="32"/>
+                                                    <rect key="frame" x="114.5" y="9.5" width="244.5" height="32"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <segments>
                                                         <segment title="🤮"/>
@@ -421,8 +421,8 @@
                             <outlet property="delegate" destination="Ik1-Qv-4E8" id="JId-m9-hno"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hinzufügen" largeTitleDisplayMode="never" id="Pcs-0V-rLY">
-                        <barButtonItem key="backBarButtonItem" title="Zurück" id="wrV-qG-N9n"/>
+                    <navigationItem key="navigationItem" title="Add new" largeTitleDisplayMode="never" id="Pcs-0V-rLY">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="wrV-qG-N9n"/>
                         <rightBarButtonItems>
                             <barButtonItem image="speichern2" width="30" id="T8V-CL-x4R">
                                 <color key="tintColor" systemColor="systemPurpleColor"/>
@@ -452,7 +452,7 @@
             </objects>
             <point key="canvasLocation" x="1041" y="104"/>
         </scene>
-        <!--Reihe auswählen-->
+        <!--Select Manga-->
         <scene sceneID="lBL-jw-KFe">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="egc-fL-o9J" customClass="GekauftSelectView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
@@ -496,7 +496,7 @@
                             <constraint firstItem="xme-Pj-4cS" firstAttribute="leading" secondItem="HQj-MM-bS3" secondAttribute="leading" id="dHy-ed-Qln"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Reihe auswählen" id="FVx-JY-yIc">
+                    <navigationItem key="navigationItem" title="Select Manga" id="FVx-JY-yIc">
                         <barButtonItem key="rightBarButtonItem" image="goBack" id="Mgl-xz-YD1">
                             <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>

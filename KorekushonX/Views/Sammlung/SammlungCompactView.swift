@@ -28,7 +28,7 @@ class SammlungCompactView: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Suchen"
+        searchController.searchBar.placeholder = Constants.Keys.search.locale
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
@@ -47,7 +47,7 @@ class SammlungCompactView: UIViewController {
                 case 0:
                     self.manager.shareManga(manga, self)
                 case 1:
-                    self.performSegue(withIdentifier: "edit", sender: manga)
+                    self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: manga)
                 default:
                     self.manager.removeManga(manga)
                     self.manager.reloadIfNeccessary(nil, self.collectionView, true)
@@ -57,11 +57,11 @@ class SammlungCompactView: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "edit", let dest = segue.destination as? SammlungAddView, let manga = sender as? Manga {
+        if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? SammlungAddView, let manga = sender as? Manga {
             dest.editManga = manga
-        } else if segue.identifier == "detail", let dest = segue.destination as? SammlungDetailView, let manga = sender as? Manga {
+        } else if segue.identifier == Constants.Segues.detail.rawValue, let dest = segue.destination as? SammlungDetailView, let manga = sender as? Manga {
             dest.manga = manga
-        } else if segue.identifier == "settings", let nav = segue.destination as? NavigationController {
+        } else if segue.identifier == Constants.Segues.settings.rawValue, let nav = segue.destination as? NavigationController {
             nav.presentationController?.delegate = self
         }
     }
@@ -106,7 +106,7 @@ extension SammlungCompactView: UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detail", sender: manager.filtered[indexPath.row])
+        performSegue(withIdentifier: Constants.Segues.detail.rawValue, sender: manager.filtered[indexPath.row])
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

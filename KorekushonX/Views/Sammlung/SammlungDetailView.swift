@@ -68,7 +68,7 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
         case (0, 0):
             if UserDefaults.standard.bool(forKey: "settingsSammlungShowCover") {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "coverCell") as! CoverCell
-                cell.cover.image = manga?.cover?.img() ?? UIImage(named: "default")
+                cell.cover.image = manga?.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
                 return cell
             }
             fallthrough

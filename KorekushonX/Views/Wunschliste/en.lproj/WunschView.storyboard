@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luW-UE-qan">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luW-UE-qan">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Wunschliste-->
+        <!--Wishlist-->
         <scene sceneID="u8K-IB-dXa">
             <objects>
                 <viewController id="luW-UE-qan" customClass="WunschView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ude-Fe-C42">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m5h-uZ-fGI">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,20 +37,20 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="8dI-tc-VDS">
                                                     <rect key="frame" x="0.0" y="0.0" width="161" height="197"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                 </imageView>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manga Titel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mv7-qA-N1D">
                                                     <rect key="frame" x="0.0" y="197" width="161" height="30"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="qf0-Gk-pqa"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="8dI-tc-VDS" firstAttribute="top" secondItem="f1z-9i-iXH" secondAttribute="top" id="7dP-3C-RWh"/>
                                                 <constraint firstItem="mv7-qA-N1D" firstAttribute="top" secondItem="8dI-tc-VDS" secondAttribute="bottom" id="WuZ-lq-o6C"/>
@@ -60,7 +61,7 @@
                                                 <constraint firstItem="8dI-tc-VDS" firstAttribute="leading" secondItem="f1z-9i-iXH" secondAttribute="leading" id="wa4-Ae-4SR"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <size key="customSize" width="161" height="227"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -76,25 +77,25 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="7x7-lj-bye"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7x7-lj-bye" firstAttribute="trailing" secondItem="ude-Fe-C42" secondAttribute="trailing" id="EpQ-vS-lFr"/>
                             <constraint firstItem="ude-Fe-C42" firstAttribute="leading" secondItem="7x7-lj-bye" secondAttribute="leading" id="HhY-GS-AYv"/>
                             <constraint firstItem="ude-Fe-C42" firstAttribute="top" secondItem="7x7-lj-bye" secondAttribute="top" id="adI-fF-saq"/>
                             <constraint firstItem="ude-Fe-C42" firstAttribute="bottom" secondItem="7x7-lj-bye" secondAttribute="bottom" id="iN5-RE-J5f"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7x7-lj-bye"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Wunschliste" id="Ahe-wV-6gD">
-                        <barButtonItem key="backBarButtonItem" title="Zurück" id="DTL-Se-Ztf"/>
+                    <navigationItem key="navigationItem" title="Wishlist" id="Ahe-wV-6gD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="DTL-Se-Ztf"/>
                         <barButtonItem key="leftBarButtonItem" image="user" id="hkG-JB-L1F">
-                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
                                 <segue destination="fbD-oZ-sXc" kind="presentation" id="p1P-QV-XtS"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="add" id="u8g-ND-usR">
-                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
                                 <segue destination="0ET-zY-qgu" kind="show" id="6CO-10-rlt"/>
                             </connections>
@@ -119,14 +120,14 @@
             </objects>
             <point key="canvasLocation" x="693" y="-281"/>
         </scene>
-        <!--Hinzufügen-->
+        <!--Add new-->
         <scene sceneID="JpZ-73-j5u">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="0ET-zY-qgu" customClass="WunschAddView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="2dy-Ou-TRZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="qzg-ZK-7F7">
@@ -138,16 +139,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bild auswählen:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBS-5l-nAj">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Cover:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBS-5l-nAj">
                                                     <rect key="frame" x="15" y="8" width="269" height="54"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="XxP-Vc-yLF">
                                                     <rect key="frame" x="299" y="8" width="36" height="54"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="XxP-Vc-yLF" secondAttribute="height" multiplier="1:1.5" id="ps1-5C-HSW"/>
                                                     </constraints>
@@ -159,7 +160,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="TBS-5l-nAj" firstAttribute="leading" secondItem="tHH-zK-97B" secondAttribute="leading" constant="15" id="9nV-kD-IKI"/>
                                                 <constraint firstItem="XxP-Vc-yLF" firstAttribute="leading" secondItem="TBS-5l-nAj" secondAttribute="trailing" constant="15" id="Cyg-Lm-I4j"/>
@@ -170,7 +171,7 @@
                                                 <constraint firstItem="XxP-Vc-yLF" firstAttribute="top" secondItem="tHH-zK-97B" secondAttribute="top" constant="8" id="v6s-7y-t2F"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="YbG-NS-EUr">
                                         <rect key="frame" x="20" y="88" width="374" height="50"/>
@@ -180,23 +181,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manga Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7v-7l-cMA">
-                                                    <rect key="frame" x="15" y="8" width="112.5" height="34"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="15" y="8" width="112" height="34"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="PN0-Qo-Y8r"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiss of the Fox" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9RK-rE-aYt">
-                                                    <rect key="frame" x="135.5" y="8" width="223.5" height="34"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="135" y="8" width="224" height="34"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="q7v-7l-cMA" firstAttribute="top" secondItem="8vl-nV-NHY" secondAttribute="top" constant="8" id="3qZ-RC-NGT"/>
                                                 <constraint firstItem="9RK-rE-aYt" firstAttribute="top" secondItem="8vl-nV-NHY" secondAttribute="top" constant="8" id="9me-UM-IpD"/>
@@ -207,7 +208,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="q7v-7l-cMA" secondAttribute="bottom" constant="8" id="fdO-3D-NC9"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -217,16 +218,16 @@
                             <outlet property="delegate" destination="0ET-zY-qgu" id="deL-t1-GAV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hinzufügen" id="zN7-Zl-MoW">
+                    <navigationItem key="navigationItem" title="Add new" id="zN7-Zl-MoW">
                         <rightBarButtonItems>
                             <barButtonItem image="speichern2" width="40" id="yps-su-G5x">
-                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
                                 <connections>
                                     <action selector="save2" destination="0ET-zY-qgu" id="Twm-Jq-NaQ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="speichern" width="40" id="dak-Ge-Lsb">
-                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
                                 <connections>
                                     <action selector="save:" destination="0ET-zY-qgu" id="0rU-ff-Vr1"/>
                                 </connections>
@@ -252,5 +253,14 @@
         <image name="speichern" width="30" height="30"/>
         <image name="speichern2" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

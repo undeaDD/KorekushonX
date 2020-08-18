@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luW-UE-qan">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luW-UE-qan">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Erinnerungen-->
+        <!--Reminder-->
         <scene sceneID="u8K-IB-dXa">
             <objects>
                 <viewController id="luW-UE-qan" customClass="ErinnerungView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="QSm-3t-kVm">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="erinnerungCell" rowHeight="70" id="2vO-xx-EJj" customClass="ErinnerungCell" customModule="KorekushonX" customModuleProvider="target">
@@ -28,22 +29,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erinnerung Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tF7-fr-QSX">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tF7-fr-QSX">
                                                     <rect key="frame" x="8" y="15" width="358" height="20.5"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erinnern am: 00.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLY-kD-yoe">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 00.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLY-kD-yoe">
                                                     <rect key="frame" x="8" y="38" width="358" height="17"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="tF7-fr-QSX" firstAttribute="top" secondItem="DZ3-y3-UYa" secondAttribute="top" constant="15" id="1fo-ty-xer"/>
                                                 <constraint firstAttribute="trailing" secondItem="tF7-fr-QSX" secondAttribute="trailing" constant="8" id="6Tv-5i-O3F"/>
@@ -53,7 +54,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="iLY-kD-yoe" secondAttribute="bottom" constant="15" id="nwL-o5-98x"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <connections>
                                             <outlet property="subtitleField" destination="iLY-kD-yoe" id="RYb-GN-e8N"/>
                                             <outlet property="titleField" destination="tF7-fr-QSX" id="KBR-dh-Mh6"/>
@@ -62,25 +63,22 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="7x7-lj-bye"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="QSm-3t-kVm" secondAttribute="bottom" id="2ki-fF-c7C"/>
                             <constraint firstItem="QSm-3t-kVm" firstAttribute="leading" secondItem="7x7-lj-bye" secondAttribute="leading" id="Pp1-ft-rbR"/>
                             <constraint firstItem="7x7-lj-bye" firstAttribute="trailing" secondItem="QSm-3t-kVm" secondAttribute="trailing" id="VL6-gh-zyI"/>
                             <constraint firstItem="QSm-3t-kVm" firstAttribute="top" secondItem="7x7-lj-bye" secondAttribute="top" id="if1-Zj-fjq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7x7-lj-bye"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Erinnerungen" id="Ahe-wV-6gD">
-                        <barButtonItem key="backBarButtonItem" title="Zurück" id="DTL-Se-Ztf"/>
+                    <navigationItem key="navigationItem" title="Reminder" id="Ahe-wV-6gD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="DTL-Se-Ztf"/>
                         <barButtonItem key="leftBarButtonItem" image="user" id="hkG-JB-L1F">
-                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="fbD-oZ-sXc" kind="presentation" id="p1P-QV-XtS"/>
-                            </connections>
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="add" id="u8g-ND-usR">
-                            <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
                                 <segue destination="sOy-E9-Vbl" kind="show" id="XTz-Zf-edU"/>
                             </connections>
@@ -90,28 +88,31 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="QSm-3t-kVm" id="40Q-CR-tba"/>
+                        <segue destination="jrj-rJ-agY" kind="presentation" identifier="settings" id="Rmi-Cc-Zi5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="252-FP-bKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="163.768115942029" y="103.79464285714285"/>
+            <point key="canvasLocation" x="65" y="104"/>
         </scene>
         <!--Settings-->
-        <scene sceneID="Xlj-kV-pUS">
+        <scene sceneID="5Or-lj-kS4">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="fbD-oZ-sXc" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LVg-39-xXd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Settings" id="jrj-rJ-agY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1RI-JX-lDF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xr5-va-wRm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="-281"/>
+            <point key="canvasLocation" x="704" y="-311"/>
         </scene>
-        <!--Hinzufügen-->
+        <!--Add new-->
         <scene sceneID="19M-WR-WO9">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="sOy-E9-Vbl" customClass="ErinnerungAddView" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Pgd-9i-yZc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="1tk-Dq-Rq5">
@@ -125,22 +126,22 @@
                                             <subviews>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMD-8i-he8">
                                                     <rect key="frame" x="15" y="8" width="42" height="34"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="dgn-jW-3fb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiss of the Fox" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ua6-MR-hvN">
                                                     <rect key="frame" x="65" y="8" width="294" height="34"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="BMD-8i-he8" secondAttribute="bottom" constant="8" id="GcK-7f-1GD"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ua6-MR-hvN" secondAttribute="bottom" constant="8" id="Mca-lk-KJ6"/>
@@ -151,7 +152,7 @@
                                                 <constraint firstItem="BMD-8i-he8" firstAttribute="top" secondItem="dnz-uY-TAD" secondAttribute="top" constant="8" id="rDv-6q-bLr"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="C3N-QV-AcD">
                                         <rect key="frame" x="20" y="68" width="374" height="50"/>
@@ -160,24 +161,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nummer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AF-EP-HBX">
-                                                    <rect key="frame" x="15" y="8" width="76.5" height="34"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AF-EP-HBX">
+                                                    <rect key="frame" x="15" y="8" width="47" height="34"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="cJs-h0-bPw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="3" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oiv-Zt-Tj4">
-                                                    <rect key="frame" x="99.5" y="8" width="259.5" height="34"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="70" y="8" width="289" height="34"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="Oiv-Zt-Tj4" firstAttribute="leading" secondItem="7AF-EP-HBX" secondAttribute="trailing" constant="8" id="JbU-av-gUV"/>
                                                 <constraint firstItem="Oiv-Zt-Tj4" firstAttribute="top" secondItem="zjP-fC-XXm" secondAttribute="top" constant="8" id="Rrb-og-dnh"/>
@@ -188,7 +189,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Oiv-Zt-Tj4" secondAttribute="bottom" constant="8" id="wTp-rw-mfj"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="200" id="Oaf-U8-Fy0">
                                         <rect key="frame" x="20" y="118" width="374" height="200"/>
@@ -197,13 +198,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ayZ-eb-XwW">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ayZ-eb-XwW">
                                                     <rect key="frame" x="8" y="8" width="358" height="184"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <locale key="locale" localeIdentifier="de"/>
                                                 </datePicker>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ayZ-eb-XwW" secondAttribute="trailing" constant="8" id="2SL-Zl-Mgw"/>
                                                 <constraint firstAttribute="bottom" secondItem="ayZ-eb-XwW" secondAttribute="bottom" constant="8" id="TjW-WX-Ph7"/>
@@ -211,7 +212,7 @@
                                                 <constraint firstItem="ayZ-eb-XwW" firstAttribute="top" secondItem="5xX-rG-hd5" secondAttribute="top" constant="8" id="zsR-sa-ZPS"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -221,16 +222,16 @@
                             <outlet property="delegate" destination="sOy-E9-Vbl" id="0Zb-2a-82u"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hinzufügen" id="X5L-6m-Bxy">
+                    <navigationItem key="navigationItem" title="Add new" id="X5L-6m-Bxy">
                         <rightBarButtonItems>
                             <barButtonItem image="speichern2" width="40" id="KWM-Sq-7Ra">
-                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
                                 <connections>
                                     <action selector="save2" destination="sOy-E9-Vbl" id="o0W-i7-O96"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="speichern" width="40" id="GtF-7D-K4v">
-                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
                                 <connections>
                                     <action selector="save:" destination="sOy-E9-Vbl" id="r1D-Pw-njv"/>
                                 </connections>
@@ -253,5 +254,17 @@
         <image name="speichern" width="30" height="30"/>
         <image name="speichern2" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

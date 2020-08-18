@@ -33,10 +33,12 @@ public class GekauftCell: UITableViewCell {
     @IBOutlet public var titleField: UILabel!
     @IBOutlet public var subtitleField: UILabel!
     @IBOutlet public var priceField: UILabel!
+    static let reuseIdentifier = "gekauftCell"
 
     func setUp(_ book: Book, _ date: String?) {
         titleField.text = book.title
-        subtitleField.text = "Band: \(book.number) | \(date != nil ? "Gekauft am: " + date! : "Generiert")"
-        priceField.text = String(format: "%.2f", book.price) + " €"
+
+        subtitleField.text = "\(Constants.Keys.book.locale): \(book.number) | \(date != nil ? "\(Constants.Keys.boughtAt.locale): " + date! : Constants.Keys.generated.locale)"
+        priceField.text = Constants.Keys.dollar.locale + String(format: "%.2f", book.price) + Constants.Keys.euro.locale
     }
 }

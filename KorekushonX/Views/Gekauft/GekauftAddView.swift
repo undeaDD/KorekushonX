@@ -41,18 +41,18 @@ class GekauftAddView: UITableViewController {
                     extras: extrasField.text.trim())
 
         try? manager.store.save(temp)
-        UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.booksReload.rawValue)
         manager.checkMangaForCompletion(manga.id)
 
         if keepOpen {
-            AlertManager.shared.savedInfo(self, "Band")
+            AlertManager.shared.savedInfo(self, Constants.Keys.book.locale)
         } else {
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "selectManga" {
+        if segue.identifier == Constants.Keys.selectManga.rawValue {
             let dest = segue.destination as? GekauftSelectView
             dest?.selected = mangaField.text
             dest?.mangas = mangas
@@ -73,7 +73,7 @@ class GekauftAddView: UITableViewController {
         datePickerView.addTarget(self, action: #selector(onChange(_:)), for: .valueChanged)
 
         if let book = editBook {
-            navigationItem.title = "Bearbeiten"
+            navigationItem.title = Constants.Keys.edit.locale
             mangaField.text = book.title
             numberField.text = String(book.number)
             priceField.text = String(format: "%.2f", book.price)
@@ -88,9 +88,8 @@ class GekauftAddView: UITableViewController {
 
             datePickerView.date = book.date == 0 ? Date() : Date(timeIntervalSince1970: book.date)
             index = (mangas.enumerated().first { $0.element.id == book.mangaId })?.offset ?? 0
-            //mangaPickerView?.selectRow(index, inComponent: 0, animated: false)
         } else {
-            self.navigationItem.title = "Hinzufügen"
+            self.navigationItem.title = Constants.Keys.add.locale
             mangaField.text = mangas[index].title
             dateField.text = nil
             numberField.text = "1"
@@ -123,11 +122,11 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .destructive, title: "Löschen") { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
             self.dateField.text = nil
             completion(true)
         }
-        remove.image = UIImage(named: "müll")
+        remove.image = UIImage(named: Constants.Images.trash.rawValue)
         remove.backgroundColor = .systemPurple
         return indexPath.row == 3 ? UISwipeActionsConfiguration(actions: [remove]) : nil
     }
@@ -137,7 +136,7 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
         case (1, 0):
             return String(row + 1)
         case (1, 1):
-            return "von"
+            return Constants.Keys.of.locale
         case (1, 2):
             return "\(mangas[index].countAll)"
         default:

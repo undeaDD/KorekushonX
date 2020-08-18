@@ -18,7 +18,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.shadowOpacity = 0.4
         delegate = self
 
-        if !UserDefaults.standard.bool(forKey: "settingsShowAnimeView") {
+        if !UserDefaults.standard.bool(forKey: Constants.Keys.showAnimeView.rawValue) {
             if viewControllers?.count == 5 {
                 viewControllers?.removeLast()
             }
@@ -31,6 +31,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     func addManga() {
         selectedIndex = 0
-        (selectedViewController as? UINavigationController)?.topViewController?.performSegue(withIdentifier: "edit", sender: nil)
+        (selectedViewController as? UINavigationController)?.topViewController?.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: nil)
     }
 }

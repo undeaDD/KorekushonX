@@ -7,7 +7,7 @@ class ErinnerungManager {
     static let shared = ErinnerungManager()
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = "dd.MM.yy"
+        temp.dateFormat = Constants.Keys.dateFormat.locale
         return temp
     }()
 
@@ -19,7 +19,7 @@ class ErinnerungManager {
 
     func shedule(_ title: String, _ date: Date, _ completion: @escaping () -> Void) {
         let content = UNMutableNotificationContent()
-        content.title = "Erinnerung für:"
+        content.title = Constants.Keys.remindMe.locale + ":"
         content.body = title
         content.sound = .default
 
@@ -41,17 +41,17 @@ class ErinnerungManager {
         for erinnerung in list {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [erinnerung.id])
         }
-        UserDefaults.standard.set(true, forKey: "ErinnerungNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.remindReload.rawValue)
     }
 
     func removeErinnerung(_ erinnerung: Erinnerung) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [erinnerung.id])
-        UserDefaults.standard.set(true, forKey: "ErinnerungNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.remindReload.rawValue)
     }
 
     func reloadIfNeccessary(_ tableView: UITableView, _ force: Bool = false) {
-        if force || UserDefaults.standard.bool(forKey: "ErinnerungNeedsUpdating") {
-            UserDefaults.standard.set(false, forKey: "ErinnerungNeedsUpdating")
+        if force || UserDefaults.standard.bool(forKey: Constants.Keys.remindReload.rawValue) {
+            UserDefaults.standard.set(false, forKey: Constants.Keys.remindReload.rawValue)
             UNUserNotificationCenter.current().getPendingNotificationRequests { list in
                 self.list = []
                 for item in list {

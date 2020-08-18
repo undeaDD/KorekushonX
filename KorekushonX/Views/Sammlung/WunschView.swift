@@ -33,7 +33,7 @@ class WunschView: UIViewController {
                 case 0:
                     self.manager.shareManga(manga, self)
                 case 1:
-                    self.performSegue(withIdentifier: "edit", sender: manga)
+                    self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: manga)
                 default:
                     self.manager.removeManga(manga)
                     self.manager.reloadIfNeccessary(self.collectionView, true)
@@ -43,9 +43,9 @@ class WunschView: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "settings", let nav = segue.destination as? NavigationController {
+        if segue.identifier == Constants.Segues.settings.rawValue, let nav = segue.destination as? NavigationController {
             nav.presentationController?.delegate = self
-        } else if segue.identifier == "edit", let dest = segue.destination as? WunschAddView, let wunsch = sender as? Wunsch {
+        } else if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? WunschAddView, let wunsch = sender as? Wunsch {
             dest.editWunsch = wunsch
         }
     }
@@ -73,7 +73,7 @@ extension WunschView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "wunschCell", for: indexPath) as! WunschCell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: WunschCell.reuseIdentifier, for: indexPath) as! WunschCell
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -87,7 +87,7 @@ extension WunschView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             case 0:
                 self.manager.shareManga(wunsch, self)
             case 1:
-                self.performSegue(withIdentifier: "edit", sender: wunsch)
+                self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: wunsch)
             default:
                 self.manager.removeManga(wunsch)
                 self.manager.reloadIfNeccessary(self.collectionView, true)

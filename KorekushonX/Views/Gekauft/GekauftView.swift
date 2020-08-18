@@ -21,7 +21,7 @@ class GekauftView: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Suchen"
+        searchController.searchBar.placeholder = Constants.Keys.search.locale
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
@@ -41,7 +41,7 @@ class GekauftView: UIViewController {
             AlertManager.shared.optionMinimal(self, true) { index in
                 switch index {
                 case 0:
-                    self.performSegue(withIdentifier: "edit", sender: manga)
+                    self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: manga)
                 case 1:
                     self.manager.removeBook(manga)
                     self.manager.reloadIfNeccessary(self.tableView, nil, true)
@@ -53,16 +53,16 @@ class GekauftView: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "edit", let dest = segue.destination as? GekauftAddView, let book = sender as? Book {
+        if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? GekauftAddView, let book = sender as? Book {
             dest.editBook = book
-        } else if segue.identifier == "detail", let dest = segue.destination as? SammlungDetailView {
+        } else if segue.identifier == Constants.Segues.detail.rawValue, let dest = segue.destination as? SammlungDetailView {
             if let indexPath = sender as? IndexPath {
                 let manga = manager.mangaStore.object(withId: manager.filtered[indexPath.row].mangaId)
                 dest.manga = manga
             } else {
                 dest.manga = (sender as! Manga)
             }
-        } else if segue.identifier == "settings", let nav = segue.destination as? NavigationController {
+        } else if segue.identifier == Constants.Segues.settings.rawValue, let nav = segue.destination as? NavigationController {
             nav.presentationController?.delegate = self
         }
     }
@@ -104,29 +104,29 @@ extension GekauftView: UITableViewDelegate, UITableViewDataSource, UISearchResul
     }
 
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let edit = UIContextualAction(style: .normal, title: "Bearbeiten") { _, _, completion in
-            self.performSegue(withIdentifier: "edit", sender: self.manager.filtered[indexPath.row])
+        let edit = UIContextualAction(style: .normal, title: Constants.Keys.edit.locale) { _, _, completion in
+            self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: self.manager.filtered[indexPath.row])
             completion(true)
         }
-        edit.image = UIImage(named: "editieren")
+        edit.image = UIImage(named: Constants.Images.edit.rawValue)
         edit.backgroundColor = .systemPurple
         return UISwipeActionsConfiguration(actions: [edit])
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .destructive, title: "Löschen") { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
             self.manager.removeBook(self.manager.filtered[indexPath.row])
             self.manager.reloadIfNeccessary(self.tableView, nil, true)
             completion(true)
         }
-        remove.image = UIImage(named: "müll")
+        remove.image = UIImage(named: Constants.Images.trash.rawValue)
         remove.backgroundColor = .systemRed
 
         return UISwipeActionsConfiguration(actions: [remove])
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "gekauftCell") as! GekauftCell
+        return tableView.dequeueReusableCell(withIdentifier: GekauftCell.reuseIdentifier) as! GekauftCell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -136,7 +136,7 @@ extension GekauftView: UITableViewDelegate, UITableViewDataSource, UISearchResul
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detail", sender: indexPath)
+        performSegue(withIdentifier: Constants.Segues.detail.rawValue, sender: indexPath)
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
@@ -146,9 +146,9 @@ extension GekauftView: UITableViewDelegate, UITableViewDataSource, UISearchResul
     func updateSearchResults(for searchController: UISearchController) {
         navigationController?.navigationBar.prefersLargeTitles = !self.searchController.isActive
         if searchController.isActive, let text = searchController.searchBar.text, !text.isEmpty {
-            UserDefaults.standard.set(text.lowercased(), forKey: "GekauftSearch")
+            UserDefaults.standard.set(text.lowercased(), forKey: Constants.Keys.booksSearch.rawValue)
         } else {
-            UserDefaults.standard.removeObject(forKey: "GekauftSearch")
+            UserDefaults.standard.removeObject(forKey: Constants.Keys.booksSearch.rawValue)
         }
         manager.reloadIfNeccessary(tableView, nil, true)
     }

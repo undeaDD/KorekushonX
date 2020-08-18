@@ -1,0 +1,21 @@
+
+/* Class = "UITextField"; placeholder = "Kiss of the Fox"; ObjectID = "9RK-rE-aYt"; */
+"9RK-rE-aYt.placeholder" = "Kiss of the Fox";
+
+/* Class = "UINavigationItem"; title = "Wunschliste"; ObjectID = "Ahe-wV-6gD"; */
+"Ahe-wV-6gD.title" = "Wunschliste";
+
+/* Class = "UIBarButtonItem"; title = "Zurück"; ObjectID = "DTL-Se-Ztf"; */
+"DTL-Se-Ztf.title" = "Zurück";
+
+/* Class = "UILabel"; text = "Bild auswählen:"; ObjectID = "TBS-5l-nAj"; */
+"TBS-5l-nAj.text" = "Bild auswählen:";
+
+/* Class = "UILabel"; text = "Manga Titel"; ObjectID = "mv7-qA-N1D"; */
+"mv7-qA-N1D.text" = "Manga Titel";
+
+/* Class = "UILabel"; text = "Manga Name:"; ObjectID = "q7v-7l-cMA"; */
+"q7v-7l-cMA.text" = "Manga Name:";
+
+/* Class = "UINavigationItem"; title = "Hinzufügen"; ObjectID = "zN7-Zl-MoW"; */
+"zN7-Zl-MoW.title" = "Hinzufügen";

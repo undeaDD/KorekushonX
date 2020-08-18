@@ -17,13 +17,13 @@ class WebImage {
                     }
                 }
             } else {
-                image = UIImage(named: "default")!
+                image = UIImage(named: Constants.Images.default.rawValue)!
             }
             semaphore.signal()
         }.resume()
 
         _ = semaphore.wait(timeout: .distantFuture)
-        return image ?? UIImage(named: "default")!
+        return image ?? UIImage(named: Constants.Images.default.rawValue)!
     }
 }
 
@@ -39,18 +39,22 @@ extension String {
     var firstCharacter: Character? {
         return isEmpty ? Character(self[startIndex].uppercased()) : nil
     }
+
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
 }
 
 extension Optional where Wrapped == String {
     func trim() -> String {
         if let string = self {
-            if string.isEmpty { return "-" } else {
+            if string.isEmpty { return Constants.Keys.unknown.rawValue } else {
                 let result = string.trimmingCharacters(in: .whitespacesAndNewlines)
-                if result.isEmpty { return "-" } else {
+                if result.isEmpty { return Constants.Keys.unknown.rawValue } else {
                     return result
                 }
             }
-        } else { return "-" }
+        } else { return Constants.Keys.unknown.rawValue }
     }
 }
 
@@ -85,7 +89,7 @@ extension UIImage {
     var averageColor: UIColor? {
         guard let inputImage = CIImage(image: self) else { return nil }
         let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
-        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let filter = CIFilter(name: Constants.Keys.areaAverage.rawValue, parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
         guard let outputImage = filter.outputImage else { return nil }
         var bitmap = [UInt8](repeating: 0, count: 4)
         let context = CIContext(options: [.workingColorSpace: kCFNull as Any])

@@ -29,12 +29,12 @@ class ErinnerungAddView: UITableViewController {
     @IBAction private func save(_ keepOpen: Bool = false) {
         self.view.endEditing(true)
 
-        let title = "Band: \(numberField.text.trim()) | \(titleField.text.trim())"
+        let title = "\(Constants.Keys.book.locale): \(numberField.text.trim()) | \(titleField.text.trim())"
         ErinnerungManager.shared.shedule(title, dateField.date) {
-            UserDefaults.standard.set(true, forKey: "ErinnerungNeedsUpdating")
+            UserDefaults.standard.set(true, forKey: Constants.Keys.remindReload.rawValue)
 
             if keepOpen {
-                AlertManager.shared.savedInfo(self, "Erinnerung")
+                AlertManager.shared.savedInfo(self, Constants.Keys.remind.locale)
             } else {
                 self.navigationController?.popToRootViewController(animated: true)
             }

@@ -38,11 +38,17 @@ class ErinnerungView: UIViewController {
         super.viewWillAppear(animated)
         manager.reloadIfNeccessary(tableView)
 
-        let enabled = UserDefaults.standard.bool(forKey: "ErinnerungActive")
+        let enabled = UserDefaults.standard.bool(forKey: Constants.Keys.reminderActive.rawValue)
         self.navigationItem.rightBarButtonItem?.isEnabled = enabled
         if !enabled {
             AlertManager.shared.notificationError(self)
             self.tabBarController?.selectedIndex = 0
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Segues.settings.rawValue, let nav = segue.destination as? NavigationController {
+            nav.presentationController?.delegate = self
         }
     }
 }
@@ -62,19 +68,19 @@ extension ErinnerungView: UITableViewDelegate, UITableViewDataSource, UIAdaptive
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .destructive, title: "Löschen") { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
             self.manager.removeErinnerung(self.manager.list[indexPath.row])
             self.manager.reloadIfNeccessary(self.tableView, true)
             completion(true)
         }
-        remove.image = UIImage(named: "müll")
+        remove.image = UIImage(named: Constants.Images.trash.rawValue)
         remove.backgroundColor = .systemRed
 
         return UISwipeActionsConfiguration(actions: [remove])
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "erinnerungCell") as! ErinnerungCell
+        return tableView.dequeueReusableCell(withIdentifier: Constants.Keys.remindCell.rawValue) as! ErinnerungCell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

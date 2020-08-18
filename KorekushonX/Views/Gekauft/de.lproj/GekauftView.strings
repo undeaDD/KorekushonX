@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "Zustand:"; ObjectID = "0L1-Ie-u0e"; */
+"0L1-Ie-u0e.text" = "Zustand:";
+
+/* Class = "UILabel"; text = "Kaufort *:"; ObjectID = "19g-vM-aOg"; */
+"19g-vM-aOg.text" = "Kaufort *:";
+
+/* Class = "UILabel"; text = "Reihe:"; ObjectID = "EIC-lq-XPF"; */
+"EIC-lq-XPF.text" = "Reihe:";
+
+/* Class = "UINavigationItem"; title = "Reihe auswählen"; ObjectID = "FVx-JY-yIc"; */
+"FVx-JY-yIc.title" = "Reihe auswählen";
+
+/* Class = "UILabel"; text = "Manga Titel"; ObjectID = "GPz-oa-Pvd"; */
+"GPz-oa-Pvd.text" = "Manga Titel";
+
+/* Class = "UINavigationItem"; title = "Gekaufte Mangas"; ObjectID = "H05-0o-2FW"; */
+"H05-0o-2FW.title" = "Gekaufte Mangas";
+
+/* Class = "UITextField"; placeholder = "7,00"; ObjectID = "ODi-zE-5Qo"; */
+"ODi-zE-5Qo.placeholder" = "7,00";
+
+/* Class = "UILabel"; text = "00,00 €"; ObjectID = "P1S-8d-PmU"; */
+"P1S-8d-PmU.text" = "00,00 €";
+
+/* Class = "UINavigationItem"; title = "Hinzufügen"; ObjectID = "Pcs-0V-rLY"; */
+"Pcs-0V-rLY.title" = "Hinzufügen";
+
+/* Class = "UISegmentedControl"; Rl5-wY-T03.segmentTitles[0] = "🤮"; ObjectID = "Rl5-wY-T03"; */
+"Rl5-wY-T03.segmentTitles[0]" = "🤮";
+
+/* Class = "UISegmentedControl"; Rl5-wY-T03.segmentTitles[1] = "😕"; ObjectID = "Rl5-wY-T03"; */
+"Rl5-wY-T03.segmentTitles[1]" = "😕";
+
+/* Class = "UISegmentedControl"; Rl5-wY-T03.segmentTitles[2] = "😶"; ObjectID = "Rl5-wY-T03"; */
+"Rl5-wY-T03.segmentTitles[2]" = "😶";
+
+/* Class = "UISegmentedControl"; Rl5-wY-T03.segmentTitles[3] = "🙂"; ObjectID = "Rl5-wY-T03"; */
+"Rl5-wY-T03.segmentTitles[3]" = "🙂";
+
+/* Class = "UISegmentedControl"; Rl5-wY-T03.segmentTitles[4] = "🤩"; ObjectID = "Rl5-wY-T03"; */
+"Rl5-wY-T03.segmentTitles[4]" = "🤩";
+
+/* Class = "UITextField"; placeholder = "1 von 3"; ObjectID = "SlL-of-UdG"; */
+"SlL-of-UdG.placeholder" = "1 von 3";
+
+/* Class = "UILabel"; text = "Band: 1 | Gekauft am: 00.00.00"; ObjectID = "TA0-cS-ONr"; */
+"TA0-cS-ONr.text" = "Band: 1 | Gekauft am: 00.00.00";
+
+/* Class = "UITextField"; placeholder = "Kiss of the Fox"; ObjectID = "UWN-ed-HoJ"; */
+"UWN-ed-HoJ.placeholder" = "Kiss of the Fox";
+
+/* Class = "UITextField"; placeholder = "Amazon"; ObjectID = "XqS-64-86v"; */
+"XqS-64-86v.placeholder" = "Amazon";
+
+/* Class = "UITextField"; placeholder = "Shoco Card, Ebook, ..."; ObjectID = "XyN-9f-grB"; */
+"XyN-9f-grB.placeholder" = "Shoco Card, Ebook, ...";
+
+/* Class = "UITextField"; placeholder = "00.00.00"; ObjectID = "e7P-iA-nI0"; */
+"e7P-iA-nI0.placeholder" = "00.00.00";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "kvi-q1-XXK"; */
+"kvi-q1-XXK.text" = "Title";
+
+/* Class = "UILabel"; text = "Nummer:"; ObjectID = "mju-uR-ss5"; */
+"mju-uR-ss5.text" = "Nummer:";
+
+/* Class = "UIBarButtonItem"; title = "Zurück"; ObjectID = "nbS-o9-9eC"; */
+"nbS-o9-9eC.title" = "Zurück";
+
+/* Class = "UITableViewSection"; footerTitle = "* Diese Texte kurz halten"; ObjectID = "swS-t4-DNd"; */
+"swS-t4-DNd.footerTitle" = "* Diese Texte kurz halten";
+
+/* Class = "UILabel"; text = "Kaufdatum:"; ObjectID = "tIo-5z-uAT"; */
+"tIo-5z-uAT.text" = "Kaufdatum:";
+
+/* Class = "UILabel"; text = "Extras *:"; ObjectID = "uEY-uR-LJF"; */
+"uEY-uR-LJF.text" = "Extras *:";
+
+/* Class = "UILabel"; text = "Kaufpreis (in €):"; ObjectID = "w3b-KB-doD"; */
+"w3b-KB-doD.text" = "Kaufpreis (in €):";
+
+/* Class = "UIBarButtonItem"; title = "Zurück"; ObjectID = "wrV-qG-N9n"; */
+"wrV-qG-N9n.title" = "Zurück";

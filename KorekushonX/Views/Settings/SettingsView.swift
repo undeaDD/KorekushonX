@@ -16,7 +16,7 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
         if let footer = tableView.footerView(forSection: 1) {
             let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
             let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
-            footer.textLabel?.text = "Version: \(version) (\(build))"
+            footer.textLabel?.text = "\(Constants.Keys.version.locale): \(version) (\(build))"
             footer.sizeToFit()
         }
     }
@@ -35,16 +35,16 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "webView", let dest = segue.destination as? SettingsWebView {
+        if segue.identifier == Constants.Segues.webView.rawValue, let dest = segue.destination as? SettingsWebView {
             switch sender as? Int ?? 0 {
             case 0:
-                dest.file = "Impressum"
+                dest.file = Constants.HTML.imprint.rawValue
             case 1:
-                dest.file = "Datenschutz"
+                dest.file = Constants.HTML.dataprotection.rawValue
             case 2:
-                dest.file = "Lizenzen"
+                dest.file = Constants.HTML.licenses.rawValue
             default:
-                dest.file = "Änderungen"
+                dest.file = Constants.HTML.changelog.rawValue
             }
         }
     }
@@ -53,11 +53,15 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
         switch indexPath.row {
         case 3:
             if let toggle = cell.contentView.subviews.last as? UISwitch {
-                toggle.isOn = UserDefaults.standard.bool(forKey: "settingsSammlungShowCover")
+                toggle.isOn = UserDefaults.standard.bool(forKey: Constants.Keys.calculateColors.rawValue)
             }
         case 4:
             if let toggle = cell.contentView.subviews.last as? UISwitch {
-                toggle.isOn = UserDefaults.standard.bool(forKey: "settingsShowAnimeView")
+                toggle.isOn = UserDefaults.standard.bool(forKey: Constants.Keys.showCover.rawValue)
+            }
+        case 5:
+            if let toggle = cell.contentView.subviews.last as? UISwitch {
+                toggle.isOn = UserDefaults.standard.bool(forKey: Constants.Keys.showAnimeView.rawValue)
             }
         default:
             return
@@ -78,21 +82,27 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
             }
         case (0, 3):
             if let toggle = tableView.cellForRow(at: indexPath)?.contentView.subviews.last as? UISwitch {
-                UserDefaults.standard.set(!toggle.isOn, forKey: "settingsSammlungShowCover")
+                UserDefaults.standard.set(!toggle.isOn, forKey: Constants.Keys.calculateColors.rawValue)
+                UserDefaults.standard.set(true, forKey: Constants.Keys.mangaReload.rawValue)
                 toggle.setOn(!toggle.isOn, animated: true)
             }
         case (0, 4):
             if let toggle = tableView.cellForRow(at: indexPath)?.contentView.subviews.last as? UISwitch {
-                UserDefaults.standard.set(!toggle.isOn, forKey: "settingsShowAnimeView")
+                UserDefaults.standard.set(!toggle.isOn, forKey: Constants.Keys.showCover.rawValue)
+                toggle.setOn(!toggle.isOn, animated: true)
+            }
+        case (0, 5):
+            if let toggle = tableView.cellForRow(at: indexPath)?.contentView.subviews.last as? UISwitch {
+                UserDefaults.standard.set(!toggle.isOn, forKey: Constants.Keys.showAnimeView.rawValue)
                 toggle.setOn(!toggle.isOn, animated: true)
                 AlertManager.shared.restartNeeded(self)
             }
-        case (0, 5):
-            AlertManager.shared.repairData(self)
         case (0, 6):
+            AlertManager.shared.repairData(self)
+        case (0, 7):
             AlertManager.shared.removeAll(self)
         case (1, let index):
-            performSegue(withIdentifier: "webView", sender: index)
+            performSegue(withIdentifier: Constants.Segues.webView.rawValue, sender: index)
         default:
             return
         }

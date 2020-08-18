@@ -3,24 +3,24 @@ import UIKit
 class GekauftManager {
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = "dd.MM.yy"
+        temp.dateFormat = Constants.Keys.dateFormat.locale
         return temp
     }()
 
     var filtered: [Book] = []
-    let store = FilesStore<Book>(uniqueIdentifier: "books")
-    let mangaStore = FilesStore<Manga>(uniqueIdentifier: "mangas")
+    let store = FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue)
+    let mangaStore = FilesStore<Manga>(uniqueIdentifier: Constants.Keys.managerMangas.rawValue)
 
     static let shared = GekauftManager()
 
     private init() {}
 
     func isFilterActive() -> Bool {
-        return UserDefaults.standard.integer(forKey: "GekauftFilter") != 0
+        return UserDefaults.standard.integer(forKey: Constants.Keys.booksFilter.rawValue) != 0
     }
 
     func getFilterImage() -> UIImage? {
-        return UIImage(named: isFilterActive() ? "filterOn" : "filterOff")
+        return UIImage(named: isFilterActive() ? Constants.Images.filterOn.rawValue : Constants.Images.filterOff.rawValue)
     }
 
     func rawCount() -> Int {
@@ -33,24 +33,24 @@ class GekauftManager {
 
     func removeBook(_ book: Book) {
         try? self.store.delete(withId: book.id)
-        UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.mangaReload.rawValue)
         checkMangaForCompletion(book.mangaId)
     }
 
     func checkMangaForCompletion(_ id: UUID) {
-        let tempStore = FilesStore<Manga>(uniqueIdentifier: "mangas")
+        let tempStore = FilesStore<Manga>(uniqueIdentifier: Constants.Keys.managerMangas.rawValue)
         if var parent = tempStore.object(withId: id) {
-            let children = FilesStore<Book>(uniqueIdentifier: "books").allObjects().filter { $0.mangaId == id }.reduce(into: Set<Int>()) { $0.insert($1.number) }
+            let children = FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue).allObjects().filter { $0.mangaId == id }.reduce(into: Set<Int>()) { $0.insert($1.number) }
             parent.completed = children.count == parent.countAll
             try? tempStore.save(parent)
-            UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
+            UserDefaults.standard.set(true, forKey: Constants.Keys.mangaReload.rawValue)
         }
     }
 
     func getMangaCount(_ id: UUID, _ completion: @escaping (Int) -> Void) {
         DispatchQueue.global(qos: .userInteractive).async {
             completion(
-                FilesStore<Book>(uniqueIdentifier: "books").allObjects().filter { $0.mangaId == id }
+                FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue).allObjects().filter { $0.mangaId == id }
                 .reduce(into: Set<Int>()) { $0.insert($1.number) }.count
             )
         }
@@ -59,7 +59,7 @@ class GekauftManager {
     func reloadIfNeccessary(_ tableView: UITableView? = nil, _ collectionView: UICollectionView? = nil, _ force: Bool = false) {
         filtered = store.allObjects()
 
-        switch UserDefaults.standard.integer(forKey: "GekauftFilter") {
+        switch UserDefaults.standard.integer(forKey: Constants.Keys.booksFilter.rawValue) {
         case 1:
             filtered = filtered.filter { $0.date != 0 }
         case 2:
@@ -72,12 +72,12 @@ class GekauftManager {
             filtered.sort { $0.date >= $1.date }
         }
 
-        if let search = UserDefaults.standard.string(forKey: "GekauftSearch") {
+        if let search = UserDefaults.standard.string(forKey: Constants.Keys.booksSearch.rawValue) {
             filtered = filtered.filter { $0.title?.lowercased().contains(search) ?? false || search.contains(String($0.number)) || $0.place.lowercased().contains(search) }
         }
 
-        if force || UserDefaults.standard.bool(forKey: "BooksNeedsUpdating") {
-            UserDefaults.standard.set(false, forKey: "BooksNeedsUpdating")
+        if force || UserDefaults.standard.bool(forKey: Constants.Keys.booksReload.rawValue) {
+            UserDefaults.standard.set(false, forKey: Constants.Keys.booksReload.rawValue)
             if let tableView = tableView {
                 UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { tableView.reloadData() })
             } else if let collectionView = collectionView {
