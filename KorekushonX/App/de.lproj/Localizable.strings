@@ -1,4 +1,101 @@
+"ReminderTitle" = "Erinnerung für";
 "Date" = "Datum";
+"Manga" = "Reihe";
+"Book" = "Buch";
+"Reminder" = "Erinnerung";
+"BoughtAt" = "Gekauft am";
+"Generated" = "Generiert";
+"EuroSign" = " €";
+"DollerSign" = "";
 "Search" = "Suchen";
 "DateFormat" = "dd.mm.yyyy";
-"-" = "Unbekannt";
+"Unknown" = "-";
+"Remove" = "Löschen";
+"Share" = "Teilen";
+"Edit" = "Bearbeiten";
+"AddNew" = "Hinzufügen";
+"Of" = "von";
+"Version" = "Version";
+
+"FilterCollection" = "Sammlung Filtern:";
+"FilterTitle" = "Nach Titel";
+"FilterAuthor" = "Nach Autor";
+"FilterPublisher" = "Nach Verlag";
+"FilterComplete" = "Nur Vollständige";
+"FilterIncomplete" = "Nur nicht Vollständige";
+
+"FilterAnime" = "Anime Filtern:";
+"FilterCurrent" = "Laufend";
+"FilterWatchlist" = "Warteliste";
+"FilterWatched" = "Geschaut";
+
+"FilterBooks" = "Bände Filtern:";
+"filterGenerated" = "Generierte ausblenden";
+"SortByManga" = "Nach Reihe sortieren";
+"SortPriceDown" = "Preis absteigend";
+"SortPriceUp" = "Preis aufsteigend";
+
+"ChooseImage" = "Bild auswählen:";
+"ImageAPI" = "Automatisch (Web-API)";
+"PhotoLibrary" = "Fotoalbum";
+"Camera" = "Kamera";
+"NoImage" = "Kein Bild";
+
+"StyleCollection" = "Sammlungs Ansicht auswählen:";
+"StyleRow" = "Zeilen (Standard)";
+"StyleColumns" = "Buchrücken";
+"StyleCompact" = "Kompakt";
+
+"AppSymbol" = "App Symbol auswählen:";
+"AppSymbolLight" = "Hell (Standard)";
+"AppSymbolDark" = "Dunkel";
+
+"SystemStyle" = "System Style auswählen";
+"SystemStyleLight" = "Hell";
+"SystemStyleAuto" = "Automatisch";
+
+"RepairTitle" = "Alle Daten reparieren";
+"RepairBody" = "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.";
+"RepairWaitTitle" = "Bitte Warten";
+"RepairWaitBody" = "Lokale Daten werden repariert...";
+
+"RemoveAll" = "Alles löschen?";
+"RemoveBody" = "Dadurch werden alle lokal gespeicherten Daten gelöscht.";
+
+"SearchTitle" = "Suchbegriff";
+"SearchBody" = "Nach dem Bild suchen\n(Manga Titel)";
+
+"DuplicateTitle" = "Duplikat";
+"DuplicateBody" = "konnte nicht gespeichert werden.";
+"SavedTitle" = "Gespeichert";
+"SavedBody" = "wurde erfolgreich gespeichert.";
+
+"RestartTitle" = "Neustart";
+"RestartBody" = "Ein Neustart der App ist erforderlich.";
+"RestartButton" = "App Beenden";
+"" = "Später";
+
+"NotAvailableTitle" = "Nicht verfügbar";
+"NotAvailableBody" = "Diese Funktion ist auf deinem Gerät leider nicht verfügbar. Vielleicht wird dies durch ein System update behoben.";
+
+"NoEmailTitle" = "Kein Konto gefunden";
+"NoEmailBody" = "Du hast kein Mailkonto eingerichtet, um Feedback zu versenden. Hier ist meine Mail Adresse, falls du von einem anderen Gerät Feedback senden willst.\n\ndominic.drees@live.de";
+
+"Warning" = "Warnung";
+"WarningReminder" = "Mitteilungen werden für Erinnerungen benötigt. Du kannst Mitteilungen in den Einstellungen wieder einschalten. Starte anschließend die App neu !!!";
+"Settings" = "Einstellungen";
+
+"Author" = "Autor";
+"Publisher" = "Verlag";
+"OneShot" = "One Shot";
+"Books" = "Reihe";
+"BoughtDay" = "Kaufdatum";
+"Extras" = "Extras";
+"BoughtMangas" = "Gekaufte Mangas";
+
+"Later" = "Später";
+"Apply" = "Anwenden (App Neustart)";
+"FilterOff" = "Nicht Filtern";
+"Cancel" = "Abbrechen";
+"Okay" = "Okay";
+"No" = "Nein";

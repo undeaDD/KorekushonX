@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sCe-Od-lcX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="4368" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -348,7 +348,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Informations ( in German )" footerTitle="Version: 0.0.0 (0)" id="TqI-xs-k89">
+                            <tableViewSection headerTitle="Informations ( in German )" footerTitle="Version:" id="TqI-xs-k89">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="n4w-B2-g7w">
                                         <rect key="frame" x="20" y="502" width="374" height="50"/>
@@ -503,7 +503,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Menu" id="wJJ-oV-y7H">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="fuQ-Jd-Wdx"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="mdT-dz-GcY"/>
                         <barButtonItem key="leftBarButtonItem" image="schließen" id="IOR-VJ-TAH">
                             <connections>
                                 <action selector="dismiss" destination="jeu-2i-ZEU" id="4Zs-MY-CtA"/>

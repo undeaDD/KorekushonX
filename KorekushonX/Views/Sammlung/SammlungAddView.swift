@@ -34,7 +34,7 @@ class SammlungAddView: UITableViewController {
             completed = maxCount <= editManga!.countAll
         }
 
-        let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : image.image?.cover()
+        let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : Cover(image: image.image)
         let temp = Manga(id: editManga != nil ? editManga!.id : UUID(),
                       title: titleField.text.trim(),
                      author: authorField.text.trim(),
@@ -47,13 +47,13 @@ class SammlungAddView: UITableViewController {
         if editManga == nil && manager.store.allObjects().contains(where: { stored -> Bool in
             stored.title.lowercased() == temp.title.lowercased()
         }) {
-            AlertManager.shared.duplicateError(self, "Reihe")
+            AlertManager.shared.duplicateError(self, Constants.Strings.reihe.locale)
             self.titleField.text = nil
             return
         }
 
         try? manager.store.save(temp)
-        UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.mangaReload.rawValue)
 
         if editManga == nil {
             createDummyEntries(temp.id, temp.title)
@@ -62,28 +62,28 @@ class SammlungAddView: UITableViewController {
         }
 
         if keepOpen {
-            AlertManager.shared.savedInfo(self, "Reihe")
+            AlertManager.shared.savedInfo(self, Constants.Strings.reihe.locale)
         } else {
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
 
     func removeTooManyBooks(_ mangaID: UUID, _ newMax: Int) {
-        let books = FilesStore<Book>(uniqueIdentifier: "books")
+        let books = FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue)
         let toRemove = books.allObjects().filter { $0.mangaId == mangaID && $0.number > newMax }
         for item in toRemove {
             try? books.delete(withId: item.id)
         }
-        UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
+        UserDefaults.standard.set(true, forKey: Constants.Keys.booksReload.rawValue)
     }
 
     func createDummyEntries(_ mangaID: UUID, _ mangaTitle: String) {
         if haveCount > 0 && editManga == nil {
-            let tempStore = FilesStore<Book>(uniqueIdentifier: "books")
+            let tempStore = FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue)
             for index in 1...haveCount {
                 try? tempStore.save(Book(id: UUID(), mangaId: mangaID, title: mangaTitle, number: index, price: 0, date: 0, place: "-", state: 2, extras: "-"))
             }
-            UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
+            UserDefaults.standard.set(true, forKey: Constants.Keys.booksReload.rawValue)
         }
     }
 
@@ -102,18 +102,18 @@ class SammlungAddView: UITableViewController {
         publisherField.inputView = verlagPickerView
 
         if let manga = editManga {
-            navigationItem.title = "Bearbeiten"
+            navigationItem.title = Constants.Strings.edit.locale
             titleField.text = manga.title
             authorField.text = manga.author
             publisherField.text = manga.publisher
-            countField.text = "? von \(String(manga.countAll))"
+            countField.text = "? \(Constants.Strings.of.locale) \(String(manga.countAll))"
             maxCount = manga.countAll
 
             image.image = manga.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
             pickerView.selectRow(manga.countAll - 1, inComponent: 2, animated: false)
         } else {
-            self.navigationItem.title = "Hinzufügen"
-            countField.text = "0 von 1"
+            self.navigationItem.title = Constants.Strings.add.locale
+            countField.text = "0 \(Constants.Strings.of.locale) 1"
         }
 
         imagePicker.delegate = self
@@ -166,7 +166,7 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
         if pickerView.tag == 1 {
             return Verlag.allCases[row].rawValue
         } else if component == 1 {
-            return "von"
+            return Constants.Strings.of.locale
         } else if component == 2 {
             return String(row + 1)
         } else if editManga != nil {
@@ -197,10 +197,10 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
 
         maxCount = pickerView.selectedRow(inComponent: 2) + 1
         if editManga != nil {
-            countField.text = "? von \(maxCount)"
+            countField.text = "? \(Constants.Strings.of.locale) \(maxCount)"
         } else {
             haveCount = pickerView.selectedRow(inComponent: 0)
-            countField.text = "\(haveCount) von \(maxCount)"
+            countField.text = "\(haveCount) \(Constants.Strings.of.locale) \(maxCount)"
         }
     }
 

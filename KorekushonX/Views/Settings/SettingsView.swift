@@ -13,10 +13,19 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        applyFooter()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        applyFooter()
+    }
+
+    private func applyFooter() {
         if let footer = tableView.footerView(forSection: 1) {
             let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
             let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
-            footer.textLabel?.text = "\(Constants.Keys.version.locale): \(version) (\(build))"
+            footer.textLabel?.text = "\(Constants.Strings.version.locale): \(version) (\(build))"
             footer.sizeToFit()
         }
     }

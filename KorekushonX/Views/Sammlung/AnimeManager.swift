@@ -6,7 +6,7 @@ class AnimeManager {
 
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = Constants.Keys.dateFormat.locale
+        temp.dateFormat = Constants.Strings.dateFormat.locale
         return temp
     }()
 

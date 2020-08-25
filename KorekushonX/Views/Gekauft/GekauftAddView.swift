@@ -45,7 +45,7 @@ class GekauftAddView: UITableViewController {
         manager.checkMangaForCompletion(manga.id)
 
         if keepOpen {
-            AlertManager.shared.savedInfo(self, Constants.Keys.book.locale)
+            AlertManager.shared.savedInfo(self, Constants.Strings.book.locale)
         } else {
             self.navigationController?.popToRootViewController(animated: true)
         }
@@ -73,7 +73,7 @@ class GekauftAddView: UITableViewController {
         datePickerView.addTarget(self, action: #selector(onChange(_:)), for: .valueChanged)
 
         if let book = editBook {
-            navigationItem.title = Constants.Keys.edit.locale
+            navigationItem.title = Constants.Strings.edit.locale
             mangaField.text = book.title
             numberField.text = String(book.number)
             priceField.text = String(format: "%.2f", book.price)
@@ -89,7 +89,7 @@ class GekauftAddView: UITableViewController {
             datePickerView.date = book.date == 0 ? Date() : Date(timeIntervalSince1970: book.date)
             index = (mangas.enumerated().first { $0.element.id == book.mangaId })?.offset ?? 0
         } else {
-            self.navigationItem.title = Constants.Keys.add.locale
+            self.navigationItem.title = Constants.Strings.add.locale
             mangaField.text = mangas[index].title
             dateField.text = nil
             numberField.text = "1"
@@ -122,7 +122,7 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Strings.trash.locale) { _, _, completion in
             self.dateField.text = nil
             completion(true)
         }
@@ -136,7 +136,7 @@ extension GekauftAddView: UIPickerViewDataSource, UIPickerViewDelegate {
         case (1, 0):
             return String(row + 1)
         case (1, 1):
-            return Constants.Keys.of.locale
+            return Constants.Strings.of.locale
         case (1, 2):
             return "\(mangas[index].countAll)"
         default:

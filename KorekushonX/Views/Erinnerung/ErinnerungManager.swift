@@ -7,7 +7,7 @@ class ErinnerungManager {
     static let shared = ErinnerungManager()
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = Constants.Keys.dateFormat.locale
+        temp.dateFormat = Constants.Strings.dateFormat.locale
         return temp
     }()
 
@@ -19,7 +19,7 @@ class ErinnerungManager {
 
     func shedule(_ title: String, _ date: Date, _ completion: @escaping () -> Void) {
         let content = UNMutableNotificationContent()
-        content.title = Constants.Keys.remindMe.locale + ":"
+        content.title = Constants.Strings.remindMe.locale + ":"
         content.body = title
         content.sound = .default
 

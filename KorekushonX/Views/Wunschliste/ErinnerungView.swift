@@ -68,7 +68,7 @@ extension ErinnerungView: UITableViewDelegate, UITableViewDataSource, UIAdaptive
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Strings.trash.locale) { _, _, completion in
             self.manager.removeErinnerung(self.manager.list[indexPath.row])
             self.manager.reloadIfNeccessary(self.tableView, true)
             completion(true)

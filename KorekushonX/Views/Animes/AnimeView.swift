@@ -28,7 +28,7 @@ class AnimeView: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = Constants.Keys.search.locale
+        searchController.searchBar.placeholder = Constants.Strings.search.locale
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()

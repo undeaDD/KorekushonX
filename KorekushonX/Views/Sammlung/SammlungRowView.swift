@@ -22,7 +22,7 @@ class SammlungRowView: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = Constants.Keys.search.locale
+        searchController.searchBar.placeholder = Constants.Strings.search.locale
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
@@ -98,7 +98,7 @@ extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchR
     }
 
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let edit = UIContextualAction(style: .normal, title: Constants.Keys.edit.locale) { _, _, completion in
+        let edit = UIContextualAction(style: .normal, title: Constants.Strings.edit.locale) { _, _, completion in
             self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: self.manager.filtered[indexPath.row])
             completion(true)
         }
@@ -108,14 +108,14 @@ extension SammlungRowView: UITableViewDelegate, UITableViewDataSource, UISearchR
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let share = UIContextualAction(style: .normal, title: Constants.Keys.share.locale) { _, _, completion in
+        let share = UIContextualAction(style: .normal, title: Constants.Strings.share.locale) { _, _, completion in
             self.manager.shareManga(self.manager.filtered[indexPath.row], self)
             completion(true)
         }
         share.image = UIImage(named: Constants.Images.share.rawValue)
         share.backgroundColor = .systemPurple
 
-        let remove = UIContextualAction(style: .destructive, title: Constants.Keys.trash.locale) { _, _, completion in
+        let remove = UIContextualAction(style: .destructive, title: Constants.Strings.trash.locale) { _, _, completion in
             self.manager.removeManga(self.manager.filtered[indexPath.row])
             self.manager.reloadIfNeccessary(self.tableView, nil, true)
             completion(true)

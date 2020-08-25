@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="4368" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -194,8 +194,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwN-5Y-cK3">
-                                                    <rect key="frame" x="15" y="8" width="51" height="34"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwN-5Y-cK3">
+                                                    <rect key="frame" x="15" y="8" width="61.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="V2J-0f-bJJ"/>
@@ -205,7 +205,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Saki Aikawa" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHM-zV-csa">
-                                                    <rect key="frame" x="74" y="8" width="285" height="34"/>
+                                                    <rect key="frame" x="84.5" y="8" width="274.5" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -438,14 +438,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author: Kyoko Kumagai Publisher: Egmont Manga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6E-jf-asN">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Author: Kyoko Kumagai Publisher: Egmont Manga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6E-jf-asN">
                                                     <rect key="frame" x="15" y="30.5" width="251" height="39.5"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000 Books" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeO-0e-2fB">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="9000 Books" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeO-0e-2fB">
                                                     <rect key="frame" x="259" y="30.5" width="100" height="39.5"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
@@ -465,7 +465,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="rVH-oH-LiQ" secondAttribute="trailing" constant="15" id="MGo-DH-Egt"/>
                                                 <constraint firstItem="eeO-0e-2fB" firstAttribute="top" secondItem="rVH-oH-LiQ" secondAttribute="bottom" id="nuS-tZ-emL"/>
                                                 <constraint firstAttribute="bottom" secondItem="e6E-jf-asN" secondAttribute="bottom" constant="10" id="pXM-Iy-b3p"/>
-                                                <constraint firstItem="eeO-0e-2fB" firstAttribute="leading" secondItem="e6E-jf-asN" secondAttribute="trailing" constant="-7" id="q10-Sm-FwP"/>
+                                                <constraint firstItem="eeO-0e-2fB" firstAttribute="leading" secondItem="e6E-jf-asN" secondAttribute="trailing" constant="7" id="q10-Sm-FwP"/>
                                                 <constraint firstItem="e6E-jf-asN" firstAttribute="top" secondItem="rVH-oH-LiQ" secondAttribute="bottom" id="qB3-bz-cKW"/>
                                                 <constraint firstItem="rVH-oH-LiQ" firstAttribute="leading" secondItem="aon-cs-8X2" secondAttribute="leading" constant="15" id="t2k-zh-WV9"/>
                                             </constraints>
@@ -484,7 +484,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manga Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAp-YH-Bmk">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAp-YH-Bmk">
                                                     <rect key="frame" x="15" y="8" width="344" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
@@ -685,7 +685,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Manga Collection" id="Fpo-af-xcx">
-                        <barButtonItem key="backBarButtonItem" title="Zurück" id="ND3-XO-opw"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ND3-XO-opw"/>
                         <barButtonItem key="leftBarButtonItem" image="user" width="40" id="2vh-ra-Ohc">
                             <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
@@ -812,7 +812,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Manga Collection" id="Dvv-aX-CPn">
-                        <barButtonItem key="backBarButtonItem" title="Zurück" id="iSM-oe-qnn"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="iSM-oe-qnn"/>
                         <barButtonItem key="leftBarButtonItem" image="user" width="40" id="gqD-D2-uqt">
                             <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
@@ -850,7 +850,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="yor-vh-iA1"/>
         <segue reference="7Tw-kZ-YCm"/>
-        <segue reference="RCs-f3-TUa"/>
+        <segue reference="dbb-zL-zLU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>

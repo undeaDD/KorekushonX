@@ -33,33 +33,13 @@ public enum Constants {
         case remindReload = "ErinnerungNeedsUpdating"
         case remindCell = "erinnerungCell"
 
+        case darkIcon = "Dark"
+        case lightIcon = "Light"
+
         case sammlungView = "SammlungView"
         case rowView = "RowView"
         case bookView = "BookView"
         case compactView = "CompactView"
-
-        case remindMe = "Erinnerung für"
-        case date = "Date"
-        case reihe = "Reihe"
-        case book = "Book"
-        case remind = "Erinnerung"
-        case boughtAt = "Gekauft am"
-        case generated = "Generiert"
-        case euro = " EURO"
-        case dollar = "DOLLAR "
-        case search = "Search"
-        case dateFormat = "DateFormat"
-        case unknown = "-"
-        case trash = "Löschen"
-        case share = "Teilen"
-        case edit = "Bearbeiten"
-        case add = "HInzufügen"
-        case of = "von"
-        case version = "Version"
-
-        var locale: String {
-            return NSLocalizedString(self.rawValue, comment: "")
-        }
     }
 
     public enum Segues: String {
@@ -87,5 +67,122 @@ public enum Constants {
         case trash = "müll"
         case share = "teilen"
         case edit = "editieren"
+        case imageAPI = "api"
+        case photoLibrary = "photoLibrary"
+        case camera = "camera"
+        case noImage = "noImage"
+        case styleRow = "rows"
+        case styleColumns = "columns"
+        case styleCompact = "compact"
+        case lightsOn = "lightsOn"
+        case lightsOff = "lightsOff"
+        case lightsAutomatic = "lightsAuto"
+    }
+
+    public enum Strings: String {
+        case remindMe = "ReminderTitle"
+        case date = "Date"
+        case reihe = "Manga"
+        case book = "Book"
+        case remind = "Reminder"
+        case boughtAt = "BoughtAt"
+        case generated = "Generated"
+        case euro = "EuroSign"
+        case dollar = "DollerSign"
+        case search = "Search"
+        case dateFormat = "DateFormat"
+        case unknown = "Unknown"
+        case trash = "Remove"
+        case share = "Share"
+        case edit = "Edit"
+        case add = "AddNew"
+        case of = "Of"
+        case version = "Version"
+
+        case filterCollection = "FilterCollection"
+        case filterTitle = "FilterTitle"
+        case filterAuthor = "FilterAuthor"
+        case filterPublisher = "FilterPublisher"
+        case filterComplete = "FilterComplete"
+        case filterIncomplete = "FilterIncomplete"
+
+        case filterAnimes = "FilterAnime"
+        case filterCurrent = "FilterCurrent"
+        case filterWatchlist = "FilterWatchlist"
+        case filterWatched = "FilterWatched"
+
+        case filterBooks = "FilterBooks"
+        case filterGenerated = "filterGenerated"
+        case sortByManga = "SortByManga"
+        case sortByPriceDown = "SortPriceDown"
+        case sortByPriceUp = "SortPriceUp"
+
+        case imageChoose = "ChooseImage"
+        case imageAPI = "ImageAPI"
+        case photoLibrary = "PhotoLibrary"
+        case camera = "Camera"
+        case noImage = "NoImage"
+
+        case styleCollection = "StyleCollection"
+        case styleRow = "StyleRow"
+        case styleColumns = "StyleColumns"
+        case styleCompact = "StyleCompact"
+
+        case appSymbol = "AppSymbol"
+        case appSymbolLight = "AppSymbolLight"
+        case appSymbolDark = "AppSymbolDark"
+
+        case systemStyle = "SystemStyle"
+        case systemStyleLight = "SystemStyleLight"
+        case systemStyleAutomatic = "SystemStyleAuto"
+
+        case repairTitle = "RepairTitle"
+        case repairBody = "RepairBody"
+        case repairWait = "RepairWaitTitle"
+        case repairWaitBody = "RepairWaitBody"
+
+        case removeAll = "RemoveAll"
+        case removeBody = "RemoveBody"
+
+        case searchTitle = "SearchTitle"
+        case searchBody = "SearchBody"
+
+        case duplicateTitle = "DuplicateTitle"
+        case duplicateBody = "DuplicateBody"
+        case savedTitle = "SavedTitle"
+        case savedBody = "SavedBody"
+
+        case restartTitle = "RestartTitle"
+        case restartBody = "RestartBody"
+        case restartButton = "RestartButton"
+        case later = "Later"
+
+        case notAvailableTitle = "NotAvailableTitle"
+        case notAvailableBody = "NotAvailableBody"
+
+        case noEmailTitle = "NoEmailTitle"
+        case noEmailBody = "NoEmailBody"
+
+        case warning = "Warning"
+        case warningReminder = "WarningReminder"
+        case settings = "Settings"
+
+        case author = "Author"
+        case publisher = "Publisher"
+        case oneShot = "OneShot"
+        case books = "Books"
+        case boughtDay = "BoughtDay"
+        case extras = "Extras"
+        case boughtMangas = "BoughtMangas"
+
+        case filterOff = "FilterOff"
+        case apply = "Apply"
+        case cancel = "Cancel"
+        case okay = "Okay"
+        case no = "No"
+
+        var locale: String {
+            return NSLocalizedString(self.rawValue, comment: "")
+        }
     }
 }

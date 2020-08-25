@@ -8,23 +8,29 @@ struct AlertManager {
 
     func filterSammlung(_ vc: UIViewController, _ completion: @escaping () -> Void) {
         let spacer = SectionMargin()
-        let title = SectionTitle(title: "Sammlung Filtern:")
+        let title = SectionTitle(title: Constants.Strings.filterCollection.locale)
 
         var items: [MenuItem] = [spacer, title]
-        for elem in ["Nach Titel", "Nach Autor", "Nach Verlag", "Nur Vollständige", "Nur nicht Vollständige"].enumerated() {
-            let isSelected = UserDefaults.standard.integer(forKey: "SammlungFilter") == (elem.offset + 1)
+        for elem in [
+            Constants.Strings.filterTitle.locale,
+            Constants.Strings.filterAuthor.locale,
+            Constants.Strings.filterPublisher.locale,
+            Constants.Strings.filterComplete.locale,
+            Constants.Strings.filterIncomplete.locale
+        ].enumerated() {
+            let isSelected = UserDefaults.standard.integer(forKey: Constants.Keys.mangaFilter.rawValue) == (elem.offset + 1)
             let temp = SingleSelectItem(title: elem.element, isSelected: isSelected, value: elem.offset + 1)
             items.append(temp)
         }
 
-        items.append(DestructiveButton(title: "Nicht Filtern"))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(DestructiveButton(title: Constants.Strings.filterOff.locale))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
-                UserDefaults.standard.set(value, forKey: "SammlungFilter")
+                UserDefaults.standard.set(value, forKey: Constants.Keys.mangaFilter.rawValue)
                 completion()
             } else if (item as? DestructiveButton) != nil {
-                UserDefaults.standard.set(0, forKey: "SammlungFilter")
+                UserDefaults.standard.set(0, forKey: Constants.Keys.mangaFilter.rawValue)
                 completion()
             }
         }.present(in: vc, from: vc.view)
@@ -32,23 +38,27 @@ struct AlertManager {
 
     func filterAnimes(_ vc: UIViewController, _ completion: @escaping () -> Void) {
         let spacer = SectionMargin()
-        let title = SectionTitle(title: "Animes Filtern:")
+        let title = SectionTitle(title: Constants.Strings.filterAnimes.locale)
 
         var items: [MenuItem] = [spacer, title]
-        for elem in ["Laufend", "Warteliste", "Geschaut"].enumerated() {
-            let isSelected = UserDefaults.standard.integer(forKey: "AnimeFilter") == (elem.offset + 1)
+        for elem in [
+            Constants.Strings.filterCurrent.locale,
+            Constants.Strings.filterWatchlist.locale,
+            Constants.Strings.filterWatched.locale
+        ].enumerated() {
+            let isSelected = UserDefaults.standard.integer(forKey: Constants.Keys.animeFilter.rawValue) == (elem.offset + 1)
             let temp = SingleSelectItem(title: elem.element, isSelected: isSelected, value: elem.offset + 1)
             items.append(temp)
         }
 
-        items.append(DestructiveButton(title: "Nicht Filtern"))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(DestructiveButton(title: Constants.Strings.filterOff.locale))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
-                UserDefaults.standard.set(value, forKey: "AnimeFilter")
+                UserDefaults.standard.set(value, forKey: Constants.Keys.animeFilter.rawValue)
                 completion()
             } else if (item as? DestructiveButton) != nil {
-                UserDefaults.standard.set(0, forKey: "AnimeFilter")
+                UserDefaults.standard.set(0, forKey: Constants.Keys.animeFilter.rawValue)
                 completion()
             }
         }.present(in: vc, from: vc.view)
@@ -56,23 +66,28 @@ struct AlertManager {
 
     func filterGekaufte(_ vc: UIViewController, _ completion: @escaping () -> Void) {
         let spacer = SectionMargin()
-        let title = SectionTitle(title: "Bände Filtern:")
+        let title = SectionTitle(title: Constants.Strings.filterBooks.locale)
 
         var items: [MenuItem] = [spacer, title]
-        for elem in ["Generierte ausblenden", "Nach Reihe sortieren", "Preis absteigend", "Preis aufsteigend"].enumerated() {
-            let isSelected = UserDefaults.standard.integer(forKey: "GekauftFilter") == (elem.offset + 1)
+        for elem in [
+            Constants.Strings.filterGenerated.locale,
+            Constants.Strings.sortByManga.locale,
+            Constants.Strings.sortByPriceDown.locale,
+            Constants.Strings.sortByPriceUp.locale
+        ].enumerated() {
+            let isSelected = UserDefaults.standard.integer(forKey: Constants.Keys.booksFilter.rawValue) == (elem.offset + 1)
             let temp = SingleSelectItem(title: elem.element, isSelected: isSelected, value: elem.offset + 1)
             items.append(temp)
         }
 
-        items.append(DestructiveButton(title: "Nicht Filtern"))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(DestructiveButton(title: Constants.Strings.filterOff.locale))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
-                UserDefaults.standard.set(value, forKey: "GekauftFilter")
+                UserDefaults.standard.set(value, forKey: Constants.Keys.booksFilter.rawValue)
                 completion()
             } else if item as? DestructiveButton != nil {
-                UserDefaults.standard.set(0, forKey: "GekauftFilter")
+                UserDefaults.standard.set(0, forKey: Constants.Keys.booksFilter.rawValue)
                 completion()
             }
         }.present(in: vc, from: vc.view)
@@ -80,12 +95,10 @@ struct AlertManager {
 
     func options(_ vc: UIViewController, _ completion: @escaping (Int) -> Void) {
         var items: [MenuItem] = []
-        items.append(SectionMargin())
-        items.append(SectionTitle(title: "Aktion ausführen:"))
-        items.append(LinkItem(title: "Teilen", value: 0, image: UIImage(named: "teilen")))
-        items.append(LinkItem(title: "Bearbeiten", value: 1, image: UIImage(named: "editieren")))
-        items.append(DestructiveItem(title: "Löschen", value: 2, image: UIImage(named: "müll")))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(LinkItem(title: Constants.Strings.share.locale, value: 0, image: UIImage(named: Constants.Images.share.rawValue)))
+        items.append(LinkItem(title: Constants.Strings.edit.locale, value: 1, image: UIImage(named: Constants.Images.edit.rawValue)))
+        items.append(DestructiveItem(title: Constants.Strings.trash.locale, value: 2, image: UIImage(named: Constants.Images.trash.rawValue)))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
                 completion(value)
@@ -95,13 +108,11 @@ struct AlertManager {
 
     func optionMinimal(_ vc: UIViewController, _ withEdit: Bool = false, _ completion: @escaping (Int) -> Void) {
         var items: [MenuItem] = []
-        items.append(SectionMargin())
-        items.append(SectionTitle(title: "Aktion ausführen:"))
         if withEdit {
-            items.append(LinkItem(title: "Bearbeiten", value: 0, image: UIImage(named: "editieren")))
+            items.append(LinkItem(title: Constants.Strings.edit.locale, value: 0, image: UIImage(named: Constants.Images.edit.rawValue)))
         }
-        items.append(DestructiveItem(title: "Löschen", value: 1, image: UIImage(named: "müll")))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(DestructiveItem(title: Constants.Strings.trash.locale, value: 1, image: UIImage(named: Constants.Images.trash.rawValue)))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
                 completion(value)
@@ -112,12 +123,12 @@ struct AlertManager {
     func selectImage(_ vc: UIViewController, _ completion: @escaping (Int) -> Void) {
         var items: [MenuItem] = []
         items.append(SectionMargin())
-        items.append(SectionTitle(title: "Bild auswählen:"))
-        items.append(LinkItem(title: "Automatisch (Web-API)", value: 0, image: UIImage(named: "api")))
-        items.append(LinkItem(title: "Fotoalbum", value: 1, image: UIImage(named: "photoLibrary")))
-        items.append(LinkItem(title: "Kamera", value: 2, image: UIImage(named: "camera")))
-        items.append(DestructiveItem(title: "Kein Bild", value: 3, image: UIImage(named: "noImage")))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(SectionTitle(title: Constants.Strings.imageChoose.locale))
+        items.append(LinkItem(title: Constants.Strings.imageAPI.locale, value: 0, image: UIImage(named: Constants.Images.imageAPI.rawValue)))
+        items.append(LinkItem(title: Constants.Strings.photoLibrary.locale, value: 1, image: UIImage(named: Constants.Images.photoLibrary.rawValue)))
+        items.append(LinkItem(title: Constants.Strings.camera.locale, value: 2, image: UIImage(named: Constants.Images.camera.rawValue)))
+        items.append(DestructiveItem(title: Constants.Strings.noImage.locale, value: 3, image: UIImage(named: Constants.Images.noImage.rawValue)))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
                 completion(value)
@@ -127,37 +138,40 @@ struct AlertManager {
 
     func selectSammlungType(_ vc: UIViewController) {
         var items: [MenuItem] = []
-        let isSelected: [Int] = UserDefaults.standard.array(forKey: "settingsSammlungView") as? [Int] ?? [0]
+        let isSelected: [Int] = UserDefaults.standard.array(forKey: Constants.Keys.selectedSammlungView.rawValue) as? [Int] ?? [0]
         items.append(SectionMargin())
-        items.append(SectionTitle(title: "Sammlungs Ansicht auswählen:"))
-        items.append(MultiSelectItem(title: "Zeilen (Standard)", isSelected: isSelected.contains(0), value: 0, image: UIImage(named: "rows")))
-        items.append(MultiSelectItem(title: "Buchrücken", isSelected: isSelected.contains(1), value: 1, image: UIImage(named: "columns")))
-        items.append(MultiSelectItem(title: "Kompakt", isSelected: isSelected.contains(2), value: 2, image: UIImage(named: "compact")))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(SectionTitle(title: Constants.Strings.styleCollection.locale))
+        items.append(MultiSelectItem(title: Constants.Strings.styleRow.locale, isSelected: isSelected.contains(0), value: 0, image: UIImage(named: Constants.Images.styleRow.rawValue)))
+        items.append(MultiSelectItem(title: Constants.Strings.styleColumns.locale, isSelected: isSelected.contains(1), value: 1, image: UIImage(named: Constants.Images.styleColumns.rawValue)))
+        items.append(MultiSelectItem(title: Constants.Strings.styleCompact.locale, isSelected: isSelected.contains(2), value: 2, image: UIImage(named: Constants.Images.styleCompact.rawValue)))
+        items.append(DestructiveButton(title: Constants.Strings.apply.locale))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { sheet, item in
-            var array: [Int] = sheet.items.compactMap { item in
-                if let item = item as? MultiSelectItem {
-                    return item.isSelected ? (item.value as? Int) : nil
-                } else { return nil }
+            if item is DestructiveButton {
+                var array: [Int] = sheet.items.compactMap { item in
+                    if let item = item as? MultiSelectItem {
+                        return item.isSelected ? (item.value as? Int) : nil
+                    } else { return nil }
+                }
+                if array.isEmpty { array.append(0) }
+                UserDefaults.standard.set(array, forKey: Constants.Keys.selectedSammlungView.rawValue)
+                AlertManager.shared.restartNeeded(vc)
             }
-            if array.isEmpty { array.append(0) }
-            UserDefaults.standard.set(array, forKey: "settingsSammlungView")
-            AlertManager.shared.restartNeeded(vc)
         }.present(in: vc, from: vc.view)
     }
 
     func selectAppIcon(_ vc: UIViewController) {
         if UIApplication.shared.supportsAlternateIcons {
             var items: [MenuItem] = []
-            let isSelected = UIApplication.shared.alternateIconName == "Dark"
+            let isSelected = UIApplication.shared.alternateIconName == Constants.Keys.darkIcon.rawValue
             items.append(SectionMargin())
-            items.append(SectionTitle(title: "App Symbol auswählen:"))
-            items.append(SingleSelectItem(title: "Hell (Standard)", isSelected: !isSelected, value: 0, image: UIImage(named: "lightsOn")))
-            items.append(SingleSelectItem(title: "Dunkel", isSelected: isSelected, value: 1, image: UIImage(named: "lightsOff")))
-            items.append(CancelButton(title: "Abbrechen"))
+            items.append(SectionTitle(title: Constants.Strings.appSymbol.locale))
+            items.append(SingleSelectItem(title: Constants.Strings.appSymbolLight.locale, isSelected: !isSelected, value: 0, image: UIImage(named: Constants.Images.lightsOn.rawValue)))
+            items.append(SingleSelectItem(title: Constants.Strings.appSymbolDark.locale, isSelected: isSelected, value: 1, image: UIImage(named: Constants.Images.lightsOff.rawValue)))
+            items.append(CancelButton(title: Constants.Strings.cancel.locale))
             Menu(items: items).toActionSheet { _, item in
                 if let value = item.value as? Int {
-                    UIApplication.shared.setAlternateIconName(value == 1 ? "Dark" : nil)
+                    UIApplication.shared.setAlternateIconName(value == 1 ? Constants.Keys.darkIcon.rawValue : nil)
                 }
             }.present(in: vc, from: vc.view)
         } else {
@@ -168,16 +182,16 @@ struct AlertManager {
     @available(iOS 13.0, *)
     func selectSystemStyle(_ vc: UIViewController) {
         var items: [MenuItem] = []
-        let isSelected = UserDefaults.standard.integer(forKey: "settingsAppStyle")
+        let isSelected = UserDefaults.standard.integer(forKey: Constants.Keys.appStyle.rawValue)
         items.append(SectionMargin())
-        items.append(SectionTitle(title: "System Style auswählen:"))
-        items.append(SingleSelectItem(title: "Automatisch", isSelected: isSelected == 0, value: 0, image: UIImage(named: "lightsAuto")))
-        items.append(SingleSelectItem(title: "Hell", isSelected: isSelected == 2, value: 2, image: UIImage(named: "lightsOn")))
-        items.append(SingleSelectItem(title: "Dunkel", isSelected: isSelected == 1, value: 1, image: UIImage(named: "lightsOff")))
-        items.append(CancelButton(title: "Abbrechen"))
+        items.append(SectionTitle(title: Constants.Strings.systemStyle.locale))
+        items.append(SingleSelectItem(title: Constants.Strings.systemStyleAutomatic.locale, isSelected: isSelected == 0, value: 0, image: UIImage(named: Constants.Images.lightsAutomatic.rawValue)))
+        items.append(SingleSelectItem(title: Constants.Strings.systemStyleLight.locale, isSelected: isSelected == 2, value: 2, image: UIImage(named: Constants.Images.lightsOn.rawValue)))
+        items.append(SingleSelectItem(title: Constants.Strings.appSymbolDark.locale, isSelected: isSelected == 1, value: 1, image: UIImage(named: Constants.Images.lightsOff.rawValue)))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
         Menu(items: items).toActionSheet { _, item in
             if let value = item.value as? Int {
-                UserDefaults.standard.set(value, forKey: "settingsAppStyle")
+                UserDefaults.standard.set(value, forKey: Constants.Keys.appStyle.rawValue)
                 UIApplication.shared.delegate?.window??.overrideUserInterfaceStyle = value == 0 ? .unspecified : (value == 1 ? .dark : .light)
             }
         }.present(in: vc, from: vc.view)
@@ -185,58 +199,60 @@ struct AlertManager {
 
     func repairData(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Alle Daten reparieren", message: "Dies kann fehlerhafte Daten wiederherstellen und reparieren, aber auch löschen.", preferredStyle: .alert)
+            let alert = UIAlertController(title: Constants.Strings.repairTitle.locale, message: Constants.Strings.repairBody.locale, preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
-                let alert2 = UIAlertController(title: "Bitte Warten", message: "Lokale Daten werden repariert...", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.Strings.okay.locale, style: .destructive, handler: { _ in
+                let alert2 = UIAlertController(title: Constants.Strings.repairWait.locale, message: Constants.Strings.repairWaitBody.locale, preferredStyle: .alert)
                 vc.present(alert2, animated: true)
                 SammlungManager.shared.repairAll {
                     alert2.dismiss(animated: true)
                 }
             }))
 
-            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: Constants.Strings.cancel.locale, style: .cancel, handler: nil))
             vc.present(alert, animated: true)
         }
     }
 
     func removeAll(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Alles löschen?", message: "Dadurch werden alle lokal gespeicherten Daten gelöscht.", preferredStyle: .alert)
+            let alert = UIAlertController(title: Constants.Strings.removeAll.locale, message: Constants.Strings.removeBody.locale, preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { _ in
-                FilesStore<Manga>(uniqueIdentifier: "mangas").deleteAll()
-                FilesStore<Book>(uniqueIdentifier: "books").deleteAll()
-                FilesStore<Wunsch>(uniqueIdentifier: "wishes").deleteAll()
-                UserDefaults.standard.set(true, forKey: "SammlungNeedsUpdating")
-                UserDefaults.standard.set(true, forKey: "BooksNeedsUpdating")
-                UserDefaults.standard.set(true, forKey: "WunschNeedsUpdating")
+            alert.addAction(UIAlertAction(title: Constants.Strings.okay.locale, style: .destructive, handler: { _ in
+                FilesStore<Manga>(uniqueIdentifier: Constants.Keys.managerMangas.rawValue).deleteAll()
+                FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue).deleteAll()
+                FilesStore<Wunsch>(uniqueIdentifier: Constants.Keys.managerWishes.rawValue).deleteAll()
+                FilesStore<Anime>(uniqueIdentifier: Constants.Keys.managerAnime.rawValue).deleteAll()
+                UserDefaults.standard.set(true, forKey: Constants.Keys.mangaReload.rawValue)
+                UserDefaults.standard.set(true, forKey: Constants.Keys.booksReload.rawValue)
+                UserDefaults.standard.set(true, forKey: Constants.Keys.wishesReload.rawValue)
+                UserDefaults.standard.set(true, forKey: Constants.Keys.animeReload.rawValue)
                 ErinnerungManager.shared.removeAll()
             }))
 
-            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: Constants.Strings.cancel.locale, style: .cancel, handler: nil))
             vc.present(alert, animated: true)
         }
     }
 
     func manualImageSearch(_ vc: UIViewController, _ completion: @escaping (String) -> Void) {
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "Suchbegriff", message: "Nach dem Bild suchen\n(Manga Titel)", preferredStyle: .alert)
+            let alertController = UIAlertController(title: Constants.Strings.searchTitle.locale, message: Constants.Strings.searchBody.locale, preferredStyle: .alert)
             alertController.addTextField { textField in textField.placeholder = "Kiss of the Fox" }
-            alertController.addAction(UIAlertAction(title: "Suchen", style: .default) { [weak alertController] _ in
+            alertController.addAction(UIAlertAction(title: Constants.Strings.search.locale, style: .default) { [weak alertController] _ in
                 guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
                 completion(textField.text.trim())
             })
-            alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: Constants.Strings.cancel.locale, style: .cancel, handler: nil))
             vc.present(alertController, animated: true, completion: nil)
         }
     }
 
     func duplicateError(_ vc: UIViewController, _ type: String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Duplikat", message: "\(type) konnte nicht gespeichert werden.", preferredStyle: .alert)
+            let alert = UIAlertController(title: Constants.Strings.duplicateTitle.locale, message: "\(type) \(Constants.Strings.duplicateBody.locale)", preferredStyle: .alert)
             vc.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
                     alert.dismiss(animated: true)
                 }
             }
@@ -245,9 +261,9 @@ struct AlertManager {
 
     func savedInfo(_ vc: UIViewController, _ type: String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Gespeichert", message: "\(type) wurde erfolgreich gespeichert", preferredStyle: .alert)
+            let alert = UIAlertController(title: Constants.Strings.savedTitle.locale, message: "\(type) \(Constants.Strings.savedBody.locale)", preferredStyle: .alert)
             vc.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
                     alert.dismiss(animated: true)
                 }
             }
@@ -256,9 +272,9 @@ struct AlertManager {
 
     func notificationError(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Warnung", message: "Mitteilungen werden für Erinnerungen benötigt. Du kannst Mitteilungen in den Einstellungen wieder einschalten. Starte anschließend die App neu !!!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Nein", style: .destructive, handler: nil))
-            alert.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { _ in
+            let alert = UIAlertController(title: Constants.Strings.warning.locale, message: Constants.Strings.warningReminder.locale, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.Strings.no.locale, style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: Constants.Strings.settings.locale, style: .default, handler: { _ in
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }))
             vc.present(alert, animated: true)
@@ -267,27 +283,27 @@ struct AlertManager {
 
     func emailError(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Kein Konto gefunden", message: "Du hast kein Mailkonto eingerichtet, um Feedback zu versenden. Hier ist meine Mail Adresse, falls du von einem anderen Gerät Feedback senden willst.\n\ndominic.drees@live.de", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            let alert = UIAlertController(title: Constants.Strings.noEmailTitle.locale, message: Constants.Strings.noEmailBody.locale, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.Strings.okay.locale, style: .default, handler: nil))
             vc.present(alert, animated: true)
         }
     }
 
     func errorNotAvailable(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Nicht verfügbar", message: "Diese Funktion ist auf deinem Gerät leider nicht verfügbar. Vielleicht wird dies durch ein System update behoben.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            let alert = UIAlertController(title: Constants.Strings.notAvailableTitle.locale, message: Constants.Strings.notAvailableBody.locale, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.Strings.okay.locale, style: .cancel, handler: nil))
             vc.present(alert, animated: true)
         }
     }
 
     func restartNeeded(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Neustart", message: "Ein Neustart der App ist erforderlich.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "App Beenden", style: .destructive, handler: { _ in
+            let alert = UIAlertController(title: Constants.Strings.restartTitle.locale, message: Constants.Strings.restartBody.locale, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.Strings.restartButton.locale, style: .destructive, handler: { _ in
                 exit(0)
             }))
-            alert.addAction(UIAlertAction(title: "Später", style: .cancel))
+            alert.addAction(UIAlertAction(title: Constants.Strings.later.locale, style: .cancel))
             vc.present(alert, animated: true) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
                     alert.dismiss(animated: true)

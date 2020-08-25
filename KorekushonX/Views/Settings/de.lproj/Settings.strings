@@ -24,7 +24,7 @@
 "TGC-KD-nH6.text" = "Versionsänderungen";
 
 /* Class = "UITableViewSection"; footerTitle = "Version: 0.0.0 (0)"; ObjectID = "TqI-xs-k89"; */
-"TqI-xs-k89.footerTitle" = "Version: 0.0.0 (0)";
+"TqI-xs-k89.footerTitle" = "Version:";
 
 /* Class = "UITableViewSection"; headerTitle = "Rechtliches"; ObjectID = "TqI-xs-k89"; */
 "TqI-xs-k89.headerTitle" = "Rechtliches";
@@ -43,6 +43,8 @@
 
 /* Class = "UINavigationItem"; title = "Menü"; ObjectID = "wJJ-oV-y7H"; */
 "wJJ-oV-y7H.title" = "Menü";
+
+"mdT-dz-GcY.title" = "Zurück";
 
 /* Class = "UILabel"; text = "Lizenzen"; ObjectID = "zIx-eG-DgC"; */
 "zIx-eG-DgC.text" = "Lizenzen";

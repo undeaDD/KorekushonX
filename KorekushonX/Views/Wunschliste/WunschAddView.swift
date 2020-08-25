@@ -18,7 +18,7 @@ class WunschAddView: UITableViewController {
         super.viewDidLoad()
 
         if let wunsch = editWunsch {
-            navigationItem.title = Constants.Keys.edit.locale
+            navigationItem.title = Constants.Strings.edit.locale
             titleField.text = wunsch.title
             image.image = wunsch.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
         }
@@ -36,7 +36,7 @@ class WunschAddView: UITableViewController {
     @IBAction private func save(_ keepOpen: Bool = false) {
         self.view.endEditing(true)
 
-        let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : image.image?.cover()
+        let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : Cover(image: image!.image)
         let temp = Wunsch(id: editWunsch != nil ? editWunsch!.id : UUID(),
                       title: titleField.text.trim(),
                        cover: img)
@@ -45,7 +45,7 @@ class WunschAddView: UITableViewController {
         UserDefaults.standard.set(true, forKey: Constants.Keys.wishesReload.rawValue)
 
          if keepOpen {
-            AlertManager.shared.savedInfo(self, Constants.Keys.reihe.locale)
+            AlertManager.shared.savedInfo(self, Constants.Strings.reihe.locale)
          } else {
              self.navigationController?.popToRootViewController(animated: true)
          }

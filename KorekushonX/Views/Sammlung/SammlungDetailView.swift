@@ -11,7 +11,7 @@ class SammlungDetailView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        books = FilesStore<Book>(uniqueIdentifier: "books").allObjects().filter { $0.mangaId == manga!.id }.sorted { $0.number < $1.number }
+        books = FilesStore<Book>(uniqueIdentifier: Constants.Keys.managerBooks.rawValue).allObjects().filter { $0.mangaId == manga!.id }.sorted { $0.number < $1.number }
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -23,7 +23,7 @@ class SammlungDetailView: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "edit", let dest = segue.destination as? SammlungAddView {
+        if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? SammlungAddView {
             dest.editManga = (sender as! Manga)
         }
     }
@@ -33,23 +33,7 @@ class SammlungDetailView: UIViewController {
     }
 
     @IBAction private func editManga() {
-        performSegue(withIdentifier: "edit", sender: manga!)
-    }
-
-    override var previewActionItems: [UIPreviewActionItem] {
-        let edit = UIPreviewAction(title: "Bearbeiten", style: .default, handler: { _, _ in
-            self.editAction?()
-        })
-
-        let share = UIPreviewAction(title: "Teilen", style: .default, handler: { _, _ in
-            self.shareAction?()
-        })
-
-        let remove = UIPreviewAction(title: "Löschen", style: .destructive) { _, _ in
-            self.removeAction?()
-        }
-
-        return [share, edit, remove]
+        performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: manga!)
     }
 }
 
@@ -59,14 +43,14 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let details = UserDefaults.standard.bool(forKey: "settingsSammlungShowCover") ? 2 : 1
+        let details = UserDefaults.standard.bool(forKey: Constants.Keys.showCover.rawValue) ? 2 : 1
         return section == 0 ? details : books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
-            if UserDefaults.standard.bool(forKey: "settingsSammlungShowCover") {
+            if UserDefaults.standard.bool(forKey: Constants.Keys.showCover.rawValue) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "coverCell") as! CoverCell
                 cell.cover.image = manga?.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
                 return cell
@@ -75,12 +59,12 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
         case (0, 1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as! DetailCell
             cell.titleField.text = manga?.title ?? "-"
-                cell.subtitleField.text = "Autor:  \(manga?.author ?? "-")\nVerlag: \(manga?.publisher ?? "-")"
+            cell.subtitleField.text = "\(Constants.Strings.author.locale): \(manga?.author ?? "-")\n\(Constants.Strings.publisher.locale): \(manga?.publisher ?? "-")"
 
             if manga?.countAll ?? 1 == 1 {
-                cell.countField.text = "One Shot"
+                cell.countField.text = Constants.Strings.oneShot.locale
             } else {
-                cell.countField.text = "\(manga!.countAll) Bände"
+                cell.countField.text = "\(manga!.countAll) \(Constants.Strings.books.locale)"
             }
 
             return cell
@@ -94,8 +78,8 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
             var date = manager.formatter.string(from: Date(timeIntervalSince1970: book.date))
             if book.date == 0 { date = "-" }
 
-            cell.subtitleField.text = "Kaufdatum: \(date)\nExtras: \(book.extras)\n\(book.place)"
-            cell.priceField.text = String(format: "%.2f", book.price) + " € " + book.emote()
+            cell.subtitleField.text = "\(Constants.Strings.boughtDay.locale): \(date)\n\(Constants.Strings.extras.locale): \(book.extras)\n\(book.place)"
+            cell.priceField.text = Constants.Strings.dollar.locale + String(format: "%.2f", book.price) + Constants.Strings.euro.locale + " " + book.emote()
             return cell
         default:
             return UITableViewCell()
@@ -107,7 +91,7 @@ extension SammlungDetailView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 1 ? "Gekaufte Mangas" : nil
+        return section == 1 ? Constants.Strings.boughtMangas.locale : nil
     }
 }
 

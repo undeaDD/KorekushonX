@@ -1,4 +1,101 @@
+"ReminderTitle" = "Reminder for";
 "Date" = "Date";
+"Manga" = "Manga";
+"Book" = "Book";
+"Reminder" = "Reminder";
+"BoughtAt" = "Bought on";
+"Generated" = "Generated";
+"EuroSign" = "";
+"DollerSign" = "$ ";
 "Search" = "Search";
 "DateFormat" = "mm.dd.yyyy";
-"-" = "Unknown";
+"Unknown" = "-";
+"Remove" = "Remove";
+"Share" = "Share";
+"Edit" = "Edit";
+"AddNew" = "Add new";
+"Of" = "of";
+"Version" = "Version";
+
+"FilterCollection" = "Filter Collection:";
+"FilterTitle" = "By Title";
+"FilterAuthor" = "By Author";
+"FilterPublisher" = "By Publisher";
+"FilterComplete" = "Only Completed";
+"FilterIncomplete" = "Only Incomplete";
+
+"FilterAnime" = "Filter Animes:";
+"FilterCurrent" = "In Progress";
+"FilterWatchlist" = "Watchlist";
+"FilterWatched" = "Watched";
+
+"FilterBooks" = "Filter Books:";
+"filterGenerated" = "Hide Generated";
+"SortByManga" = "By Collection";
+"SortPriceDown" = "By Price Descending";
+"SortPriceUp" = "By Price Ascending";
+
+"ChooseImage" = "Choose Cover:";
+"ImageAPI" = "Automatic (Web-API)";
+"PhotoLibrary" = "Photo Library";
+"Camera" = "Camera";
+"NoImage" = "No Cover";
+
+"StyleCollection" = "Choose Cover Viewstyle:";
+"StyleRow" = "Rows (Default)";
+"StyleColumns" = "Columns";
+"StyleCompact" = "Compact";
+
+"AppSymbol" = "Choose App Symbol:";
+"AppSymbolLight" = "Light (Default)";
+"AppSymbolDark" = "Dark";
+
+"SystemStyle" = "Choose App Theme";
+"SystemStyleLight" = "Light";
+"SystemStyleAuto" = "Automatic";
+
+"RepairTitle" = "Repair local Data";
+"RepairBody" = "This will repair your local Data. Beware though: Some Data may get deleted in the Process.";
+"RepairWaitTitle" = "Please wait";
+"RepairWaitBody" = "Repairing local Data...";
+
+"RemoveAll" = "Remove local Data?";
+"RemoveBody" = "This will remove everything. Are you sure?";
+
+"SearchTitle" = "Search Term";
+"SearchBody" = "Search for Cover Image\n(Manga Titel)";
+
+"DuplicateTitle" = "Duplicate";
+"DuplicateBody" = "Item could not be saved.";
+"SavedTitle" = "Success";
+"SavedBody" = "Item was saved successfully.";
+
+"RestartTitle" = "Restart App";
+"RestartBody" = "An App restart is needed.";
+"RestartButton" = "Exit App";
+"" = "Later";
+
+"NotAvailableTitle" = "Not available";
+"NotAvailableBody" = "This functionality is not available on your Device. A System OS Update may fix this.";
+
+"NoEmailTitle" = "No Email Account";
+"NoEmailBody" = "We could not find an Email account to send your Feedback. If you want to send Feedback from another Email send it to my Reciever Email Account.\n\ndominic.drees@live.de";
+
+"Warning" = "Warning";
+"WarningReminder" = "You need to enable Notifications for Reminding functionality. Notifications can be enabled or disabled inside the App Settings. Restart KorekushonX afterwards !!!";
+"Settings" = "Settings";
+
+"Author" = "Author";
+"Publisher" = "Publisher";
+"OneShot" = "One Shot";
+"Books" = "Books";
+"BoughtDay" = "Date";
+"Extras" = "Extras";
+"BoughtMangas" = "Bought Mangas";
+
+"Later" = "Later";
+"Apply" = "Apply (Restart App)";
+"FilterOff" = "No Filter";
+"Cancel" = "Cancel";
+"Okay" = "Okay";
+"No" = "No";

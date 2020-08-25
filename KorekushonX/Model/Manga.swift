@@ -20,8 +20,12 @@ public struct Cover: Codable {
         return UIImage(data: data) ?? UIImage(named: Constants.Images.default.rawValue)!
     }
 
-    public init(image: UIImage) {
-        self.data = image.pngData()!
+    public init?(image: UIImage?) {
+        if let data = image?.pngData() {
+            self.data = data
+        } else {
+            return nil
+        }
     }
 }
 

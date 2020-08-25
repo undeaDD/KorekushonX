@@ -28,7 +28,7 @@ class SammlungCompactView: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = Constants.Keys.search.locale
+        searchController.searchBar.placeholder = Constants.Strings.search.locale
         navigationItem.searchController = searchController
 
         filterButton.image = manager.getFilterImage()
@@ -98,9 +98,9 @@ extension SammlungCompactView: UICollectionViewDataSource, UICollectionViewDeleg
         collectionView.contentInset.top = self.searchController.isActive ? 20 : 0
         navigationController?.navigationBar.prefersLargeTitles = !self.searchController.isActive
         if searchController.isActive, let text = searchController.searchBar.text, !text.isEmpty {
-            UserDefaults.standard.set(text.lowercased(), forKey: "SammlungSearch")
+            UserDefaults.standard.set(text.lowercased(), forKey: Constants.Keys.mangaSearch.rawValue)
         } else {
-            UserDefaults.standard.removeObject(forKey: "SammlungSearch")
+            UserDefaults.standard.removeObject(forKey: Constants.Keys.mangaSearch.rawValue)
         }
         manager.reloadIfNeccessary(nil, collectionView, true)
     }

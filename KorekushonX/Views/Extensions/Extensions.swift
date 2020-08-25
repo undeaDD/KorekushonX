@@ -1,7 +1,7 @@
 import UIKit
 
-class WebImage {
-    class func apiImage(_ search: String) -> UIImage {
+struct WebImage {
+    static func apiImage(_ search: String) -> UIImage {
         let semaphore = DispatchSemaphore(value: 0)
         var image: UIImage?
         let title = search.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
@@ -39,22 +39,18 @@ extension String {
     var firstCharacter: Character? {
         return isEmpty ? Character(self[startIndex].uppercased()) : nil
     }
-
-    var localized: String {
-        NSLocalizedString(self, comment: "")
-    }
 }
 
 extension Optional where Wrapped == String {
     func trim() -> String {
         if let string = self {
-            if string.isEmpty { return Constants.Keys.unknown.rawValue } else {
+            if string.isEmpty { return Constants.Strings.unknown.rawValue } else {
                 let result = string.trimmingCharacters(in: .whitespacesAndNewlines)
-                if result.isEmpty { return Constants.Keys.unknown.rawValue } else {
+                if result.isEmpty { return Constants.Strings.unknown.rawValue } else {
                     return result
                 }
             }
-        } else { return Constants.Keys.unknown.rawValue }
+        } else { return Constants.Strings.unknown.rawValue }
     }
 }
 
@@ -77,11 +73,9 @@ extension Array {
 
 extension UIColor {
     var isDarkColor: Bool {
-        var r, g, b, a: CGFloat
-        (r, g, b, a) = (0, 0, 0, 0)
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-        let lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
-        return  lum < 0.50
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.50
     }
 }
 
@@ -89,15 +83,9 @@ extension UIImage {
     var averageColor: UIColor? {
         guard let inputImage = CIImage(image: self) else { return nil }
         let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
-        guard let filter = CIFilter(name: Constants.Keys.areaAverage.rawValue, parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
-        guard let outputImage = filter.outputImage else { return nil }
+        guard let outputImage = CIFilter(name: Constants.Keys.areaAverage.rawValue, parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector])?.outputImage else { return nil }
         var bitmap = [UInt8](repeating: 0, count: 4)
-        let context = CIContext(options: [.workingColorSpace: kCFNull as Any])
-        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+        CIContext(options: [.workingColorSpace: kCFNull as Any]).render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
         return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
-    }
-
-    func cover() -> Cover {
-        return Cover(image: self)
     }
 }

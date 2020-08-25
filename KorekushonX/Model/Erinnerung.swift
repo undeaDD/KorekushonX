@@ -16,7 +16,7 @@ class ErinnerungCell: UITableViewCell {
     func setUp(_ errinnerung: Erinnerung, _ date: String) {
         let temp = errinnerung.title.components(separatedBy: " | ")
         titleField.text = String(temp.count > 1 ? temp[1] : "-")
-        let dateString = NSLocalizedString(Constants.Keys.date.locale, comment: "")
+        let dateString = NSLocalizedString(Constants.Strings.date.locale, comment: "")
         subtitleField.text = "\(String(temp[0])) | \(dateString): \(date)"
     }
 }

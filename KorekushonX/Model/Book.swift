@@ -38,7 +38,7 @@ public class GekauftCell: UITableViewCell {
     func setUp(_ book: Book, _ date: String?) {
         titleField.text = book.title
 
-        subtitleField.text = "\(Constants.Keys.book.locale): \(book.number) | \(date != nil ? "\(Constants.Keys.boughtAt.locale): " + date! : Constants.Keys.generated.locale)"
-        priceField.text = Constants.Keys.dollar.locale + String(format: "%.2f", book.price) + Constants.Keys.euro.locale
+        subtitleField.text = "\(Constants.Strings.book.locale): \(book.number) | \(date != nil ? "\(Constants.Strings.boughtAt.locale): " + date! : Constants.Strings.generated.locale)"
+        priceField.text = Constants.Strings.dollar.locale + String(format: "%.2f", book.price) + Constants.Strings.euro.locale
     }
 }
