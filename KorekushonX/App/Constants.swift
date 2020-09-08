@@ -77,11 +77,17 @@ public enum Constants {
         case lightsOn = "lightsOn"
         case lightsOff = "lightsOff"
         case lightsAutomatic = "lightsAuto"
+        case plus = "plus"
+        case minus = "minus"
+        case play = "play"
+        case wait = "wait"
+        case done = "done"
     }
 
     public enum Strings: String {
         case remindMe = "ReminderTitle"
         case date = "Date"
+        case anime = "Anime"
         case reihe = "Manga"
         case book = "Book"
         case remind = "Reminder"
@@ -90,7 +96,6 @@ public enum Constants {
         case euro = "EuroSign"
         case dollar = "DollerSign"
         case search = "Search"
-        case dateFormat = "DateFormat"
         case unknown = "Unknown"
         case trash = "Remove"
         case share = "Share"
@@ -146,6 +151,8 @@ public enum Constants {
 
         case searchTitle = "SearchTitle"
         case searchBody = "SearchBody"
+        case searchTitleAnime = "SearchTitleAnime"
+        case searchBodyAnime = "SearchBodyAnime"
 
         case duplicateTitle = "DuplicateTitle"
         case duplicateBody = "DuplicateBody"
@@ -180,6 +187,15 @@ public enum Constants {
         case cancel = "Cancel"
         case okay = "Okay"
         case no = "No"
+
+        case update = "update"
+        case previousEP = "prevEP"
+        case nextEP = "nextEP"
+        case changeCategory = "changeCategory"
+        case playing = "playing"
+        case list = "list"
+        case finished = "finished"
+        case actions = "actions"
 
         var locale: String {
             return NSLocalizedString(self.rawValue, comment: "")

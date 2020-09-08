@@ -1,6 +1,7 @@
 "ReminderTitle" = "Erinnerung für";
 "Date" = "Datum";
 "Manga" = "Reihe";
+"Anime" = "Anime";
 "Book" = "Buch";
 "Reminder" = "Erinnerung";
 "BoughtAt" = "Gekauft am";
@@ -8,7 +9,6 @@
 "EuroSign" = " €";
 "DollerSign" = "";
 "Search" = "Suchen";
-"DateFormat" = "dd.mm.yyyy";
 "Unknown" = "-";
 "Remove" = "Löschen";
 "Share" = "Teilen";
@@ -25,9 +25,9 @@
 "FilterIncomplete" = "Nur nicht Vollständige";
 
 "FilterAnime" = "Anime Filtern:";
-"FilterCurrent" = "Laufend";
-"FilterWatchlist" = "Warteliste";
-"FilterWatched" = "Geschaut";
+"FilterCurrent" = "Nur Laufende";
+"FilterWatchlist" = "Nur Spätere";
+"FilterWatched" = "Nur Geschaute";
 
 "FilterBooks" = "Bände Filtern:";
 "filterGenerated" = "Generierte ausblenden";
@@ -63,7 +63,9 @@
 "RemoveBody" = "Dadurch werden alle lokal gespeicherten Daten gelöscht.";
 
 "SearchTitle" = "Suchbegriff";
-"SearchBody" = "Nach dem Bild suchen\n(Manga Titel)";
+"SearchBody" = "Nach einem Bild suchen\n(Manga Titel)";
+"SearchTitleAnime" = "Suchbegriff";
+"SearchBodyAnime" = "Nach einem Bild suchen\n(Anime Titel)";
 
 "DuplicateTitle" = "Duplikat";
 "DuplicateBody" = "konnte nicht gespeichert werden.";
@@ -99,3 +101,12 @@
 "Cancel" = "Abbrechen";
 "Okay" = "Okay";
 "No" = "Nein";
+
+"update" = "Episode ändern:";
+"prevEP" = "Vorherige Episode";
+"nextEP" = "Nächste Episode";
+"changeCategory" = "Kategorie ändern:";
+"playing" = "Laufend";
+"list" = "Später";
+"finished" = "Geschaut";
+"actions" = "Aktionen:";

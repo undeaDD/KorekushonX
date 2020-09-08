@@ -1,0 +1,33 @@
+
+/* Class = "UISegmentedControl"; 99P-Y4-ZZ5.segmentTitles[0] = "Current"; ObjectID = "99P-Y4-ZZ5"; */
+"99P-Y4-ZZ5.segmentTitles[0]" = "Current";
+
+/* Class = "UISegmentedControl"; 99P-Y4-ZZ5.segmentTitles[1] = "Watchlist"; ObjectID = "99P-Y4-ZZ5"; */
+"99P-Y4-ZZ5.segmentTitles[1]" = "Watchlist";
+
+/* Class = "UISegmentedControl"; 99P-Y4-ZZ5.segmentTitles[2] = "Finished"; ObjectID = "99P-Y4-ZZ5"; */
+"99P-Y4-ZZ5.segmentTitles[2]" = "Finished";
+
+/* Class = "UINavigationItem"; title = "Animes"; ObjectID = "99z-qP-t4R"; */
+"99z-qP-t4R.title" = "Animes";
+
+/* Class = "UILabel"; text = "Choose Cover:"; ObjectID = "J0a-Mr-0Ha"; */
+"J0a-Mr-0Ha.text" = "Choose Cover:";
+
+/* Class = "UILabel"; text = "Anime Name:"; ObjectID = "LPM-M1-LRY"; */
+"LPM-M1-LRY.text" = "Anime Name:";
+
+/* Class = "UILabel"; text = "Current Episode:"; ObjectID = "LdE-bM-bN3"; */
+"LdE-bM-bN3.text" = "Current Episode:";
+
+/* Class = "UINavigationItem"; title = "Add new"; ObjectID = "TrK-t6-HP3"; */
+"TrK-t6-HP3.title" = "Add new";
+
+/* Class = "UITextField"; placeholder = "1"; ObjectID = "iOZ-mY-Aui"; */
+"iOZ-mY-Aui.placeholder" = "1";
+
+/* Class = "UITextField"; placeholder = "No Game No Life"; ObjectID = "sJ7-mt-Xlm"; */
+"sJ7-mt-Xlm.placeholder" = "No Game No Life";
+
+/* Class = "UILabel"; text = "Ep: 0"; ObjectID = "vK6-ip-rki"; */
+"vK6-ip-rki.text" = "Ep: 0";

@@ -6,7 +6,9 @@ class SammlungManager {
 
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = Constants.Strings.dateFormat.locale
+        temp.dateStyle = .medium
+        temp.timeStyle = .none
+        temp.locale = NSLocale.current
         return temp
     }()
 
@@ -85,6 +87,7 @@ class SammlungManager {
 
             try? store.save(parent)
         }
+
         UserDefaults.standard.set(true, forKey: Constants.Keys.mangaReload.rawValue)
         completion()
     }

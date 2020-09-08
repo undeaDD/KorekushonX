@@ -201,7 +201,7 @@
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ayZ-eb-XwW">
                                                     <rect key="frame" x="8" y="8" width="358" height="184"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                                    <locale key="locale" localeIdentifier="de"/>
+                                                    <color key="tintColor" systemColor="systemPurpleColor"/>
                                                 </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>

@@ -1,11 +1,11 @@
 import UIKit
 
 struct WebImage {
-    static func apiImage(_ search: String) -> UIImage {
+    static func apiImage(_ search: String, _ prefix: String = "manga") -> UIImage {
         let semaphore = DispatchSemaphore(value: 0)
         var image: UIImage?
         let title = search.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
-        let url = "https://www.googleapis.com/books/v1/volumes?q=manga%20\(title)&fields=items(volumeInfo(imageLinks))&maxResults=10"
+        let url = "https://www.googleapis.com/books/v1/volumes?q=\(prefix)%20\(title)&fields=items(volumeInfo(imageLinks))&maxResults=10"
 
         var req = URLRequest(url: URL(string: url)!)
         req.setValue("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", forHTTPHeaderField: "User-Agent")
@@ -89,3 +89,5 @@ extension UIImage {
         return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
 }
+
+class ImagePickerView: UIImagePickerController { }

@@ -6,8 +6,8 @@ class WunschAddView: UITableViewController {
     var editWunsch: Wunsch?
 
     let manager = WunschManager.shared
-    let imagePicker: UIImagePickerController = {
-        let pickerController = UIImagePickerController()
+    let imagePicker: ImagePickerView = {
+        let pickerController = ImagePickerView()
         pickerController.allowsEditing = false
         pickerController.mediaTypes = ["public.image"]
         pickerController.sourceType = .photoLibrary
@@ -18,6 +18,7 @@ class WunschAddView: UITableViewController {
         super.viewDidLoad()
 
         if let wunsch = editWunsch {
+            navigationItem.rightBarButtonItems?.removeFirst()
             navigationItem.title = Constants.Strings.edit.locale
             titleField.text = wunsch.title
             image.image = wunsch.cover?.img() ?? UIImage(named: Constants.Images.default.rawValue)
@@ -80,7 +81,15 @@ extension WunschAddView: UIImagePickerControllerDelegate, UINavigationController
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        self.image.image = info[.originalImage] as? UIImage
+        if let image = info[.originalImage] as? UIImage, let cg = image.cgImage {
+            if image.imageOrientation == .up {
+                self.image.image = UIImage(cgImage: cg, scale: 1.0, orientation: .left)
+            } else if image.imageOrientation == .down {
+                self.image.image = UIImage(cgImage: cg, scale: 1.0, orientation: .right)
+            } else {
+                self.image.image = image
+            }
+        }
         picker.dismiss(animated: true)
     }
 }

@@ -1,0 +1,93 @@
+
+/* Class = "UINavigationItem"; title = "Add new"; ObjectID = "3ox-jK-HAD"; */
+"3ox-jK-HAD.title" = "Add new";
+
+/* Class = "UITextField"; placeholder = "Egmont Manga"; ObjectID = "4qv-re-hbk"; */
+"4qv-re-hbk.placeholder" = "Egmont Manga";
+
+/* Class = "UILabel"; text = "Bought: 00.00.00 Ebay Kleinanzeigen -"; ObjectID = "DCx-hK-9xG"; */
+"DCx-hK-9xG.text" = "Bought: 00.00.00 Ebay Kleinanzeigen -";
+
+/* Class = "UITableViewSection"; footerTitle = "* Automatically generates Books in the \"Bought Books\" View, if the left number is set to anything greater than 0. Only the right Number can be edited later."; ObjectID = "DWU-z5-eb5"; */
+"DWU-z5-eb5.footerTitle" = "* Automatically generates Books in the \"Bought Books\" View, if the left number is set to anything greater than 0. Only the right Number can be edited later.";
+
+/* Class = "UINavigationItem"; title = "Manga Collection"; ObjectID = "Dvv-aX-CPn"; */
+"Dvv-aX-CPn.title" = "Manga Collection";
+
+/* Class = "UILabel"; text = "Titel Subtitle"; ObjectID = "ELV-6s-Syh"; */
+"ELV-6s-Syh.text" = "Titel Subtitle";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "F01-06-pnw"; */
+"F01-06-pnw.text" = "0";
+
+/* Class = "UINavigationItem"; title = "Manga Collection"; ObjectID = "Fpo-af-xcx"; */
+"Fpo-af-xcx.title" = "Manga Collection";
+
+/* Class = "UILabel"; text = "999/999"; ObjectID = "IGP-aO-7C0"; */
+"IGP-aO-7C0.text" = "999/999";
+
+/* Class = "UILabel"; text = "Book Titel"; ObjectID = "JAp-YH-Bmk"; */
+"JAp-YH-Bmk.text" = "Book Titel";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "K8F-ch-8kJ"; */
+"K8F-ch-8kJ.text" = "0";
+
+/* Class = "UILabel"; text = "Manga Titel"; ObjectID = "KpL-03-RGb"; */
+"KpL-03-RGb.text" = "Manga Titel";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "ND3-XO-opw"; */
+"ND3-XO-opw.title" = "Back";
+
+/* Class = "UINavigationItem"; title = "Manga Collection"; ObjectID = "NkE-Jo-iGN"; */
+"NkE-Jo-iGN.title" = "Manga Collection";
+
+/* Class = "UITextField"; placeholder = "Kiss of the Fox"; ObjectID = "Oae-rQ-0kP"; */
+"Oae-rQ-0kP.placeholder" = "Kiss of the Fox";
+
+/* Class = "UINavigationItem"; title = "Details"; ObjectID = "PUc-Z2-BXd"; */
+"PUc-Z2-BXd.title" = "Details";
+
+/* Class = "UILabel"; text = "Kyoko Kumagai"; ObjectID = "PpY-Qk-oSv"; */
+"PpY-Qk-oSv.text" = "Kyoko Kumagai";
+
+/* Class = "UILabel"; text = "Author:"; ObjectID = "PwN-5Y-cK3"; */
+"PwN-5Y-cK3.text" = "Author:";
+
+/* Class = "UILabel"; text = "Owned Books *:"; ObjectID = "RXI-jD-mCD"; */
+"RXI-jD-mCD.text" = "Owned Books *:";
+
+/* Class = "UITextField"; placeholder = "0 of 3"; ObjectID = "VWK-lZ-Ljt"; */
+"VWK-lZ-Ljt.placeholder" = "0 of 3";
+
+/* Class = "UILabel"; text = "999/999"; ObjectID = "XuO-cb-yWr"; */
+"XuO-cb-yWr.text" = "999/999";
+
+/* Class = "UITextField"; placeholder = "Saki Aikawa"; ObjectID = "YHM-zV-csa"; */
+"YHM-zV-csa.placeholder" = "Saki Aikawa";
+
+/* Class = "UILabel"; text = "Choose Cover:"; ObjectID = "ZeH-iw-5fv"; */
+"ZeH-iw-5fv.text" = "Choose Cover:";
+
+/* Class = "UILabel"; text = "Titel:"; ObjectID = "dki-gg-ECg"; */
+"dki-gg-ECg.text" = "Titel:";
+
+/* Class = "UILabel"; text = "Author: Kyoko Kumagai Publisher: Egmont Manga"; ObjectID = "e6E-jf-asN"; */
+"e6E-jf-asN.text" = "Author: Kyoko Kumagai Publisher: Egmont Manga";
+
+/* Class = "UILabel"; text = "9000 Books"; ObjectID = "eeO-0e-2fB"; */
+"eeO-0e-2fB.text" = "9000 Books";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "hHb-Sl-gT4"; */
+"hHb-Sl-gT4.title" = "Back";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "iSM-oe-qnn"; */
+"iSM-oe-qnn.title" = "Back";
+
+/* Class = "UILabel"; text = "Publisher:"; ObjectID = "qs0-WA-rZr"; */
+"qs0-WA-rZr.text" = "Publisher:";
+
+/* Class = "UILabel"; text = "Manga Titel"; ObjectID = "rVH-oH-LiQ"; */
+"rVH-oH-LiQ.text" = "Manga Titel";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "vrF-2L-H14"; */
+"vrF-2L-H14.title" = "Back";

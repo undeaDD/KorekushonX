@@ -2,8 +2,8 @@ import UIKit
 
 class SammlungAddView: UITableViewController {
     let manager = SammlungManager.shared
-    let imagePicker: UIImagePickerController = {
-        let pickerController = UIImagePickerController()
+    let imagePicker: ImagePickerView = {
+        let pickerController = ImagePickerView()
         pickerController.allowsEditing = false
         pickerController.mediaTypes = ["public.image"]
         pickerController.sourceType = .photoLibrary
@@ -35,7 +35,7 @@ class SammlungAddView: UITableViewController {
         }
 
         let img = image.image == UIImage(named: Constants.Images.default.rawValue) ? nil : Cover(image: image.image)
-        let temp = Manga(id: editManga != nil ? editManga!.id : UUID(),
+        var temp = Manga(id: editManga != nil ? editManga!.id : UUID(),
                       title: titleField.text.trim(),
                      author: authorField.text.trim(),
                       cover: img,
@@ -43,6 +43,10 @@ class SammlungAddView: UITableViewController {
                    countAll: maxCount,
                   available: true,
                   completed: completed)
+
+        if let tempImg = image.image, tempImg != UIImage(named: Constants.Images.default.rawValue), let color = tempImg.averageColor {
+            temp.coverColor = CoverColor(color: color)
+        }
 
         if editManga == nil && manager.store.allObjects().contains(where: { stored -> Bool in
             stored.title.lowercased() == temp.title.lowercased()
@@ -102,6 +106,7 @@ class SammlungAddView: UITableViewController {
         publisherField.inputView = verlagPickerView
 
         if let manga = editManga {
+            navigationItem.rightBarButtonItems?.removeFirst()
             navigationItem.title = Constants.Strings.edit.locale
             titleField.text = manga.title
             authorField.text = manga.author
@@ -117,10 +122,14 @@ class SammlungAddView: UITableViewController {
         }
 
         imagePicker.delegate = self
-        titleField.becomeFirstResponder()
         if #available(iOS 13, *) {} else {
             tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -38, right: 0)
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        titleField.becomeFirstResponder()
     }
 }
 
@@ -210,7 +219,15 @@ extension SammlungAddView: UIPickerViewDelegate, UIPickerViewDataSource, UIImage
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        self.image.image = info[.originalImage] as? UIImage
+        if let image = info[.originalImage] as? UIImage, let cg = image.cgImage {
+            if image.imageOrientation == .up {
+                self.image.image = UIImage(cgImage: cg, scale: 1.0, orientation: .left)
+            } else if image.imageOrientation == .down {
+                self.image.image = UIImage(cgImage: cg, scale: 1.0, orientation: .right)
+            } else {
+                self.image.image = image
+            }
+        }
         picker.dismiss(animated: true)
     }
 }

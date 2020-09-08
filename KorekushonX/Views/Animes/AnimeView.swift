@@ -37,13 +37,15 @@ class AnimeView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.tintColor = .systemOrange
+        tabBarController?.tabBar.tintColor = .systemOrange
+        navigationController?.navigationBar.tintColor = .systemOrange
         manager.reloadIfNeccessary(nil, collectionView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.tintColor = .systemPurple
+        tabBarController?.tabBar.tintColor = .systemPurple
+        navigationController?.navigationBar.tintColor = .systemPurple
     }
 
     @objc
@@ -53,25 +55,37 @@ class AnimeView: UIViewController {
 
         if let indexPath = collectionView.indexPathForItem(at: loc) {
             let item = self.manager.filtered[indexPath.row]
-            AlertManager.shared.options(self) { index in
+            AlertManager.shared.optionsAnime(self, item.episode > 1, category: item.category) { index in
                 switch index {
                 case 0:
                     self.manager.shareAnime(item, self)
                 case 1:
                     self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: item)
-                default:
+                case 2:
                     self.manager.removeAnime(item)
                     self.manager.reloadIfNeccessary(nil, self.collectionView, true)
+                    return
+                case 3:
+                    self.manager.updateAnime(item, -, nil)
+                case 4:
+                    self.manager.updateAnime(item, +, nil)
+                case 5:
+                    self.manager.updateAnime(item, nil, 0)
+                case 6:
+                    self.manager.updateAnime(item, nil, 1)
+                case 7:
+                    self.manager.updateAnime(item, nil, 2)
+                default:
+                    print(index)
                 }
+                self.manager.reloadIfNeccessary(nil, self.collectionView)
             }
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? SammlungAddView, let manga = sender as? Manga {
-            dest.editManga = manga
-        } else if segue.identifier == Constants.Segues.detail.rawValue, let dest = segue.destination as? SammlungDetailView, let manga = sender as? Manga {
-            dest.manga = manga
+        if segue.identifier == Constants.Segues.edit.rawValue, let dest = segue.destination as? AnimeAddView, let anime = sender as? Anime {
+            dest.editAnime = anime
         } else if segue.identifier == Constants.Segues.settings.rawValue, let nav = segue.destination as? NavigationController {
             nav.presentationController?.delegate = self
         }
@@ -111,7 +125,32 @@ extension AnimeView: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.Segues.detail.rawValue, sender: manager.filtered[indexPath.row])
+        let item = manager.filtered[indexPath.row]
+        AlertManager.shared.optionsAnime(self, item.episode > 1, category: item.category) { index in
+            switch index {
+            case 0:
+                self.manager.shareAnime(item, self)
+            case 1:
+                self.performSegue(withIdentifier: Constants.Segues.edit.rawValue, sender: item)
+            case 2:
+                self.manager.removeAnime(item)
+                self.manager.reloadIfNeccessary(nil, self.collectionView, true)
+                return
+            case 3:
+                self.manager.updateAnime(item, -, nil)
+            case 4:
+                self.manager.updateAnime(item, +, nil)
+            case 5:
+                self.manager.updateAnime(item, nil, 0)
+            case 6:
+                self.manager.updateAnime(item, nil, 1)
+            case 7:
+                self.manager.updateAnime(item, nil, 2)
+            default:
+                print(index)
+            }
+            self.manager.reloadIfNeccessary(nil, self.collectionView)
+        }
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

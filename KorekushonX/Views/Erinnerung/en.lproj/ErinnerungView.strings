@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Book:"; ObjectID = "7AF-EP-HBX"; */
+"7AF-EP-HBX.text" = "Book:";
+
+/* Class = "UINavigationItem"; title = "Reminder"; ObjectID = "Ahe-wV-6gD"; */
+"Ahe-wV-6gD.title" = "Reminder";
+
+/* Class = "UILabel"; text = "Titel:"; ObjectID = "BMD-8i-he8"; */
+"BMD-8i-he8.text" = "Titel:";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "DTL-Se-Ztf"; */
+"DTL-Se-Ztf.title" = "Back";
+
+/* Class = "UITextField"; placeholder = "3"; ObjectID = "Oiv-Zt-Tj4"; */
+"Oiv-Zt-Tj4.placeholder" = "3";
+
+/* Class = "UITextField"; placeholder = "Kiss of the Fox"; ObjectID = "Ua6-MR-hvN"; */
+"Ua6-MR-hvN.placeholder" = "Kiss of the Fox";
+
+/* Class = "UINavigationItem"; title = "Add new"; ObjectID = "X5L-6m-Bxy"; */
+"X5L-6m-Bxy.title" = "Add new";
+
+/* Class = "UILabel"; text = "Date: 00.00.00"; ObjectID = "iLY-kD-yoe"; */
+"iLY-kD-yoe.text" = "Date: 00.00.00";
+
+/* Class = "UILabel"; text = "Titel"; ObjectID = "tF7-fr-QSX"; */
+"tF7-fr-QSX.text" = "Titel";

@@ -7,7 +7,9 @@ class ErinnerungManager {
     static let shared = ErinnerungManager()
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = Constants.Strings.dateFormat.locale
+        temp.dateStyle = .medium
+        temp.timeStyle = .none
+        temp.locale = NSLocale.current
         return temp
     }()
 

@@ -16,11 +16,6 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
         applyFooter()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        applyFooter()
-    }
-
     private func applyFooter() {
         if let footer = tableView.footerView(forSection: 1) {
             let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
@@ -107,8 +102,16 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
                 AlertManager.shared.restartNeeded(self)
             }
         case (0, 6):
-            AlertManager.shared.repairData(self)
+            AlertManager.shared.loadingDonation(self) { alert in
+                DonationManager.shared.donateCoffee { result in
+                    alert.dismiss(animated: false) {
+                        AlertManager.shared.resultDonation(self, result)
+                    }
+                }
+            }
         case (0, 7):
+            AlertManager.shared.repairData(self)
+        case (0, 8):
             AlertManager.shared.removeAll(self)
         case (1, let index):
             performSegue(withIdentifier: Constants.Segues.webView.rawValue, sender: index)

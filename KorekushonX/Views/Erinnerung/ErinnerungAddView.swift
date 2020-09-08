@@ -22,6 +22,11 @@ class ErinnerungAddView: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        titleField.becomeFirstResponder()
+    }
+
     @IBAction private func save2() {
         save(true)
     }

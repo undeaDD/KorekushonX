@@ -93,6 +93,40 @@ struct AlertManager {
         }.present(in: vc, from: vc.view)
     }
 
+    func optionsAnime(_ vc: UIViewController, _ isNotFirst: Bool, category: Int, _ completion: @escaping (Int) -> Void) {
+        var items: [MenuItem] = []
+
+        items.append(SectionMargin())
+        items.append(SectionTitle(title: Constants.Strings.update.locale))
+
+        let temp = LinkItem(title: Constants.Strings.previousEP.locale, value: 3, image: UIImage(named: Constants.Images.minus.rawValue))
+        temp.isEnabled = isNotFirst
+        items.append(temp)
+        items.append(LinkItem(title: Constants.Strings.nextEP.locale, value: 4, image: UIImage(named: Constants.Images.plus.rawValue)))
+
+        items.append(SectionMargin())
+        items.append(SectionTitle(title: Constants.Strings.changeCategory.locale))
+        let a = SingleSelectItem(title: Constants.Strings.playing.locale, isSelected: category == 0, value: 5, image: UIImage(named: Constants.Images.play.rawValue))
+        a.tapBehavior = category == 0 ? .none : .dismiss
+        let b = SingleSelectItem(title: Constants.Strings.list.locale, isSelected: category == 1, value: 6, image: UIImage(named: Constants.Images.wait.rawValue))
+        b.tapBehavior = category == 1 ? .none : .dismiss
+        let c = SingleSelectItem(title: Constants.Strings.finished.locale, isSelected: category == 2, value: 7, image: UIImage(named: Constants.Images.done.rawValue))
+        c.tapBehavior = category == 2 ? .none : .dismiss
+        items.append(contentsOf: [a, b, c])
+
+        items.append(SectionMargin())
+        items.append(SectionTitle(title: Constants.Strings.actions.locale))
+        items.append(LinkItem(title: Constants.Strings.share.locale, value: 0, image: UIImage(named: Constants.Images.share.rawValue)))
+        items.append(LinkItem(title: Constants.Strings.edit.locale, value: 1, image: UIImage(named: Constants.Images.edit.rawValue)))
+        items.append(DestructiveItem(title: Constants.Strings.trash.locale, value: 2, image: UIImage(named: Constants.Images.trash.rawValue)))
+        items.append(CancelButton(title: Constants.Strings.cancel.locale))
+        Menu(items: items).toActionSheet { _, item in
+            if let value = item.value as? Int {
+                completion(value)
+            }
+        }.present(in: vc, from: vc.view)
+    }
+
     func options(_ vc: UIViewController, _ completion: @escaping (Int) -> Void) {
         var items: [MenuItem] = []
         items.append(LinkItem(title: Constants.Strings.share.locale, value: 0, image: UIImage(named: Constants.Images.share.rawValue)))
@@ -205,7 +239,9 @@ struct AlertManager {
                 let alert2 = UIAlertController(title: Constants.Strings.repairWait.locale, message: Constants.Strings.repairWaitBody.locale, preferredStyle: .alert)
                 vc.present(alert2, animated: true)
                 SammlungManager.shared.repairAll {
-                    alert2.dismiss(animated: true)
+                    AnimeManager.shared.repairAll {
+                        alert2.dismiss(animated: true)
+                    }
                 }
             }))
 
@@ -248,11 +284,24 @@ struct AlertManager {
         }
     }
 
+    func manualImageSearchAnime(_ vc: UIViewController, _ completion: @escaping (String) -> Void) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: Constants.Strings.searchTitleAnime.locale, message: Constants.Strings.searchBodyAnime.locale, preferredStyle: .alert)
+            alertController.addTextField { textField in textField.placeholder = "No Game No Life" }
+            alertController.addAction(UIAlertAction(title: Constants.Strings.search.locale, style: .default) { [weak alertController] _ in
+                guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+                completion(textField.text.trim())
+            })
+            alertController.addAction(UIAlertAction(title: Constants.Strings.cancel.locale, style: .cancel, handler: nil))
+            vc.present(alertController, animated: true, completion: nil)
+        }
+    }
+
     func duplicateError(_ vc: UIViewController, _ type: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: Constants.Strings.duplicateTitle.locale, message: "\(type) \(Constants.Strings.duplicateBody.locale)", preferredStyle: .alert)
             vc.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     alert.dismiss(animated: true)
                 }
             }
@@ -263,9 +312,27 @@ struct AlertManager {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: Constants.Strings.savedTitle.locale, message: "\(type) \(Constants.Strings.savedBody.locale)", preferredStyle: .alert)
             vc.present(alert, animated: true) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     alert.dismiss(animated: true)
                 }
+            }
+        }
+    }
+
+    func loadingDonation(_ vc: UIViewController, _ completion: @escaping (UIAlertController) -> Void) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Kaffee wird gekocht ...", message: "☕️  ☕️  ☕️", preferredStyle: .alert)
+            vc.present(alert, animated: true) {
+                completion(alert)
+            }
+        }
+    }
+
+    func resultDonation(_ vc: UIViewController, _ result: Bool) {
+        let alert = UIAlertController(title: result ? "Erfolgreich" : "Fehler", message: result ? "Uiii frischer Kaffe 😍\nDanke" : "Kein Kaffee? 🥺\nSchade", preferredStyle: .alert)
+        vc.present(alert, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                alert.dismiss(animated: true)
             }
         }
     }

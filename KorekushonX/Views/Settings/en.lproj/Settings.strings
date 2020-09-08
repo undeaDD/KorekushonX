@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "Remove local Data"; ObjectID = "61N-Vf-gd0"; */
+"61N-Vf-gd0.text" = "Remove local Data";
+
+/* Class = "UILabel"; text = "Repair local Data"; ObjectID = "8M0-qV-cI8"; */
+"8M0-qV-cI8.text" = "Repair local Data";
+
+/* Class = "UILabel"; text = "Dataprotection"; ObjectID = "8yh-In-tye"; */
+"8yh-In-tye.text" = "Dataprotection";
+
+/* Class = "UILabel"; text = "App Symbol"; ObjectID = "A0h-NJ-IBu"; */
+"A0h-NJ-IBu.text" = "App Symbol";
+
+/* Class = "UILabel"; text = "Imprint"; ObjectID = "CGm-yc-MMq"; */
+"CGm-yc-MMq.text" = "Imprint";
+
+/* Class = "UILabel"; text = "Show Anime Tab?"; ObjectID = "EdI-8a-bJ3"; */
+"EdI-8a-bJ3.text" = "Show Anime Tab?";
+
+/* Class = "UILabel"; text = "Buy me a Coffee"; ObjectID = "Ltj-lD-pa8"; */
+"Ltj-lD-pa8.text" = "Buy me a Coffee";
+
+/* Class = "UILabel"; text = "Show Detail Image?"; ObjectID = "R3X-dX-ZC0"; */
+"R3X-dX-ZC0.text" = "Show Detail Image?";
+
+/* Class = "UILabel"; text = "Changelog"; ObjectID = "TGC-KD-nH6"; */
+"TGC-KD-nH6.text" = "Changelog";
+
+/* Class = "UITableViewSection"; footerTitle = "Version:"; ObjectID = "TqI-xs-k89"; */
+"TqI-xs-k89.footerTitle" = "Version:";
+
+/* Class = "UITableViewSection"; headerTitle = "Informations ( in German )"; ObjectID = "TqI-xs-k89"; */
+"TqI-xs-k89.headerTitle" = "Informations ( in German )";
+
+/* Class = "UILabel"; text = "Colorize Collection?"; ObjectID = "baq-Hm-CzE"; */
+"baq-Hm-CzE.text" = "Colorize Collection?";
+
+/* Class = "UILabel"; text = "Collection View Style"; ObjectID = "cdk-G7-jL2"; */
+"cdk-G7-jL2.text" = "Collection View Style";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "mdT-dz-GcY"; */
+"mdT-dz-GcY.title" = "Back";
+
+/* Class = "UITableViewSection"; headerTitle = "App Settings"; ObjectID = "qUs-71-z34"; */
+"qUs-71-z34.headerTitle" = "App Settings";
+
+/* Class = "UILabel"; text = "System style"; ObjectID = "rUv-4e-8xm"; */
+"rUv-4e-8xm.text" = "System style";
+
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "wJJ-oV-y7H"; */
+"wJJ-oV-y7H.title" = "Menu";
+
+/* Class = "UILabel"; text = "Licenses"; ObjectID = "zIx-eG-DgC"; */
+"zIx-eG-DgC.text" = "Licenses";

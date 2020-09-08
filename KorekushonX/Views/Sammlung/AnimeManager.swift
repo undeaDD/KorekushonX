@@ -6,7 +6,9 @@ class AnimeManager {
 
     let formatter: DateFormatter = {
         let temp = DateFormatter()
-        temp.dateFormat = Constants.Strings.dateFormat.locale
+        temp.dateStyle = .medium
+        temp.timeStyle = .none
+        temp.locale = NSLocale.current
         return temp
     }()
 
@@ -40,16 +42,27 @@ class AnimeManager {
         UserDefaults.standard.set(true, forKey: Constants.Keys.animeReload.rawValue)
     }
 
+    func updateAnime(_ anime: Anime, _ op: ((Int, Int) -> Int)? = nil, _ category: Int?) {
+        var anime = anime
+        if let category = category {
+            anime.category = category
+        } else if let op = op {
+            anime.episode = op(anime.episode, 1)
+        }
+        try? store.save(anime)
+        UserDefaults.standard.set(true, forKey: Constants.Keys.animeReload.rawValue)
+    }
+
     func reloadIfNeccessary(_ tableView: UITableView? = nil, _ collectionView: UICollectionView? = nil, _ force: Bool = false) {
         filtered = store.allObjects()
 
         switch UserDefaults.standard.integer(forKey: Constants.Keys.animeFilter.rawValue) {
         case 1:
-            filtered = filtered.filter { $0.category == 1 }
+            filtered = filtered.filter { $0.category == 0 }
         case 2:
-            filtered = filtered.filter { $0.category == 2 }
+            filtered = filtered.filter { $0.category == 1 }
         case 3:
-            filtered = filtered.filter { $0.category == 3 }
+            filtered = filtered.filter { $0.category == 2 }
         default:
             break
         }
@@ -67,5 +80,18 @@ class AnimeManager {
                 UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: { collectionView.reloadData() })
             }
         }
+    }
+
+    func repairAll(_ completion: () -> Void) {
+        for var parent in store.allObjects() {
+            if let img = parent.cover?.img(), img != UIImage(named: Constants.Images.default.rawValue), let color = img.averageColor {
+                parent.coverColor = CoverColor(color: color)
+            }
+
+            try? store.save(parent)
+        }
+
+        UserDefaults.standard.set(true, forKey: Constants.Keys.animeReload.rawValue)
+        completion()
     }
 }

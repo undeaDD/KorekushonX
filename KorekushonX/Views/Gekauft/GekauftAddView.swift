@@ -73,6 +73,7 @@ class GekauftAddView: UITableViewController {
         datePickerView.addTarget(self, action: #selector(onChange(_:)), for: .valueChanged)
 
         if let book = editBook {
+            navigationItem.rightBarButtonItems?.removeFirst()
             navigationItem.title = Constants.Strings.edit.locale
             mangaField.text = book.title
             numberField.text = String(book.number)
