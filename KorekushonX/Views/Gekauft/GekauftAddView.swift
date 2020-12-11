@@ -69,6 +69,9 @@ class GekauftAddView: UITableViewController {
         numberField.inputView = numberPickerView
 
         datePickerView.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            datePickerView.preferredDatePickerStyle = .wheels
+        }
         dateField.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(onChange(_:)), for: .valueChanged)
 

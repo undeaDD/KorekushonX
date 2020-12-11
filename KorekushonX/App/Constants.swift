@@ -3,7 +3,6 @@ import Foundation
 public enum Constants {
     public enum Keys: String {
         case calculateColors = "settingsCalculateColors"
-        case showAnimeView = "settingsShowAnimeView"
         case selectedSammlungView = "settingsSammlungView"
         case showCover = "settingsSammlungShowCover"
         case appStyle = "settingsAppStyle"
@@ -26,6 +25,10 @@ public enum Constants {
         case booksSearch = "GekauftSearch"
         case booksMangaCell = "mangaCell"
         case booksReload = "BooksNeedsUpdating"
+
+        case managerContacts = "contacts"
+        case contactSearch = "ContactSearch"
+        case contactReload = "ContactNeedsUpdating"
 
         case managerWishes = "wishes"
         case wishesReload = "WunschNeedsUpdating"
@@ -182,6 +185,12 @@ public enum Constants {
         case extras = "Extras"
         case boughtMangas = "BoughtMangas"
 
+        case coffeeLoading = "CoffeeLoading"
+        case coffeeSuccessTitle = "CoffeSuccessTitle"
+        case coffeeSuccessBody = "CoffeSuccessBody"
+        case coffeeErrorTitle = "CoffeErrorTitle"
+        case coffeeErrorBody = "CoffeErrorBody"
+
         case filterOff = "FilterOff"
         case apply = "Apply"
         case cancel = "Cancel"
@@ -196,6 +205,8 @@ public enum Constants {
         case list = "list"
         case finished = "finished"
         case actions = "actions"
+
+        case more = "More"
 
         var locale: String {
             return NSLocalizedString(self.rawValue, comment: "")

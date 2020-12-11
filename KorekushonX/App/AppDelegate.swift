@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { granted, _ in
             UserDefaults.standard.set(granted, forKey: Constants.Keys.reminderActive.rawValue)
         }
-
         return true
     }
 

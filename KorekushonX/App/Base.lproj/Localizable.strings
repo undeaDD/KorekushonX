@@ -95,6 +95,12 @@
 "Extras" = "Extras";
 "BoughtMangas" = "Bought Mangas";
 
+"CoffeeLoading" = "Kaffee is being brewed ...";
+"CoffeSuccessTitle" = "Success";
+"CoffeSuccessBody" = "Whoa nice coffee\n😍 Thanks";
+"CoffeErrorTitle" = "Donation failure";
+"CoffeErrorBody" = "No coffee for me?\n🥺 Okay";
+
 "Later" = "Later";
 "Apply" = "Apply (Restart App)";
 "FilterOff" = "No Filter";
@@ -110,3 +116,5 @@
 "list" = "Watchlist";
 "finished" = "Watched";
 "actions" = "Actions:";
+
+"More" = "More";

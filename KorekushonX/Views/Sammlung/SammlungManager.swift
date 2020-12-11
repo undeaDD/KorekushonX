@@ -14,7 +14,7 @@ class SammlungManager {
 
     static let shared = SammlungManager()
 
-    private init() {}
+    private init() { }
 
     func isFilterActive() -> Bool {
         return UserDefaults.standard.integer(forKey: Constants.Keys.mangaFilter.rawValue) != 0

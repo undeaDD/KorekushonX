@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luW-UE-qan">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="luW-UE-qan">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment version="4368" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -249,7 +249,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="30" height="30"/>
-        <image name="default" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="default" width="221.66667175292969" height="333.33334350585938"/>
         <image name="speichern" width="30" height="30"/>
         <image name="speichern2" width="30" height="30"/>
         <image name="user" width="30" height="30"/>

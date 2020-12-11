@@ -1,6 +1,9 @@
+import ExpandedTabBar
 import UIKit
 
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+class TabBarController: ExpandedTabBarController, ExpandedTabBarControllerDelegate {
+    var snowView: SnowFallingView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
@@ -18,14 +21,65 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.shadowOpacity = 0.4
         delegate = self
 
-        if !UserDefaults.standard.bool(forKey: Constants.Keys.showAnimeView.rawValue) {
-            if viewControllers?.count == 5 {
-                viewControllers?.removeLast()
-            }
+        moreTitle = Constants.Strings.more.locale
+        expandedTabBarOptions = options
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+     @objc func appMovedToBackground() {
+        snowView?.removeFromSuperview()
+        snowView = nil
+    }
+
+    @objc func appCameToForeground() {
+        if snowView == nil {
+            snowView = SnowFallingView(frame: UIScreen.main.bounds)
+            snowView!.isUserInteractionEnabled = false
+            view.addSubview(snowView!)
+        }
+
+        if let snowView = snowView {
+            view.bringSubviewToFront(snowView)
+            snowView.startSnow()
         }
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        appCameToForeground()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        snowView?.removeFromSuperview()
+        snowView = nil
+    }
+
+    private var options: Options {
+        var options = ExpandedTabBarOptions()
+
+        options.indicatorType = .triangle
+        options.animationType = .top
+
+        options.container.roundedCorners = [.topLeft, .topRight, .bottomLeft, .bottomRight]
+        options.container.cornerRadius = 16
+
+        if #available(iOS 13.0, *) {
+            options.container.color = .secondarySystemGroupedBackground
+        }
+        options.container.tabSpace = 15
+        options.container.tab.iconTitleSpace = 15
+        options.container.tab.iconColor = .lightGray
+        options.container.tab.titleColor = .lightGray
+
+        return options
+    }
+
+    func expandedTabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController, withItem tabBarItem: UITabBarItem?) {
+        tabBarController.tabBar.tintColor = .systemPurple
         (viewController as? UINavigationController)?.popToRootViewController(animated: false)
     }
 

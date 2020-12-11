@@ -95,6 +95,13 @@
 "Extras" = "Extras";
 "BoughtMangas" = "Gekaufte Mangas";
 
+"CoffeeLoading" = "Kaffee wird gekocht ...";
+"CoffeSuccessTitle" = "Erfolgreich";
+"CoffeSuccessBody" = "Uiii frischer Kaffe\n😍 Danke";
+"CoffeErrorTitle" = "Fehler";
+"CoffeErrorBody" = "Kein Kaffee?\n🥺 Schade";
+
+
 "Later" = "Später";
 "Apply" = "Anwenden (App Neustart)";
 "FilterOff" = "Nicht Filtern";
@@ -110,3 +117,5 @@
 "list" = "Später";
 "finished" = "Geschaut";
 "actions" = "Aktionen:";
+
+"More" = "Mehr";

@@ -321,7 +321,7 @@ struct AlertManager {
 
     func loadingDonation(_ vc: UIViewController, _ completion: @escaping (UIAlertController) -> Void) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Kaffee wird gekocht ...", message: "☕️  ☕️  ☕️", preferredStyle: .alert)
+            let alert = UIAlertController(title: Constants.Strings.coffeeLoading.locale, message: "☕️  ☕️  ☕️", preferredStyle: .alert)
             vc.present(alert, animated: true) {
                 completion(alert)
             }
@@ -329,7 +329,7 @@ struct AlertManager {
     }
 
     func resultDonation(_ vc: UIViewController, _ result: Bool) {
-        let alert = UIAlertController(title: result ? "Erfolgreich" : "Fehler", message: result ? "Uiii frischer Kaffe 😍\nDanke" : "Kein Kaffee? 🥺\nSchade", preferredStyle: .alert)
+        let alert = UIAlertController(title: result ? Constants.Strings.coffeeSuccessTitle.locale : Constants.Strings.coffeeErrorTitle.locale, message: result ? Constants.Strings.coffeeSuccessBody.locale : Constants.Strings.coffeeErrorBody.locale, preferredStyle: .alert)
         vc.present(alert, animated: true) {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                 alert.dismiss(animated: true)

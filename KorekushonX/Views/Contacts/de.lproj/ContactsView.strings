@@ -1,0 +1,25 @@
+
+/* Class = "UINavigationItem"; title = "Animes"; ObjectID = "99z-qP-t4R"; */
+"99z-qP-t4R.title" = "Kontakte";
+
+/* Class = "UILabel"; text = "Line 1 Line 2"; ObjectID = "L8v-cP-c5P"; */
+"L8v-cP-c5P.text" = "";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "vK6-ip-rki"; */
+"vK6-ip-rki.text" = "Ep: 0";
+
+"TrK-t6-HP3.title" = "Hinzufügen";
+
+"J0a-Mr-0Ha.text" = "Bild auswählen:";
+
+"LPM-M1-LRY.text" = "Anime Name:";
+
+"LdE-bM-bN3.text" = "Aktuelle Episode:";
+
+"99P-Y4-ZZ5.segmentTitles[0]" = "Laufend";
+
+"99P-Y4-ZZ5.segmentTitles[1]" = "Später";
+
+"99P-Y4-ZZ5.segmentTitles[2]" = "Geschaut";
+
+"sJ7-mt-Xlm.placeholder" = "No Game No Life";

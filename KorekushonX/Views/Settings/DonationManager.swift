@@ -28,7 +28,6 @@ class DonationManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         if SKPaymentQueue.canMakePayments() {
             checkAvailability { result in
                 if result, let product = self.product {
-                    print("sending payment request")
                     SKPaymentQueue.default().add(self)
                     SKPaymentQueue.default().add(SKPayment(product: product))
                 } else {
@@ -46,7 +45,6 @@ class DonationManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
             case .purchased:
                 self.completion?(true)
             case .failed:
-                print(transaction.error?.localizedDescription ?? "")
                 self.completion?(false)
             default:
                 break

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZn-vx-hiw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZn-vx-hiw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment version="4368" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,6 +25,7 @@
                         <segue destination="KN8-OK-5lw" kind="relationship" relationship="viewControllers" id="i1o-9k-7PT"/>
                         <segue destination="Ewg-WR-dEH" kind="relationship" relationship="viewControllers" id="a9Z-1C-8a4"/>
                         <segue destination="QWn-0o-ZUM" kind="relationship" relationship="viewControllers" id="wza-i1-Pk0"/>
+                        <segue destination="kBp-wm-4fo" kind="relationship" relationship="viewControllers" id="21m-IV-HD3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOb-UG-Mjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -181,7 +182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQK-8Z-NRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="638"/>
+            <point key="canvasLocation" x="551" y="-3068"/>
         </scene>
         <!--AnimeView-->
         <scene sceneID="Pi7-Py-liT">
@@ -191,7 +192,42 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAH-kw-kac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1241" y="638"/>
+            <point key="canvasLocation" x="1057" y="-3068"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="dyJ-Es-uF4">
+            <objects>
+                <navigationController id="kBp-wm-4fo" customClass="NavigationController" customModule="KorekushonX" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" image="users" id="eiJ-mG-xuz">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HdE-Wk-c99">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemPurpleColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" systemColor="systemPurpleColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="s5K-Kw-yPZ" kind="relationship" relationship="rootViewController" id="LqP-dw-zXj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsf-ll-vOz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="-3768"/>
+        </scene>
+        <!--ContactsView-->
+        <scene sceneID="EHA-IP-wwY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ContactsView" id="s5K-Kw-yPZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SIn-QH-yqb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fYm-Tt-aig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056" y="-3768"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemPurpleColor"/>
@@ -200,6 +236,7 @@
         <image name="gekauft" width="30" height="30"/>
         <image name="kalender" width="30" height="30"/>
         <image name="sammlung" width="30" height="30"/>
+        <image name="users" width="30" height="30"/>
         <image name="wunschliste" width="30" height="30"/>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

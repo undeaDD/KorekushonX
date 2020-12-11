@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "ExpandedTabBar",
+        "repositoryURL": "https://github.com/yervandsar/ExpandedTabBar",
+        "state": {
+          "branch": "master",
+          "revision": "f27b6162438183c3b689cc5d2a3bc5121da2cdac",
+          "version": null
+        }
+      },
+      {
         "package": "IQKeyboardManagerSwift",
         "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
         "state": {

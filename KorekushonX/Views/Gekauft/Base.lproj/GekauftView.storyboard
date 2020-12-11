@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZsM-kY-QHH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZsM-kY-QHH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment version="4368" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,7 +44,7 @@
                                                         <constraint firstAttribute="height" constant="20.5" id="2W2-31-j87"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book: 1 | Bought: 00.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA0-cS-ONr">
@@ -153,7 +153,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manga:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIC-lq-XPF">
-                                                    <rect key="frame" x="15" y="8" width="60.5" height="34"/>
+                                                    <rect key="frame" x="15" y="8" width="61" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="a19-b8-EDr"/>
@@ -163,7 +163,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiss of the Fox" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWN-ed-HoJ">
-                                                    <rect key="frame" x="83.5" y="8" width="275.5" height="34"/>
+                                                    <rect key="frame" x="84" y="8" width="275" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <color key="textColor" systemColor="systemPurpleColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -342,7 +342,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L1-Ie-u0e">
-                                                    <rect key="frame" x="15" y="8" width="84.5" height="34"/>
+                                                    <rect key="frame" x="15" y="8" width="85" height="34"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="e73-Yp-xMl"/>
@@ -352,7 +352,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="Rl5-wY-T03">
-                                                    <rect key="frame" x="114.5" y="9.5" width="244.5" height="32"/>
+                                                    <rect key="frame" x="115" y="9.5" width="244" height="32"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     <segments>
                                                         <segment title="🤮"/>

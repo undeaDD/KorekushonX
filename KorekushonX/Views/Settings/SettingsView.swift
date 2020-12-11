@@ -63,10 +63,6 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
             if let toggle = cell.contentView.subviews.last as? UISwitch {
                 toggle.isOn = UserDefaults.standard.bool(forKey: Constants.Keys.showCover.rawValue)
             }
-        case 5:
-            if let toggle = cell.contentView.subviews.last as? UISwitch {
-                toggle.isOn = UserDefaults.standard.bool(forKey: Constants.Keys.showAnimeView.rawValue)
-            }
         default:
             return
         }
@@ -96,12 +92,6 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
                 toggle.setOn(!toggle.isOn, animated: true)
             }
         case (0, 5):
-            if let toggle = tableView.cellForRow(at: indexPath)?.contentView.subviews.last as? UISwitch {
-                UserDefaults.standard.set(!toggle.isOn, forKey: Constants.Keys.showAnimeView.rawValue)
-                toggle.setOn(!toggle.isOn, animated: true)
-                AlertManager.shared.restartNeeded(self)
-            }
-        case (0, 6):
             AlertManager.shared.loadingDonation(self) { alert in
                 DonationManager.shared.donateCoffee { result in
                     alert.dismiss(animated: false) {
@@ -109,9 +99,9 @@ class SettingsView: UITableViewController, MFMailComposeViewControllerDelegate, 
                     }
                 }
             }
-        case (0, 7):
+        case (0, 6):
             AlertManager.shared.repairData(self)
-        case (0, 8):
+        case (0, 7):
             AlertManager.shared.removeAll(self)
         case (1, let index):
             performSegue(withIdentifier: Constants.Segues.webView.rawValue, sender: index)

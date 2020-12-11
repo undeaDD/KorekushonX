@@ -8,7 +8,10 @@ class ErinnerungAddView: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateField.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        dateField.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        if #available(iOS 13.4, *) {
+            dateField.preferredDatePickerStyle = .wheels
+        }
 
         numberPickerView = UIPickerView()
         numberPickerView?.selectRow(0, inComponent: 0, animated: false)
